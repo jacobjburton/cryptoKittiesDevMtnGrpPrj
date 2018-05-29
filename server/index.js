@@ -3,7 +3,10 @@ require('dotenv').config();
 const express = require('express'),
     session = require('express-session'),
     massive = require('massive'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    kc = require('./controllers/kitty_controller')
+
+
 
 const app = express();
 
@@ -23,7 +26,7 @@ app.use(bodyParser);
 
 
 
-
+app.get('/kitties', kc.getKitties);
 
 
 
