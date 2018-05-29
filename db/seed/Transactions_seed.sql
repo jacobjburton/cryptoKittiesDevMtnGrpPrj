@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS transactions (
     id SERIAL PRIMARY KEY,
-    transaction_type TEXT, // 'sell', 'breed private', 'breed public', 'buy';
+    transaction_type TEXT, // 'sell', 'breed private', 'breed public', 'buy', 'birth';
     sire_id TEXT, // kitties.kitty_number
     matron_id TEXT, // kitties.kitty_number
     child_id TEXT, // kitties.kitty_number

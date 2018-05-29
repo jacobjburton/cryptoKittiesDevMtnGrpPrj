@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS users (
     img TEXT,
     nickname TEXT,
     email TEXT,
+    marketing_updates TEXT,
+    disconnect_metamask BOOLEAN
 )
 
-wallet_address 0x4541e1ea15fab6920b6f0da0c31da0fea74e3535
