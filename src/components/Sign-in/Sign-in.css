@@ -1,0 +1,36 @@
+button {
+    background-color: #e37ad3;
+    --color-shadow: #d850b1;
+    border: 2px solid #0b0b0b;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: all .2s cubic-bezier(.06,.67,.37,.99);
+    transition-property: all;
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0.06,0.67,0.37,0.99);
+    transition-delay: initial;
+    font-weight: 500;
+    box-shadow: inset 0 0 0 .4rem #d850b1, 0 .4rem 0 0 #e7e6e4;
+    width: 216.31px;
+    height: 70px;
+    font-size: 18px;
+}
+.orangebutton {
+    background-color: #fba371;
+    --color-shadow: #ff844b;
+    border: 2px solid #0b0b0b;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: all .2s cubic-bezier(.06,.67,.37,.99);
+    transition-property: all;
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0.06,0.67,0.37,0.99);
+    transition-delay: initial;
+    font-weight: 500;
+    box-shadow: inset 0 0 0 .4rem #ff844b, 0 .4rem 0 0 #e7e6e4;
+    width: 158.28px;
+    height: 62px;
+    font-size: 18px;
+}
