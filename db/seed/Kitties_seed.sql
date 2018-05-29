@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS kitties (
     likes INT,
     generation TEXT,
     cooldown TEXT,
-    fur TEXT,
+    fur TEXT, //
     highlight_colour TEXT,
     pattern TEXT,
     accent_colour TEXT,
