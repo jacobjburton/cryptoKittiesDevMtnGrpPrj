@@ -3,8 +3,13 @@ require('dotenv').config();
 const express = require('express'),
     session = require('express-session'),
     massive = require('massive'),
+    bodyParser = require('body-parser'),
+    kc = require('./controllers/kitty_controller')
+
+
     bodyParser = require('body-parser');
     cors = require('cors');
+
 
 const app = express();
 
@@ -25,7 +30,7 @@ app.use(cors);
 
 
 
-
+app.get('/kitties', kc.getKitties);
 
 
 
