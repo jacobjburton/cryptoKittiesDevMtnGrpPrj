@@ -4,6 +4,7 @@ const express = require('express'),
     session = require('express-session'),
     massive = require('massive'),
     bodyParser = require('body-parser');
+    cors = require('cors');
 
 const app = express();
 
@@ -13,6 +14,7 @@ const {
 } = process.env;
 
 app.use(bodyParser);
+app.use(cors);
 
 
 
@@ -37,6 +39,3 @@ massive(CONNECTION_STRING).then(db =>
         console.log(`Listening on port: ${SERVER_PORT}`)
     })
 });
-
-
-

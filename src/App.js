@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
+import routes from './routes';
+import { withRouter } from 'react-router';
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className="App">
+        {routes}
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
