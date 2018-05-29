@@ -1,0 +1,26 @@
+.header
+{
+    font-family: Calibre, Helvetica, Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+.join
+{
+    background-color: #f9f8f6;
+    padding: 1.5rem;
+    border-bottom: .1rem solid #f3f1ee;
+    text-align: center;
+}
+
+.navBar
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.greenCircle
+{
+    border-radius: 50%;
+    box-shadow: 0, 0, 0, 0.2rem #43edac;
+}
