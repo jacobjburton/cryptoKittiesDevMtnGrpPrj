@@ -29,7 +29,7 @@ export default (
         <Route path='/press' component={Press}/>
         <Route path='/profile' component={Profile}/>
         <Route path='/sign-in' component={SignIn}/>
-        <Route path='/profile/id/catdex' component={Catdex}/>
+        <Route path='/catdex' component={Catdex}/>
         <Route path='/privacy-policy' component={PrivacyPolicy}/>
         <Route path='/profile/id/special-cats' component={SpecialCats}/>
         <Route path='/Technical-details' component={TechDetails}/>
