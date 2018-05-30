@@ -3,9 +3,8 @@ require('dotenv').config();
 const express = require('express'),
     session = require('express-session'),
     massive = require('massive'),
-    bodyParser = require('body-parser'),
     kc = require('./controllers/kitty_controller'),
-    cors = require('cors'),
+    cors = require('cors')
 
 
 const app = express();
@@ -15,8 +14,8 @@ const {
     CONNECTION_STRING
 } = process.env;
 
-app.use(bodyParser);
-app.use(cors);
+app.use(express.json());
+app.use(cors());
 
 
 
@@ -27,7 +26,8 @@ app.use(cors);
 
 
 
-app.get('/kitties', kc.getKitties);
+app.get('/kitties', kc.getKitties)
+app.get('/seedKitties/:kitty_number', kc.getExternalApi_SeedOurDb_ReturnToOurFrontEnd)
 
 
 

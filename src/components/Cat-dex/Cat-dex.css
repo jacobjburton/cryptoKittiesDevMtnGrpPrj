@@ -1,0 +1,39 @@
+.Codex {
+    box-sizing: border-box;
+    margin: 0px;
+    padding-top: 32px;
+}
+
+.Container {
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    max-width: 96rem;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    padding-left: 3.2rem;
+    padding-right: 3.2rem;
+    width: 100%;
+}
+
+.Container--lg {
+    max-width: 112rem;
+}
+
+.Codex-container {
+    box-sizing: border-box;
+    column-gap: 3.2rem;
+    display: grid;
+    grid-template-columns: 22rem 1fr;
+    min-width: 0px;
+    row-gap: 0px;
+}
+
+.Progress-meter {
+    box-sizing: border-box;
+    background-color: #e7e6e4;
+    border-radius: 3px;
+
+}
