@@ -1,0 +1,231 @@
+div
+{
+    display: block;
+}
+
+.Container
+{
+    width: 100%;
+    max-width: 96rem;
+    margin: 0 auto;
+}
+
+.Container--sm
+{
+    max-width: 72rem;
+}
+
+.Container--lg
+{
+    max-width: 112rem;
+}
+
+
+
+.PressPage-section
+{
+    margin-bottom: 6.4rem;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+    margin: 0;
+    color: #2a2825;
+    line-height: 1.2;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+}
+
+h1
+{
+    font-size: 2em;
+}
+
+.u-margin-bottom-md
+{
+    margin-bottom: 2.4rem;
+}
+
+.u-margin-top-md
+{
+    margin-top: 2.4rem;
+}
+
+.u-margin-bottom-lg
+{
+    margin-bottom: 3.2rem;
+}
+
+.u-link-text
+{
+    color: #82817d;
+    border-bottom: .2rem solid #f3f1ee;
+    cursor: pointer;
+    transition: border .25s, color .25s;
+}
+
+.u-link-text:hover
+{
+    color: #2a2825;
+    border-color: #82817d;
+}
+
+p
+{
+    margin-top: 0;
+    color: #82817d;
+    line-height: 1.5;
+}
+
+.PressPage-highlight
+{
+    padding: .3rem;
+    border-radius: .3rem;
+    background-color: #c5eefa;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #2a2825;
+}
+
+.PressPage-cardWrapper--expandMd
+{
+    flex-direction: row;
+    align-items: flex-start;
+    max-width: 100%;
+}
+
+.PressPage-cardWrapper
+{
+    display: flex;
+    /* flex-direction: row; */
+    /* align-items: flex-start; */
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 6.4rem auto;
+}
+
+@media (min-width: 760px)
+{
+    .PressPage-card
+    {
+        flex-basis: 32%;
+        max-width: 100%;
+        min-height: 25rem;
+    }
+    .Container
+    {
+        padding: 0 3.2rem;
+    }
+    .PressPage-asset
+    {
+        flex-basis: 32%;
+        max-width: 100%;
+        margin: 0 0 2.4rem;
+    }
+}
+
+.PressPage-card
+{
+    display: block;
+    width: 100%;
+    padding: 2.4rem;
+    margin-bottom: 2rem;
+    border: .2rem solid #f3f1ee;
+    border-radius: .5rem;
+    box-shadow: 0 0.2rem 0 #f3f1ee;
+    background-color: #fff;
+    text-align: left;
+}
+
+*
+{
+    box-sizing: border-box;
+}
+
+.PressPage-bg
+{
+    background-color: #f9f8f6;
+    background-image: url('../../images/images/pattern-tile.svg');
+    background-size: 50rem auto;
+    padding: 6.4rem 0 3.2rem;
+}
+
+.Container-center
+{
+    text-align: center;
+}
+
+.PressPage-assetWrapper
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.PressPage-section--spelling img
+{
+    width: 100%;
+}
+
+.PressPage-asset
+{
+    position: relative;
+    display: block;
+    border: .2rem solid #f3f1ee;
+    box-shadow: 0 0.2rem 0 #f3f1ee;
+    border-radius: .5rem;
+    background-color: #fff;
+}
+
+.PressPage-asset-wide
+{
+    flex-basis: 66%;
+    padding: 9.6rem 6.4rem;
+}
+
+.PressPage-asset-img
+{
+    width: 100%;
+}
+
+.PressPage-asset-footer
+{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    padding: 1.5rem 4.8rem;
+    border-top: .2rem solid #f3f1ee;
+    background-color: #fff;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #e96bd4;
+}
+
+.PressPage-asset-footer::before
+{
+    left: 1.5rem;
+    background-image: url('../../images/icons/image.svg');
+    background-size: 1.8rem auto;
+}
+
+.PressPage-asset-footer::after
+{
+    right: 1.5rem;
+    background-image: url('../../images/icons/download.svg');
+    background-size: contain;
+}
+
+.PressPage-asset-footer::after, .PressPage-asset-footer::before
+{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: auto;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}

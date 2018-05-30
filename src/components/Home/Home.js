@@ -19,7 +19,7 @@ import etherdiamond from '../../images/images/ether-diamond.gif';
 
 
  class Home extends Component {
-     render(){
+    render(){
     return (
         <div>
             <div className="landing">
