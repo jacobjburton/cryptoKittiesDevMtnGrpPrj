@@ -19,8 +19,44 @@
     justify-content: space-between;
 }
 
+.logoButton
+{
+    background-image: url('../../images/icons/logo.svg');
+    box-sizing: border-box;
+    display: block;
+    align-items: center;
+    width: 4rem;
+    height: 5.3rem;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: contain;
+    justify-content: space-between;
+    flex: 0 1 auto;
+}
+
+.logoButton:hover
+{
+    background-image: url('../../images/icons/logo-hover.gif');
+}
+
+.logoWord
+{
+    display: block;
+}
+
+.networkStatus
+{
+    display: inline-flex;
+    margin-left: 2rem;
+}
+
 .greenCircle
 {
+    display: inline-block;
+    width: 1.2rem;
+    height: 1.2rem;
+    vertical-align: middle;
+    background-color: #b7f8df;
     border-radius: 50%;
-    box-shadow: 0, 0, 0, 0.2rem #43edac;
+    box-shadow: inset 0, 0, 0, 0.2rem #43edac;
 }

@@ -32,7 +32,7 @@ export default (
         <Route path='/catdex' component={Catdex}/>
         <Route path='/privacy-policy' component={PrivacyPolicy}/>
         <Route path='/profile/id/special-cats' component={SpecialCats}/>
-        <Route path='/Technical-details' component={TechDetails}/>
+        <Route path='/technical-details' component={TechDetails}/>
         <Route path='/terms-of-use' component={Terms}/>
         <Route path='/activity' component={Activity}/>
         <Route path='/newsletter' component={Newsletter}/>

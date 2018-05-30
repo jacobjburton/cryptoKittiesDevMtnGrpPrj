@@ -6,7 +6,7 @@ class SpecialCats extends Component
     {
         return (
             <div>
-                Special Cats
+
             </div>
         )
     }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from '../../images/icons/logo.svg';
-import gif from '../../images/icons/logo-hover.gif';
+// import logo from '../../images/icons/logo.svg';
+// import gif from '../../images/icons/logo-hover.gif';
 import { Link } from 'react-router-dom';
 import carrot from '../../images/icons/carrot.svg';
 import cross from '../../images/icons/cross.svg';
@@ -16,7 +16,6 @@ class Header extends Component
         this.state =
         {
             isConnected: false,
-            hover: false,
             showMenu: false,
             account: null
         };
@@ -37,16 +36,6 @@ class Header extends Component
         {
             console.log('MetaMask account not detected');
         }
-    }
-
-    onMouseEnterHandler = () =>
-    {
-        this.setState({ hover: true })
-    }
-
-    onMouseLeaveHandler = () =>
-    {
-        this.setState({ hover: false })
     }
 
     showMenu = () =>
@@ -71,22 +60,6 @@ class Header extends Component
                 <Link to='/marketplace'>Marketplace</Link>
             </div>;
 
-        let discordLinkDisplay = this.state.account ?
-            <div className='join'>
-                <span role='img'>🍅💕🍇</span>
-                <Link to='/profile'>Check out our Kitty couples</Link> 
-                and start breeding right meow. <span role='img'>🍇💕🍇</span>
-            </div>
-            :
-            <div className='join'>
-                <button>Join our Discord server</button> and purr with the CryptoKitties community.
-            </div>
-
-        let logoDisplay = this.state.hover ? 
-            <img src={gif} alt='gif'/>
-            : 
-            <img src={logo} alt="logo"/>;
-
         let menuShow = this.state.showMenu ?
             <div>
                 <Link to='/about'>About</Link>
@@ -102,19 +75,17 @@ class Header extends Component
         
         return (
             <div className="header">
-                {discordLinkDisplay}
                 <div className='navBar'>
                     <div className='logoButton'>
-                        <Link to='/'
-                            onMouseEnter={this.onMouseEnterHandler}
-                            onMouseLeave={this.onMouseLeaveHandler}
-                        >
-                            <div>
-                                {logoDisplay} CryptoKitties
+                        <Link to='/'>
+                            <div className='logoWord'>
+                                CryptoKitties
                             </div>
                         </Link>
-                        <span className="greenCircle"></span>
-                        <div>Network Good</div>
+                        <div className='networkStatus'>
+                            <div className="greenCircle"></div>
+                            <div>Network Good</div>
+                        </div>
                     </div>
                     <div className='middleLinks'>
                         {midMenuDisplay}
