@@ -1,30 +1,14 @@
 import axios from 'axios';
 
 const initialState = {
-    seedKitty: {},
     user: {},
     cattributes: [],
-    myKitties: {}
+    myKitties: {},
+    kitty: {}
 }
 
-const GET_AND_SEED_KITTY = 'GET_AND_SEED_KITTY';
 const GET_USER = 'GET_USER';
-
-
-export function getAndSeedKitty(kitty_number) {
-    console.log(`rdr.getAndSeedKitty>${kitty_number}`);
-    let handlesData = axios.get(`/seedKitties/${kitty_number}`)
-        .then(res => {
-            console.log('rdr.getAndSeedKitty>res.data', res.data);
-            return res.data
-        })
-        .catch(err => { 
-            console.log('rdr.getAndSeedKitty>', err) });
-    return {
-        type: GET_AND_SEED_KITTY,
-        payload: handlesData
-    }
-}
+const GET_KITTY = 'GET_KITTY';
 
 export function getUser(user_address) {
     console.log(`rdr.getUser>${user_address}`);
@@ -59,17 +43,32 @@ export function getUser(user_address) {
     }
 }
 
+export function getKitty(kitty_number) {
+    console.log(`rdr.getKitty>${kitty_number}`);
+    let handlesData = axios.get(`https://api.cryptokitties.co/kitties/${kitty_number}`)
+        .then(res => {
+            console.log('rdr.getKitty>res.data', res.data);
+            return res.data
+        })
+        .catch(err => { 
+            console.log('rdr.getKitty>', err) });
+    return {
+        type: GET_KITTY,
+        payload: handlesData
+    }
+}
+
 export default function reducer(state = initialState, action) {
     switch (action.type) {
-
-        case GET_AND_SEED_KITTY + '_FULFILLED':
-            return Object.assign({}, state, {seedKitty: action.payload});
 
         case GET_USER + '_FULFILLED':
             return Object.assign({}, state, {
                 user: action.payload.user, 
                 cattributes: action.payload.cattributes,
                 myKitties: action.payload.myKitties});
+
+        case GET_KITTY + '_FULFILLED':
+            return Object.assign({}, state, {kitty: action.payload});
 
         default:
             return state;

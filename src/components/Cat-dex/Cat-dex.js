@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import  { connect } from 'react-redux';
-import { getAndSeedKitty } from '../../ducks/reducer';
 import './Cat-dex.css';
 
 class CatDex extends Component
 {
     render () {
-        let { seedKitty } = this.props;
         return (
             <div class="Codex">
                 <div class="Container Container--lg">
@@ -24,13 +22,6 @@ class CatDex extends Component
                                 </div>
                             </div>
                         </div>
-                        <br/>
-                        <button
-                        onClick={(e)=>this.props.getAndSeedKitty('1')}>
-                            getAndSeedKitty
-                        </button>
-                        <br/>
-                        <p>Hey show me an id> { seedKitty ?  seedKitty.id : null }</p>
                     </div>
                 </div>
             </div>
@@ -40,8 +31,8 @@ class CatDex extends Component
 
 function mapStateToProps(state) {
     return {
-        seedKitty: state.seedKitty
+        kitty: state.kitty
     }
 }
 
-export default connect(mapStateToProps, {getAndSeedKitty})(CatDex);
+export default connect(mapStateToProps,)(CatDex);
