@@ -29,23 +29,21 @@ import etherdiamond from '../../images/images/ether-diamond.gif';
              account: null
          }
     }
-    componentDidMount()
-   {
-       if (window.web3 && window.web3.currentProvider.isMetaMask)
-       {
-           window.web3.eth.getAccounts((error, accounts) =>
-           {
-               this.setState({ isConnected: true, account: accounts[0] });
-               console.log('connected!', this.state.isConnected);
-               console.log(accounts[0]);
-           })
-       }
-       else
-       {
-           console.log('MetaMask account not detected');
-       }
-   }
+   showMenu = () =>{
+        this.state.showMenu ?
+            this.setState({ showMenu: false })
+            :
+            this.setState({ showMenu: true });
+    }
      render(){
+         let startMeow = this.state.account ?
+         <div>
+             <Link to="/Profile"><button className="button1">Start Meow</button></Link>
+         </div>
+         :
+         <div>
+             <Link to="Sign-in"><button className="button1">Start Meow</button></Link>
+         </div>
     return (
         <div>
             <div className="landing">
@@ -54,7 +52,7 @@ import etherdiamond from '../../images/images/ether-diamond.gif';
                     <h1 className="landingHeadline">Breedable.</h1>
                     <h1 className="landingHeadline">Adorable.</h1>
                     <p className="words">Collect and breed digital cats.</p>
-                    <Link to='/Sign-in'><button className="button1">Start Meow</button></Link>
+                    {startMeow}
                 </div>
                 <div className="landing-slots">
                     <div className="landing-pattern">
@@ -105,7 +103,7 @@ import etherdiamond from '../../images/images/ether-diamond.gif';
                 <div className="explainer-cta">
                     <p className="explainer-description2">But, unlike traditional collectables, you can breed two CryptoKitties to create a brand-new, genetically unique offspring.</p>
                     <p className="explainer-description4">It results in something special-just like you!</p>
-                    <Link to='/Sign-in'><button className="button1">Start Meow</button></Link>
+                    {startMeow}
                 </div>
             </div>
         </div>
