@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import './Home.css';
 import kitty01 from '../../images/images/home-page/landing-kitty01.svg';
 import kitty02 from '../../images/images/home-page/landing-kitty02.svg';
@@ -19,6 +20,30 @@ import etherdiamond from '../../images/images/ether-diamond.gif';
 
 
  class Home extends Component {
+     constructor(){
+         super()
+         this.state = {
+             isConnected: false,
+             showMenu: false,
+             account: null
+         }
+    }
+    componentDidMount()
+   {
+       if (window.web3 && window.web3.currentProvider.isMetaMask)
+       {
+           window.web3.eth.getAccounts((error, accounts) =>
+           {
+               this.setState({ isConnected: true, account: accounts[0] });
+               console.log('connected!', this.state.isConnected);
+               console.log(accounts[0]);
+           })
+       }
+       else
+       {
+           console.log('MetaMask account not detected');
+       }
+   }
      render(){
     return (
         <div>
@@ -28,23 +53,19 @@ import etherdiamond from '../../images/images/ether-diamond.gif';
                     <h1 className="landingHeadline">Breedable.</h1>
                     <h1 className="landingHeadline">Adorable.</h1>
                     <p className="words">Collect and breed digital cats.</p>
-                    <button>Start Meow</button>
+                    <Link to='/Sign-in'><button className="button1">Start Meow</button></Link>
                 </div>
                 <div className="landing-slots">
                     <div className="landing-pattern">
-                        <img className="landing-kitty" src={kitty01} alt="Kitty 01"/>
-                        <img className="landing-kitty" src={kitty02} alt="Kitty 02"/>
-                        <img className="landing-kitty" src={kitty03} alt="Kitty 03"/>
-                    </div>
-                    <div className="landing-pattern">
-                        <img className="landing-kitty" src={kitty06} alt="Kitty 06"/>
-                        <img className="landing-kitty" src={kitty07} alt="Kitty 07"/>
-                        <img className="landing-kitty" src={kitty08} alt="Kitty 08"/>
-                    </div>
-                    <div className="landing-pattern">
-                        <img className="landing-kitty" src={kitty11} alt="Kitty 11"/>
-                        <img className="landing-kitty" src={kitty12} alt="Kitty 12"/>
-                        <img className="landing-kitty" src={kitty13} alt="Kitty 13"/>
+                        <img className="landing-kitty1" src={kitty01} alt="Kitty 01"/>
+                        <img className="landing-kitty6" src={kitty06} alt="Kitty 06"/>
+                        <img className="landing-kitty11" src={kitty11} alt="Kitty 11"/>
+                        <img className="landing-kitty2" src={kitty02} alt="Kitty 02"/>
+                        <img className="landing-kitty7" src={kitty07} alt="Kitty 07"/>
+                        <img className="landing-kitty12" src={kitty12} alt="Kitty 12"/>
+                        <img className="landing-kitty3" src={kitty03} alt="Kitty 03"/>
+                        <img className="landing-kitty8" src={kitty08} alt="Kitty 08"/>
+                        <img className="landing-kitty13" src={kitty13} alt="Kitty 13"/>
                     </div>
                 </div>
             </div>
@@ -71,19 +92,19 @@ import etherdiamond from '../../images/images/ether-diamond.gif';
             <div className="explainer-bg">
                 <div className="container-breed">
                     <div className="explainer-breed">
-                        <div className="explainer-breedkitty"><img src={kittylove1} alt="explanation"/></div>
-                        <div className="heart"><img src={heart} alt="explanation"/></div>
-                        <div className="explainer-breedkitty"><img src={kittylove2} alt="explanation"/></div>
-                        <div className="equals"><img src={equals} alt="explanation"/></div>
-                        <div className="explainer-breedkitty"><img src={kittylove3} alt="explanation"/></div>
+                        <div className="explainer-breedkitty1"><img src={kittylove1} alt="explanation"/></div>
+                        <div className="heart"><img className="heart-img" src={heart} alt="explanation"/></div>
+                        <div className="explainer-breedkitty2"><img src={kittylove2} alt="explanation"/></div>
+                        <div className="equals"><img className="equals-img" src={equals} alt="explanation"/></div>
+                        <div className="explainer-breedkitty3"><img src={kittylove3} alt="explanation"/></div>
                     </div>
                 </div>
             </div>
             <div className="container-bottom">
                 <div className="explainer-cta">
                     <p className="explainer-description2">But, unlike traditional collectables, you can breed two CryptoKitties to create a brand-new, genetically unique offspring.</p>
-                    <p className="explainer-description2">It results in something special-just like you!</p>
-                    <button>Start Meow</button>
+                    <p className="explainer-description4">It results in something special-just like you!</p>
+                    <Link to='/Sign-in'><button className="button1">Start Meow</button></Link>
                 </div>
             </div>
         </div>

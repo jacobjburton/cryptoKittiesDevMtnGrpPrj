@@ -1,3 +1,16 @@
+@font-face {
+  font-family: Calibre;
+  src: url('./images/fonts/Calibre-Regular.eot');
+  src: url('./images/fonts/Calibre-Regular.otf'),
+       url('./images/fonts/Calibre-Regular.woff'),
+       url('./images/fonts/Calibre-Regular.woff2'),
+       url('./images/fonts/Calibre-RegularItalic.eot'),
+       url('./images/fonts/Calibre-RegularItalic.woff'),
+       url('./images/fonts/Calibre-RegularItalic.woff2')
+}
+* {
+  font-family: Calibre;    
+}
 .App {
   text-align: center;
 }
