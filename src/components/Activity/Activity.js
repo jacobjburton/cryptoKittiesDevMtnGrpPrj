@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 
-class SpecialCats extends Component
+class Activity extends Component
 {
     render()
     {
         return (
             <div>
-
+                Activity
             </div>
         )
     }
 }
 
-export default SpecialCats;
+export default Activity;

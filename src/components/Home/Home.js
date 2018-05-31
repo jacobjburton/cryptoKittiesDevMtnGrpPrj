@@ -20,6 +20,7 @@ import etherdiamond from '../../images/images/ether-diamond.gif';
 
 
  class Home extends Component {
+
      constructor(){
          super()
          this.state = {
@@ -73,8 +74,8 @@ import etherdiamond from '../../images/images/ether-diamond.gif';
                 <div className="container">
                     <div className="explainer-what">
                         <div className="explainer-ethkitty">
-                            <img className="ethkitty" src={ethkitty}/>
-                            <img className="ethdiamond" src={etherdiamond}/>
+                            <img className="ethkitty" src={ethkitty} alt='ethkitty'/>
+                            <img className="ethdiamond" src={etherdiamond} alt='ethdiamond'/>
                         </div>
                         <div className="explainer-what-text">
                             <h2 className="explainer-headline">What is CryptoKitties?</h2>

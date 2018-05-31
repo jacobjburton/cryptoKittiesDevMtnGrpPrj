@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SubNav from '../SubNav/SubNav';
 
 class About extends Component
 {
@@ -6,6 +7,7 @@ class About extends Component
     {
         return (
             <div>
+                <SubNav/>
                 About
             </div>
         )

@@ -1,4 +1,5 @@
 // data validation for cattributes
+const axios = require('axios');
 
 module.exports={
     getKitties: function(req, res) {
@@ -12,6 +13,20 @@ module.exports={
         })
         .catch( err => {
             console.log('/kitties/kc.getKitties>ERROR>', err);
+            res.status(500).send(err)
+        });
+    },
+    getExternalApi_SeedOurDb_ReturnToOurFrontEnd: function(req, res) {
+        let { kitty_number } = req.params;
+        console.log(`/kitties/kc.getExternalApi_SeedOurDb_ReturnToOurFrontEnd>RECEIVED> |${kitty_number}|`)
+        axios.get(`https://api.cryptokitties.co/kitties/${kitty_number}`)
+        .then( function (response) {
+            let { data } = response;
+            console.log(`${data}`);
+            res.status(200).send(data)
+        })
+        .catch( err => {
+            console.log('/kitties/kc.getExternalApi_SeedOurDb_ReturnToOurFrontEnd>ERROR>', err);
             res.status(500).send(err)
         });
     }

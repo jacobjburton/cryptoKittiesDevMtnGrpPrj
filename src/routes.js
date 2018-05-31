@@ -14,6 +14,9 @@ import PrivacyPolicy from './components/Privacy-policy/Privacy-policy';
 import SpecialCats from './components/Special-cats/Special-cats';
 import TechDetails from './components/Tech-details/Tech-details';
 import Terms from './components/Terms-of-use/Terms-of-use';
+import Activity from './components/Activity/Activity';
+import Newsletter from './components/Newsletter/Newsletter';
+import Careers from './components/Careers/Careers';
 
 export default (
     <Switch>
@@ -26,10 +29,13 @@ export default (
         <Route path='/press' component={Press}/>
         <Route path='/profile' component={Profile}/>
         <Route path='/sign-in' component={SignIn}/>
-        <Route path='/profile/id/catdex' component={Catdex}/>
+        <Route path='/catdex' component={Catdex}/>
         <Route path='/privacy-policy' component={PrivacyPolicy}/>
         <Route path='/profile/id/special-cats' component={SpecialCats}/>
-        <Route path='/Technical-details' component={TechDetails}/>
+        <Route path='/technical-details' component={TechDetails}/>
         <Route path='/terms-of-use' component={Terms}/>
+        <Route path='/activity' component={Activity}/>
+        <Route path='/newsletter' component={Newsletter}/>
+        <Route path='/careers' component={Careers}/>
     </Switch>
 )
