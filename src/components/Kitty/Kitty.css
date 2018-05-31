@@ -1,0 +1,103 @@
+@media (min-width: 960px) {
+    .KittyBanner {
+        --size-card: 45rem;
+        --size-image: 45rem;
+        --width-shadow: 22.6rem;
+        --height-shadow: 3rem;
+        --translate-shadow-x: -0.4rem;
+        --translate-shadow-y: 9.7rem;
+    }
+
+}
+
+@media (min-width: 760px) {
+    .Container {
+        padding: 0 3.2rem;
+    }
+}
+
+@media (min-wdith: 480px) {
+    .Container {
+        padding: 0 2.4rem;
+    }
+}
+
+.KittyBanner {
+    --size-card: 32rem;
+    --size-image: 32rem;
+    --width-shadow: 16.2rem;
+    --height-shadow: 2rem;
+    --translate-shadow-x: -0.3rem;
+    --tanslate-shadow-y: 6.8rem;
+    width: 100%;
+    cursor: default;
+    overflow: hidden;
+}
+
+.Container {
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    width: 100%;
+    max-width: 96rem;
+}
+
+.Container--full {
+    max-width: 100%;
+}
+
+.KittyBanner-container {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: var(--size-card);
+    margin: 0 auto;
+}
+
+.KittyBanner-container:before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    display: block;
+    width: var(--width-shadow);
+    height: var(--height-shadow);
+    margin: auto;
+    background-color: var(--kitty-shadow-color);
+    border-radius: 50%;
+    transform: translate(var(--translate-shadow-x),var(--translate-shadow-y));
+    content: '';
+    z-index: 1;
+}
+
+a {
+    text-decoration: none;
+    background-color: transparent;
+}
+
+img {
+    border-style: none;
+}
+
+.KittyBanner-image {
+    position: relative;
+    width: var(--size-image);
+    height: var(--size-image);
+}
+
+.KittyBanner-status {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 2.4rem 0;
+    z-index: 3;
+}
+
+.KittyBanner-share {
+    position: absolute;
+    top: 2.4rem;
+    right: 0;
+    z-index: 3;
+}
+
+

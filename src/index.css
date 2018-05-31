@@ -2,4 +2,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  color: #2a2825;
+  background-color: #fff;
+  font-size: 2rem;
+  line-height: 1.5;
 }
