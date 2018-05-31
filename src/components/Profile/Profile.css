@@ -1,4 +1,23 @@
+.profilePage {
+    padding-bottom: 65px;
+}
 .profileHeader-image {
     height: 72px;
     width: 72px;
+}
+.profileHeader {
+    height: 120px;
+}
+.container-lg {
+    margin-right: 80px;
+    margin-left: 80px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 120px;
+}
+.profileHeader-container {
+    display: flex;
+    align-items: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
