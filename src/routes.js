@@ -17,6 +17,7 @@ import Terms from './components/Terms-of-use/Terms-of-use';
 import Activity from './components/Activity/Activity';
 import Newsletter from './components/Newsletter/Newsletter';
 import Careers from './components/Careers/Careers';
+import Settings from './components/Settings/Settings';
 
 export default (
     <Switch>
@@ -37,5 +38,6 @@ export default (
         <Route path='/activity' component={Activity}/>
         <Route path='/newsletter' component={Newsletter}/>
         <Route path='/careers' component={Careers}/>
+        <Route path='/settings' component={Settings}/>
     </Switch>
 )
