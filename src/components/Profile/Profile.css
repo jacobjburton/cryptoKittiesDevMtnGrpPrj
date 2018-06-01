@@ -1,12 +1,63 @@
 .profilePage {
-    padding-bottom: 65px;
+    padding-bottom: 6.4rem;
+}
+.profilePage-tabs {
+    position: relative;
+    margin-bottom: 2.4rem;
+}
+.profilePage-tabs:before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    display: block;
+    width: 100%;
+    height: .2rem;
+    background-color: #f3f1ee;
+    content: "";
 }
 .profileHeader-image {
-    height: 72px;
-    width: 72px;
+    height: 7.2rem;
+    width: 7.2rem;
+    border-radius: 100%;
+    transition: transform .2s;
+}
+.profileHeader-image:active {
+    transform: scale(.8);
+}
+.profileHeader-image:hover {
+    transform: scale(1.05);
+    cursor: pointer;
 }
 .profileHeader {
     height: 120px;
+}
+.profileHeader-info {
+    margin-left: 2.4rem;
+}
+.profileHeader-title {
+    color: #0b0b0b;
+    font-size: 2.8rem;
+    line-height: 1.33
+}
+.profileHeader-wallet {
+    margin: 0;
+    font-size: 1.6rem;
+    color: #82817d;
+}
+.profileHeader-settings {
+    color: #82817d;
+    border-bottom: .2rem solid #f3f1ee;
+    cursor: pointer;
+    transition: border .25s, color .25s;
+}
+.profileHeader-settings:hover {
+    color: #2a2825;
+    border-color: #82817d;
+}
+.profileHeader-button {
+    margin-left: .8rem;
+    display: inline-block;
 }
 .container-lg {
     margin-right: 80px;
@@ -18,6 +69,230 @@
 .profileHeader-container {
     display: flex;
     align-items: center;
-    padding-top: 25px;
-    padding-bottom: 25px;
+    padding: 2.4rem 0;
+}
+.kittiesToolbar-includeAndSort {
+    margin-top: 3.2rem;
+}
+.kittiesToolbar-includeAndSort-container {
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+.kittiesToolbar-include,
+.kittiesToolbar-includeAndSort-container,
+.kittiesToolbar-sort {
+    display: flex;
+    align-items: center;
+}
+.kittiesToolbar-include,
+.kittiesToolbar-sort {
+    flex-flow: row wrap;
+    flex: 0 0 100%;
+}
+.kittiesToolbar-sort {
+    margin-top: .8rem;
+}
+.kittiesToolbar-include-options,
+.kittiesToolbar-sort-options {
+    flex: 1;
+}
+.kittiesToolbar-label {
+    margin-right: 1.5rem;
+    color: #9c9c9b;
+    font-weight: 500;
+    font-size: 1.8rem;
+    text-transform: lowercase
+}
+.kittiesToolbar-label:not(.kittiesToolbar-label-alwaysVisible) {
+    display: none;
+}
+.kittiesToolbar-filters {
+    margin-top: 1.5rem;
+}
+.kittiesToolbar-count {
+    margin-top: .8rem;
+    color: #9c9c9b;
+    font-weight: 500;
+    font-size: 1.6rem;
+}
+.kittiesGalleryPagination {
+    padding: 2.4rem;
+    max-width: 112rem;
+    margin: 0 auto;
+}
+.kittiesGrid {
+    position: relative;
+    display: grid;
+    grid-gap: var(--size-gap);
+    grid-template-columns: repeat(var(--num-columns), 1fr)
+}
+.kittiesGrid-item .kittyCard {
+    opacity: 0;
+    transform: translateY(2.4rem);
+    animation: kittyCardIn .25s cubic-bezier(0.6, .67, .37, .99) forwards
+}
+.kittyCard {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: var(--size-card);
+    height: var(--size-card);
+    background-color: #f3f1ee;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    border-radius: .7rem;
+    transition: box-shadow .2s;
+}
+.kittyCard:active,
+.kittyCard:focus {
+    outline: none;
+}
+.kittyCard:before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    display: block;
+    width: var(--width-shadow);
+    height: var(--height-shadow);
+    margin: auto;
+    background-color: var(--kitty-shadow-color);
+    border-radius: 50%;
+    transform: translate(var(--translate-image), var(--translate-shadow));
+    content: "";
+    z-index: 1
+}
+.kittyCard-wrapper {
+ --box-shadow: inset 0 0 0 0 #fff;
+}
+.kittyCard-wrapper:hover {
+    --box-shadow: inset 0 0 0 0.4rem #fff;
+   }
+.kittyCard-image {
+    position: relative;
+    width: var(--size-image);
+    height: var(--size-image);
+    -webkit-transform: translate(var(--translate-image));
+    transform: translate(var(--translate-image));
+    z-index: 2
+}
+.kittyCard-status {
+    position: absolute;
+    z-index: 3;
+}
+.kittyCard-name {
+    overflow: hidden;
+    margin-top: .4rem;
+    padding: 0 .4rem;
+    color: #82817d;
+    font-size: 1.6rem;
+    font-weight: 500
+}
+.kittyCard-details {
+    margin-top: .4rem;
+    padding: 0 .4rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #82817d;
+    text-align: left;
+}
+.kittyCard-details-item {
+    margin-right: .8rem;
+}
+.kittyCard-actions {
+    position: relative;
+    z-index: 20;
+    text-align: left;
+}
+.purrBadge {
+    display: inline-flex;
+    align-content: center;
+    cursor: pointer;
+}
+.purrBadge-hearts {
+    position: relative;
+    width: 2.2rem;
+    height: 2.2rem;
+}
+.purrBadge-heart,
+.purrBadge-heartFill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 50% 50%;
+    transition: opacity .2s, transform .2s;
+
+}
+.purrBadge-heartFill svg,
+.purrBadge-heart svg {
+    display: block;
+    margin: 0;
+    width: 100%;
+    height: auto;
+}
+.purrBadge-heartFill {
+    opacity: 0;
+    transform: scale(0);
+}
+.purrBadge-count {
+    margin-left: .4rem;
+    color: #9c9c9b;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+.checkbox {
+    user-select: none;
+    cursor: pointer;
+}
+.checkbox-label-text-left {
+    margin-right: 1rem;
+}
+.checkbox-label-text-right {
+    margin-right: 1rem;
+}
+.checkbox-checked {
+    background-color: transparent;
+}
+.checkbox-input {
+    display: none;
+}
+.checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    color: #9c9c9b;
+    font-size: 1.8rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+.selectionGroup-item {
+    flex: 1;
+}
+.select-container {
+    display: inline-block;
+    position: relative;
+}
+.select {
+    display: block;
+    padding: 0 2.4rem 0 0;
+    width: 100%;
+    color: #2a2825;
+    font-weight: 500;
+    font-size: 1.8rem;
+    cursor: pointer;
+    appearance: none;
+    transition: color .2s
+}
+.select:active,
+.select:focus {
+    border: none;
+    outline: none;
+}
+.select-icon {
+    position: absolute;
+    top: 37%;
+    right: 0;
+    display: block;
+    pointer-events: none
 }

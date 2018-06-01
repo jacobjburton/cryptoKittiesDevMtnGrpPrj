@@ -1,21 +1,33 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import axios from 'axios';
 import './Profile.css';
+import {getUser} from '../../ducks/reducer';
 
 class Profile extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
-            user: null
+            account: null
         }
     }
     componentDidMount(){
-        axios.get('/user').then((res) => {
-            this.setState({user: res.data})
-        })
+        this.props.getUser(0x9e556296547bd434C23d4A46596Ba9311140Cda7);
+        if (window.web3 && window.web3.currentProvider.isMetaMask) {
+
+            window.web3.eth.getAccounts((error, accounts) => {
+ 
+            this.setState({ account: accounts[0] });
+            console.log(`received accounts[0]> `, accounts[0]);
+            console.log(`this.setState> this.state.account> `, this.state.account);
+        })} else {
+        console.log(`MetaMask account not detected`);
+        }
     }
     render(){
-        let settings = this.state.user ?
+        let {user} = this.props;
+        console.log(this.props.user)
+        let settings = this.state.account ?
         <div>
             <button className="profileButton">Report User</button>
         </div>
@@ -23,21 +35,20 @@ class Profile extends Component {
         <div>
             <button className="profileButton">Settings</button>
         </div>
-        let {img, nickname, wallet_address} = this.props;
    return (
         <main className="main">
             <div className="profilePage">
                 <div className="profileHeader">
                     <div className="container-lg">
                         <div className="profileHeader-container">
-                            <img className="profileHeader-image" src={img} alt="Profile pic"/>
+                            <img className="profileHeader-image" src="" alt="Profile pic"/>
                             <div className="profileHeader-info">
-                                <h1 className="profileHeader-title">{nickname}</h1>
+                                <h1 className="profileHeader-title"></h1>
                             </div>
                             <div className="profileHeader-wallet">
                                 <span className="copyAddress" role="tooltip">
                                 <button>Copy Address</button>
-                                {wallet_address}
+                                
                                 </span>
                                 <span className="separator"></span>
                                 <div className="reportPage">
@@ -161,7 +172,7 @@ class Profile extends Component {
                                                                 <option value="cooldown">Cooldown</option>
                                                                 <option value="purr_count">Likes</option>
                                                             </select>
-                                                            <svg class="IconV2 IconV2--position-default IconV2--display-inlineBlock Select-icon" width="16" height="16" viewBox="0 0 16 16">
+                                                            <svg className="select-icon" class="IconV2 IconV2--position-default IconV2--display-inlineBlock Select-icon" width="16" height="16" viewBox="0 0 16 16">
                                                                 <path d="M3.619 3.729h8.762a.75.75 0 0 1 .637 1.146l-4.381 7.042a.75.75 0 0 1-1.274 0L2.982 4.875a.75.75 0 0 1 .637-1.146z" fill="#c4c3c0" fill-rule="evenodd">
                                                                 </path>
                                                             </svg>
@@ -173,7 +184,7 @@ class Profile extends Component {
                                                                 <option value="asc">Low to High</option>
                                                                 <option value="desc">High to Low</option>
                                                             </select>
-                                                            <svg class="IconV2 IconV2--position-default IconV2--display-inlineBlock Select-icon" width="16" height="16" viewBox="0 0 16 16">
+                                                            <svg className="select-icon" class="IconV2 IconV2--position-default IconV2--display-inlineBlock Select-icon" width="16" height="16" viewBox="0 0 16 16">
                                                                 <path d="M3.619 3.729h8.762a.75.75 0 0 1 .637 1.146l-4.381 7.042a.75.75 0 0 1-1.274 0L2.982 4.875a.75.75 0 0 1 .637-1.146z" fill="#c4c3c0" fill-rule="evenodd">
                                                                 </path>
                                                             </svg>
@@ -187,12 +198,12 @@ class Profile extends Component {
                             </div>
                             <div className="kittiesToolbar-count">
                                 <div className="container-lg">
-                                    <span>2 Kitties</span> 
+                                    <span># of kitties user owns</span> 
                                     {/* need to replace 2 kitties with kitty data from user object */}
                                 </div>
                             </div>
                         </div>
-                        <div className="profileKittyGallery">
+                        <div className="profile">
                             <div className="kittiesGallery">
                                 <div className="container-lg">
                                     <div className="kittiesGrid">
@@ -201,15 +212,15 @@ class Profile extends Component {
                                                 {/* need to replace href with particular user kitty */}
                                                 <div className="kittyCard-wrapper">
                                                     <div className="kittyCard-background">
-                                                    <img class="KittyCard-image" src="https://storage.googleapis.com/ck-kitty-image/0x06012c8cf97bead5deae237070f9587f8e7a266d/777368.svg" alt="Kitty #777368"/>
+                                                    <img class="KittyCard-image" src="" alt="Kitty image"/>
                                                                                     {/* need to replace src with particular user's kitty image */}
                                                     <div className="kittyCard-status"></div>
                                                     </div>
-                                                    <div className="kittyCard-name">Kitty #777368</div>
+                                                    <div className="kittyCard-name">Kitty #</div>
                                                                                     {/* need to replace name with name from the object */}
                                                     <div className="kittyCard-details">
                                                         <span className="kittyCard-details-item-highlight">
-                                                            Kitty 777368
+                                                            Kitty #
                                                             {/* need to replace name with name from the object */}
                                                         </span>
                                                         <span className="kittyCard-details-item">
@@ -269,4 +280,12 @@ class Profile extends Component {
         )
     }
 }
-export default Profile;
+
+function mapStateToProps(state){
+    return{
+        user: state.user,
+        myKitties: state.myKitties,
+        cattributes: state.cattributes
+    }
+}
+export default connect(mapStateToProps, {getUser})(Profile);
