@@ -12,21 +12,23 @@ class Profile extends Component {
         }
     }
     componentDidMount(){
-        this.props.getUser(0x9e556296547bd434C23d4A46596Ba9311140Cda7);
         if (window.web3 && window.web3.currentProvider.isMetaMask) {
 
             window.web3.eth.getAccounts((error, accounts) => {
- 
-            this.setState({ account: accounts[0] });
-            console.log(`received accounts[0]> `, accounts[0]);
-            console.log(`this.setState> this.state.account> `, this.state.account);
+                
+                this.setState({ account: accounts[0] });
+                console.log(`received accounts[0]> `, accounts[0]);
+                console.log(`this.setState> this.state.account> `, this.state.account);
+                this.props.getUser(accounts[0])
         })} else {
         console.log(`MetaMask account not detected`);
         }
+        this.state.account && this.props.getUser(this.state.account)
     }
     render(){
-        let {user} = this.props;
+        let {user, cattributes, myKitties, image} = this.props;
         console.log(this.props.user)
+        
         let settings = this.state.account ?
         <div>
             <button className="profileButton">Report User</button>
@@ -41,9 +43,9 @@ class Profile extends Component {
                 <div className="profileHeader">
                     <div className="container-lg">
                         <div className="profileHeader-container">
-                            <img className="profileHeader-image" src="" alt="Profile pic"/>
+                            <img className="profileHeader-image" src={`https://www.cryptokitties.co/profile/profile-${this.props.user.image}.png`} alt="Profile pic"/>
                             <div className="profileHeader-info">
-                                <h1 className="profileHeader-title"></h1>
+                                <h1 className="profileHeader-title">{this.props.user.nickname}</h1>
                             </div>
                             <div className="profileHeader-wallet">
                                 <span className="copyAddress" role="tooltip">
