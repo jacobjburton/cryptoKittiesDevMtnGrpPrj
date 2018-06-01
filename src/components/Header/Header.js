@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-// import logo from '../../images/icons/logo.svg';
-// import gif from '../../images/icons/logo-hover.gif';
 import { Link } from 'react-router-dom';
 import carrot from '../../images/icons/carrot.svg';
 import cross from '../../images/icons/cross.svg';
 import './Header.css';
-//import Web3 from 'web3';
+//import { connect } from 'react-redux';
  
 class Header extends Component
 {
@@ -27,7 +25,7 @@ class Header extends Component
         {
             window.web3.eth.getAccounts((error, accounts) =>
             {
-                this.setState({ isConnected: true, account: accounts[0] });
+                this.setState({ isConnected: true, account: accounts[0] })
                 console.log('connected!', this.state.isConnected);
                 console.log(accounts[0]);
             })
@@ -112,4 +110,14 @@ class Header extends Component
     }
 }
 
+// function mapStateToProps(state)
+// {
+//     return {
+//         isConnected: state.isConnected,
+//         account: state.account
+
+//     }
+// }
+
 export default Header;
+//export default connect(mapStateToProps)(Header);
