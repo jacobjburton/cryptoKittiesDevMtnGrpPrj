@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import profile15 from '../../images/images/profile-15.png';
 import './Profile.css';
 
 class Profile extends Component {
@@ -106,7 +105,7 @@ class Profile extends Component {
                                             <div className="kittiesToolbar-include-options">
                                                 <div className="selectionGroup">
                                                     <div className="selectionGroup-item">
-                                                        <div className="checkbox" role="checkbox">
+                                                        <div className="checkbox" role="checkbox" aria-checked="true">
                                                             <input type="checkbox" id="For Sale" className="checkbox-input"/>
                                                             <label className="checkbox-label" for="For Sale">
                                                                 <span className="checkbox-label-icon">
@@ -120,7 +119,7 @@ class Profile extends Component {
                                                         </div>
                                                     </div>
                                                     <div className="selectionGroup-item">
-                                                        <div className="checkbox-checked" role="checkbox">
+                                                        <div className="checkbox-checked" role="checkbox" aria-checked="true">
                                                             <input className="checkbox-input" type="checkbox" id="Siring"/>
                                                             <label className="checkbox-label" for="Siring">
                                                                 <span className="checkbox-label-icon">
@@ -134,7 +133,7 @@ class Profile extends Component {
                                                         </div>
                                                     </div>
                                                     <div className="selectionGroup-item">
-                                                        <div className="checkbox-checked" role="checkbox">
+                                                        <div className="checkbox-checked" role="checkbox" aria-checked="true">
                                                             <input className="checkbox-input" type="checkbox" id="Other"/>
                                                             <label className="checkbox-label" for="Other">
                                                                 <span className="checkbox-label-icon">
