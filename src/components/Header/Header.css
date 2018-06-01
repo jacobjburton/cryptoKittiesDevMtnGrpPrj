@@ -1,4 +1,4 @@
-.header
+/* .header
 {
     font-family: Calibre, Helvetica, Arial, Helvetica, sans-serif;
     box-sizing: border-box;
@@ -59,4 +59,351 @@
     background-color: #b7f8df;
     border-radius: 50%;
     box-shadow: inset 0, 0, 0, 0.2rem #43edac;
+} */
+a {
+    color: #2a2825;
+    text-decoration: none;
+    background-color: transparent;
 }
+
+div {
+    display: block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    color: #2a2825;
+    line-height: 1.2;
+    font-weight: 500;
+    letter-spacing: -.3px;
+}
+
+h1 {
+    font-size: 2em;
+    margin: .67em 0;
+}
+
+.Header-container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+}
+
+.Header {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+        z-index: 10;
+        justify-content: space-between
+}
+
+.Header-group-home {
+    align-items: center;
+}
+
+.Header-group {
+    display: flex;
+    flex: unset;
+}
+
+.Header-home {
+    display: flex;
+    align-items: center;
+}
+
+.Header-home:hover .Header-logo {
+    background-image: url(../../images/icons/logo-hover.gif);
+}
+
+.Header-logo {
+    width: 3rem;
+    height: 4rem;
+    background-image: url(../../images/icons/logo.svg);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: contain;
+}
+
+.Header-logo::after {
+    content: "";
+    background-image: url(../../images/icons/logo-hover.gif);
+}
+
+.Header-wordmark {
+    margin: 0;
+    padding-left: 1 rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1;
+    display: none;
+}
+
+.Header-networkStatus {
+    margin-left: 2rem;
+    display: none;
+    align-items: center;
+}
+
+.TooltipNew {
+    position: relative;
+    display: inline-block;
+}
+
+.TooltipNew-wrapper {
+    cursor: pointer;
+}
+
+.NetworkStatus-message {
+    padding-bottom: .4rem;
+    display: flex;
+    align-items: center;
+}
+
+.NetworkStatus--1 .NetworkStatus-badge {
+    background-color: #b7f8df;
+    box-shadow: inset 0 0 0 0.2rem #43edac; 
+}
+
+.NetworkStatus-status {
+    display: inline-flex;
+    margin-left: 0.8rem;
+    color: #2a2825;
+    font-size: 1.4rem;
+    font-weight: 500;
+    vertical-align: middle;
+}
+
+.NetworkStatus-badge {
+    display: inline-block;
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: #eee;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.TooltipNew-content--bottom {
+    left: 50%;
+    top: calc(100% + 1.5rem);
+    transform: tranlsate3d(-50%, .5rem, 0);
+    animation: slideUpBottom .4s forwards;
+}
+
+.TooltipNew-content .TooltipNew-content:after {
+    position: absolute;
+    top: 50%;
+    background-color: #fff;
+}
+
+
+.TooltipNew-content {
+    left: calc(100% + 1.5rem);
+    z-index: 1000;
+    padding: 1.5rem;
+    min-width: 24rem;
+    border: 2px solid #e7e6e4;
+    border-radius: .4rem;
+    box-shadow: 0 0.3rem 0 0 #e7e6e4;
+    word-wrap: break-word;
+}
+
+p {
+    margin-top: 0;
+    color: #82817d;
+    line-height: 1.5;
+    display: block;
+}
+
+.TooltipNew-content p {
+    font-size: 1.4rem;
+    margin: .4rem 0 0;
+}
+
+.TooltipNew-content--bottom:after {
+    top: 0;
+    left: 50%;
+    transform: translate3d(-50%, 0.7rem, 0) rotate(135deg);
+}
+
+.TooltipNew-content:after {
+    display: block;
+    left: 0;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-left: 2px solid #e7e6e4;
+    border-bottom: 2px solid #e7e6e4;
+    content: "";
+    z-index: 10;
+}
+
+.Header-group:nth-child(2) {
+    justify-content: flex-end;
+    flex: 2;
+}
+
+.Header-navigation-item {
+    margin-left: 1.8rem;
+    padding: 0.3rem 0;
+    font-size: 1.4rem;
+    color: #0b0b0b;
+    font-weight: 500;
+    transition: all .2s;
+}
+
+.Header-navigation-item:hover {
+    color: #e96bd4;
+}
+
+.Header-secondaryNav-wide {
+    display: none;
+}
+
+.Header-navigation-item {
+    margin-left: 1.8rem;
+    padding: 0.3rem 0;
+    font-size: 1.4rem;
+    color: #0b0b0b;
+    font-weight: 500;
+    transition: all .2s;
+}
+
+.Dropdown {
+    position: relative;
+    display: inline-block;
+    margin-top: 0.4rem;
+}
+
+.Dropdown--isOpen .Dropdown-toggle--open {
+    display: none;
+}
+
+.Dropdown .Dropdown-toggle--open
+{
+    display: block;
+}
+
+.Dropdown-toggle {
+    cursor: pointer;
+}
+
+.Header-more-toggleIcon {
+    margin-left: 0.4rem;
+    margin-bottom: -0.3rem;
+}
+
+img {
+    border-style: none;
+}
+
+.u-slide--up {
+    animation: slideUp .4s forwards;
+} 
+
+.Dropdown-content {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    margin-top: 2rem;
+    padding: 0 2rem;
+    right: 0;
+    word-wrap: break-word;
+    text-align: center;
+    border: 2px solid #e7e6e4;
+    border-radius: 0.4rem;
+    box-shadow: 0 0.3rem 0 0 #e7e6e4;
+    background-color: #fff;
+}
+
+Dropdown-content::after {
+    position: absolute;
+    display: block;
+    top: -.4em;
+    right: 9%;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-left: 2px solid #e7e6e4;
+    border-bottom: 2px solid #e7e6e4;
+    background-color: #fff;
+    transform: rotate(135deg);
+    content: "";
+    z-index: 10;
+}
+
+.Header-navigation-dropdown-item {
+    display: block;
+    margin-left: 0;
+    padding: 1rem 3rem;
+    border-bottom: 2px solid #e7e6e4;
+    width: 16rem;
+}
+
+
+
+
+
+
+
+
+@media (min-width: 960px) {
+    .Header {
+        padding-top: 2.4rem;
+        padding-bottom: 2.4rem;
+    }
+    .Header-networkStatus {
+        display: block;
+    }
+    .Header-group:nth-child(2) {
+        justify-content: center;
+        flex: 1;
+    }
+    .Header-navigation-item {
+        font-size: 2rem;
+    }
+    .Header-secondaryNav-wide {
+        display: block;
+    }
+    .Header-navigation-item {
+        font-size: 2rem;
+    }
+}
+
+@media (min-width: 760px) {
+    .Header-container {
+        padding: 0 3.2rem;        
+    }
+    .Header {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+        flex-direction: row;
+    }
+    .Header-wordmark {
+        display: block;
+    }
+    .Header-navigation-item {
+        font-size: 1.6rem;
+    }
+    .Header-navigation-item {
+        font-size: 1.6rem;
+    }
+}
+@media (min-width: 480px) {
+    .Header-container {
+        padding: 0 2.4rem;        
+    }
+    .Header-group {
+        flex: 1;
+    }
+    .Header-home {
+        margin: 0;
+        flex: 0 1 auto;
+    }
+    .Header-logo {
+        width: 4rem;
+        height: 5.3rem;
+    }
+    .Header-wordmark {
+        display: block;
+    }
+}
+
