@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import info from '../../images/icons/info.svg';
 import { connect } from 'react-redux';
+import './Kitty.css';
 
 class Kitty extends Component {
     
@@ -227,7 +228,6 @@ class Kitty extends Component {
                         </div>
                     </div>
                 </div>
-                
             </div>
         )
     }
