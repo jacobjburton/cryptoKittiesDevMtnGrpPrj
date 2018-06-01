@@ -22,10 +22,6 @@ app.use(cors());
 
 
 
-
-
-
-
 // app.get('/kitties', kc.getKitties)
 // app.get('/seedKitties/:kitty_number', kc.getExternalApi_SeedOurDb_ReturnToOurFrontEnd)
 
