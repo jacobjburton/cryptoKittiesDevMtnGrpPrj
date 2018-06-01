@@ -1,0 +1,178 @@
+.Footer {
+    padding: 4rem 0 2.4rem;
+    border-top: 0.2rem solid #f3f1ee;
+    display: block;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+.Container--lg {
+    max-width: 112rem;
+}
+
+.Container {
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    width: 100%;
+    max-width: 96rem;
+}
+
+.Footer-primary {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.Footer-nav {
+    flex: 0 0 100%;
+    margin: 0 0 2.4rem;
+}
+
+.Footer-nav-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    color: #82817d;
+    display: block;
+}
+
+li {
+    display: list-item;
+    text-align: left;
+}
+
+.Footer-nav-item {
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.Footer-nav-link {
+    color: #82817d;
+    transition: color 0.25s;
+}
+
+a:hover {
+    color: #2a2825;
+}
+
+.Footer-nav-link--facebook {
+    color: #3a5998;
+}
+
+.Footer-nav-link--reddit {
+    color: #fd4404;
+}
+
+.Footer-nav-link--twitter {
+    color: #1ba1f3;
+}
+
+.Footer-nav-link--youtube {
+    color: red;
+}
+
+.Footer-nav-link--instagram {
+    color: #8b2ab7;
+}
+.Footer-nav-link--discord {
+    color: #7289da;
+}
+.Footer-nav-link--email {
+    color: #ef52d1;
+}
+
+.Footer-primary-az {
+    flex: 0 0 100%;
+    color: #82817d;
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+
+.Footer-primary-az a {
+    position: relative;
+    color: #2a2825;
+    font-weight: 500;
+    transition: color 0.25s;
+}
+
+.Footer-primary-az a:after {
+    position: absolute;
+    left: 0;
+    bottom: -0.2rem;
+    display: block;
+    width: 100%;
+    height: 0.2rem;
+    background-color: #e7e6e4;
+    content: "";
+}
+
+img {
+    border-style: none;
+}
+
+.Footer-career {
+    margin-right: 0;
+}
+
+.Footer-secondary {
+    display: flex;
+    flex-flow: row wrap;
+    margin-top: 6.4rem;
+}
+
+.Footer-secondary-link {
+    flex: 0 0 100%;
+    color: #82817d;
+    font-size: 1.6rem;
+    transition: color 0.25s;
+}
+
+@media (min-width: 480px) {
+    .Container {
+        padding: 0 2.4rem;
+    }
+    .Footer-nav {
+        flex: 1;
+        margin: 0;
+    }
+    .Footer-primary-az {
+        margin: 6.4rem 0 0;
+    }
+    .Footer-secondary-link {
+        flex: 0 1 auto;
+        margin-right: 2.4rem;
+    }
+}
+
+@media (min-width: 760px) {
+    .Container {
+        padding: 0 3.2rem;
+    }
+    .Footer-primary-az {
+        flex: 1;
+        margin: 0;
+        text-align: right;
+    }
+    .Footer-secondary-link {
+        flex: 0 1 auto;
+        margin: 0 2.4rem;
+    }
+}
+
+@media (min-width: 960px) {
+    .Footer-career {
+        margin-right: 1.8rem;
+    }
+    .Footer-secondary {
+        justify-content: center;
+    }
+}
+
