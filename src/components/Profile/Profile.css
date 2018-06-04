@@ -1,3 +1,25 @@
+.profileLink {
+    cursor: pointer;
+    padding: 0 0 .2rem;
+    font-size: 1.6rem;
+    font-family: inherit;
+    color: #82817d;
+    border-bottom: .2rem solid #f3f1ee;
+}
+.profileLink:focus {
+    outline: none;
+}
+.profileLink:hover {
+    color: #2a2825;
+    border-bottom: .2rem solid #82817d;
+}
+.separator {
+    display: inline-block;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    padding: .8rem;
+    vertical-align: middle
+}
 .profilePage {
     padding-bottom: 6.4rem;
 }
@@ -38,7 +60,8 @@
 .profileHeader-title {
     color: #0b0b0b;
     font-size: 2.8rem;
-    line-height: 1.33
+    line-height: 1.33;
+    margin-bottom: 0;
 }
 .profileHeader-wallet {
     margin: 0;
@@ -70,6 +93,98 @@
     display: flex;
     align-items: center;
     padding: 2.4rem 0;
+}
+.TabNav {
+    display: flex;
+    align-items: center;
+    margin: .8rem 00;
+}
+.TabNav-tab {
+    position: relative;
+    margin-right: 1.5rem;
+    padding: 1.5rem 0;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #9c9c9b;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.TabNav-tab:active {
+    color: #2a2825;
+}
+.TabNav-tab:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: .2rem;
+    /* background-color: var(--theme-color); */
+    content: ""
+}
+.searchBar {
+    position: relative;
+}
+.searchBar-container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    max-width: 100%;
+    align-items: center;
+    border-bottom: .2rem solid #f3f1ee;
+}
+.searchBar-container:active {
+    border-bottom: .2rem solid #ef52d1;
+}
+.searchBar-icon {
+    flex: 0 0 1.6rem;
+}
+.iconV2 {
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    height: auto;
+}
+.searchBar-input {
+    flex: 1;
+    width: auto;
+    min-width: 0;
+    font-size: 1.8rem;
+    line-height: 1;
+    border: none;
+}
+.searchBar-actionGroup,
+.searchBar-actionGroups {
+    display: flex;
+}
+.searchBar-actionGroups {
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 10;
+}
+.searchBar-actionGroup {
+    margin-right: 1.5rem;
+    padding-right: 1.5rem;
+    border-right: .2rem solid #f3f1ee;
+}
+.searchBar-actionGroup:last-child {
+    margin-right: 0;
+    padding-right: 0;
+    border: none;
+}
+.searchBar-action {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #9c9c9b;
+    white-space: nowrap;
+    transition: opacity .2s
+}
+.searchBar-action:focus {
+    outline: none;
+}
+.searchBar-action:active, 
+.searchBar-action:hover {
+    color: #2a2825;
 }
 .kittiesToolbar-includeAndSort {
     margin-top: 3.2rem;
@@ -123,8 +238,8 @@
 .kittiesGrid {
     position: relative;
     display: grid;
-    grid-gap: var(--size-gap);
-    grid-template-columns: repeat(var(--num-columns), 1fr)
+    /* grid-gap: var(--size-gap); */
+    /* grid-template-columns: repeat(var(--num-columns), 1fr) */
 }
 .kittiesGrid-item .kittyCard {
     opacity: 0;
@@ -136,12 +251,12 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: var(--size-card);
-    height: var(--size-card);
+    width: 217.47px;
+    height: 217.47px;
     background-color: #f3f1ee;
     cursor: pointer;
     overflow: hidden;
-    box-shadow: var(--box-shadow);
+    /* box-shadow: var(--box-shadow); */
     border-radius: .7rem;
     transition: box-shadow .2s;
 }
@@ -155,27 +270,32 @@
     left: 0;
     right: 0;
     display: block;
-    width: var(--width-shadow);
-    height: var(--height-shadow);
+    width: 217.47px;
+    height: 217.47px;
     margin: auto;
-    background-color: var(--kitty-shadow-color);
+    /* background-color: var(--kitty-shadow-color); */
     border-radius: 50%;
-    transform: translate(var(--translate-image), var(--translate-shadow));
+    /* transform: translate(var(--translate-image), var(--translate-shadow)); */
     content: "";
     z-index: 1
 }
+.kittyCard-background {
+    width: 217.47px;
+    height: 217.47px;
+}
 .kittyCard-wrapper {
- --box-shadow: inset 0 0 0 0 #fff;
+ /* --box-shadow: inset 0 0 0 0 #fff; */
+ width: 217.47px;
+ height: 217.47px;
 }
 .kittyCard-wrapper:hover {
-    --box-shadow: inset 0 0 0 0.4rem #fff;
+    /* --box-shadow: inset 0 0 0 0.4rem #fff; */
    }
 .kittyCard-image {
     position: relative;
-    width: var(--size-image);
-    height: var(--size-image);
-    -webkit-transform: translate(var(--translate-image));
-    transform: translate(var(--translate-image));
+    width: 217.47px;
+    height: 217.47px;
+    /* transform: translate(var(--translate-image)); */
     z-index: 2
 }
 .kittyCard-status {
