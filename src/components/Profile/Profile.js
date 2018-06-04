@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import './Profile.css';
 import {getUser} from '../../ducks/reducer';
+import _ from 'lodash';
 
 class Profile extends Component {
     constructor(props){
@@ -33,7 +34,7 @@ class Profile extends Component {
 
         let nameDisplay;
         if (myKitties.kitties){
-            nameDisplay = <span className="kittyCard-details-item-highlight">{myKitties.kitties[i] && myKitties.kitties[i].name || myKitties.kitties[i].id} </span>
+            nameDisplay = <span className="kittyCard-details-item-highlight">{myKitties.kitties[0] && myKitties.kitties[0].name || myKitties.kitties[0].id} </span>
         } else {
             nameDisplay = null
         }
@@ -298,6 +299,7 @@ class Profile extends Component {
                         <div className="profile">
                             <div className="kittiesGallery">
                                 <div className="container-lg">
+                                {allTheKitties}
                                     {/* put kitty card here */}
                                 </div>
                             </div>
