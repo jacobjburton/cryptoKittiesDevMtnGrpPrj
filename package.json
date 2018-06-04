@@ -13,6 +13,7 @@
     "massive": "^4.8.3",
     "react": "^16.4.0",
     "react-collapsible": "^2.2.0",
+    "react-custom-properties": "^1.2.0",
     "react-dom": "^16.4.0",
     "react-redux": "^5.0.7",
     "react-responsive-accordion": "^1.0.0",

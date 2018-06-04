@@ -1,45 +1,4 @@
-@media (min-width: 960px) {
-    .KittyBanner {
-        --size-card: 45rem;
-        --size-image: 45rem;
-        --width-shadow: 22.6rem;
-        --height-shadow: 3rem;
-        --translate-shadow-x: -0.4rem;
-        --translate-shadow-y: 9.7rem;
-    }
 
-}
-
-@media (min-width: 760px) {
-    .Container {
-        padding: 0 3.2rem;
-    }
-    .KittyPage-content {
-        padding: 6.4rem;
-    }
-    .KittySection {
-        margin: 0 0 4.8rem;
-    }
-    .KittyHeader {
-        display: flex;
-        flex-flow: row wrap;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .KittyHeader-main {
-        margin-bottom: 0;
-        margin-right: 6.4rem;
-    }
-    .KittyHeader-name-text--editable {
-        font-size: 4.2rem;
-    }
-}
-
-@media (min-wdith: 480px) {
-    .Container {
-        padding: 0 2.4rem;
-    }
-}
 
 .KittyBanner {
     --size-card: 32rem;
@@ -109,6 +68,7 @@ img {
     position: relative;
     width: var(--size-image);
     height: var(--size-image);
+    z-index: 2;
 }
 
 .KittyBanner-status {
@@ -137,6 +97,7 @@ img {
 .KittyHeader-main {
     flex: 1;
     min-width: 0;
+    margin-bottom: 2.4rem;
 }
 
 .KittyHeader-name {
@@ -196,7 +157,8 @@ h1 {
     font-weight: 500;
     color: #9c9c9b;
 }
- .Separator {
+ 
+.Separator {
      display: inline-block;
      background-image: url(../../images/icons/dot-separator.svg);
      background-position: 50%;
@@ -220,4 +182,59 @@ h1 {
 .KittyHeader-details-conditionInfo {
     transform: translateY(.2rem);
     pointer-events: none;
+}
+
+.KittyBanner-bg--gold {
+    background-color: #faf4cf;
+
+}
+
+.KittyBanner-container--shadow-gold {
+    --kitty-shadow-color: #e3daa1;
+}
+
+@media (min-width: 960px) {
+    .KittyBanner {
+        --size-card: 45rem;
+        --size-image: 45rem;
+        --width-shadow: 22.6rem;
+        --height-shadow: 3rem;
+        --translate-shadow-x: -0.4rem;
+        --translate-shadow-y: 9.7rem;
+    }
+
+}
+
+@media (min-width: 760px) {
+    .Container {
+        padding: 0 3.2rem;
+    }
+    .KittyPage-content {
+        padding: 6.4rem;
+    }
+    .KittySection {
+        margin: 0 0 4.8rem;
+    }
+    .KittyHeader {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .KittyHeader-main {
+        margin-bottom: 0;
+        margin-right: 6.4rem;
+    }
+    .KittyHeader-name-text--editable {
+        font-size: 4.2rem;
+    }
+    .KittyHeader-name-text {
+        font-size: 4.2rem;
+    }
+}
+
+@media (min-wdith: 480px) {
+    .Container {
+        padding: 0 2.4rem;
+    }
 }
