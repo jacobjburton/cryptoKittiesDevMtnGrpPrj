@@ -2,17 +2,232 @@ import React, { Component } from 'react';
 import info from '../../images/icons/info.svg';
 import { connect } from 'react-redux';
 import './Kitty.css';
+import { getUser, getKitty } from '../../ducks/reducer.js';
+import _ from 'lodash';
+import diamond from '../../images/images/cattributes/diamond.svg';
+import gold from '../../images/images/cattributes/gold.svg';
+import silver from '../../images/images/cattributes/silver.svg';
+import bronze from '../../images/images/cattributes/bronze.svg';
 
 class Kitty extends Component {
-    
+
+    constructor() {
+        super();
+
+        this.state = {
+            account: null
+        }
+    }
+
+    componentDidMount() {
+        if (window.web3 && window.web3.currentProvider.isMetaMask) {
+
+            window.web3.eth.getAccounts((error, accounts) => {
+                
+                this.setState({ account: accounts[0] });
+                console.log(`received accounts[0]> `, accounts[0]);
+                console.log(`this.setState> this.state.account> `, this.state.account);
+                this.props.getUser(accounts[0])
+        })} else {
+        console.log(`MetaMask account not detected`);
+        }
+        this.state.account && this.props.getUser(this.state.account)
+        console.log(this.props.myKitties)
+        console.log(this.props.user)
+        this.props.getKitty(611557)
+        console.log(this.props.kitty)
+    }
     
     render () {
+
+        
+
+
+        let { kitty } = this.props;
+        let { enhanced_cattributes } = this.props.kitty;
+        console.log(kitty)
+        console.log(enhanced_cattributes);
+        // kitty.id ? console.log(kitty.enhanced_cattributes[0].description) : console.log('no kitty');
+        
+        var kittyBannerDisplay;
+
+        // if (this.props.kitty.color === 'gold')
+        {
+            kittyBannerDisplay =
+                <div className="KittyBanner KittyBanner--bg-gold">
+                    <div className="Container Container--full">
+                        <div className="KittyBanner-container KittyBanner-container--shadow-gold">
+                            <a href={`/kitty/${kitty.id}`} className="active" aria-current="true">
+                                <img style={{background: '#faf4cf'}} src={kitty.image_url} alt="kittybanner" className="KittyBanner-image"/>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+        }
+        
+        
+        let nameDisplay = this.props.kitty.name ?
+            <h1 className="KittyHeader-name-text KittyHeader-name-text--editable">{this.props.kitty.name}</h1>
+            :
+            <h1 className="KittyHeader-name-text KittyHeader-name-text--editable">Kitty #{this.props.kitty.id}</h1>
+            
+        if (!_.isEmpty(enhanced_cattributes)) 
+        {
+            var eachCattribute = enhanced_cattributes.map((e, i) =>
+            {
+                var gemDisplay;
+                if (enhanced_cattributes[i].position === -1)
+                {
+                    <a href={`/kitty/${enhanced_cattributes[i].kittyId}`}></a>
+                }
+                if (enhanced_cattributes[i].position === 1)
+                {
+                    gemDisplay = 
+                        <a className="Cattribute-icon" href={`/kitty/${enhanced_cattributes[i].kittyId}`}>
+                            <i className="Cattribute-icon-img" style={{backgroundImage: diamond}}></i>
+                        </a>
+                }
+                if (enhanced_cattributes[i].position1 > 1 && enhanced_cattributes[i].position <= 10)
+                {
+                    gemDisplay = 
+                        <a className="Cattribute-icon" href={`/kitty/${enhanced_cattributes[i].kittyId}`}>
+                            <i className="Cattribute-icon-img" style={{backgroundImage: gold}}></i>
+                        </a>
+                }
+                if (enhanced_cattributes[i].position1 > 10 && enhanced_cattributes[i].position <= 100)
+                {
+                    gemDisplay = 
+                        <a className="Cattribute-icon" href={`/kitty/${enhanced_cattributes[i].kittyId}`}>
+                            <i className="Cattribute-icon-img" style={{backgroundImage: silver}}></i>
+                        </a>
+                }
+                if (enhanced_cattributes[i].position1 > 100 && enhanced_cattributes[i].position <= 500)
+                {
+                    gemDisplay = 
+                        <a className="Cattribute-icon" href={`/kitty/${enhanced_cattributes[i].kittyId}`}>
+                            <i className="Cattribute-icon-img" style={{backgroundImage: bronze}}></i>
+                        </a>
+                }
+                
+
+                return (
+                    <span className="KittyCattribute">
+                        <div className="Cattribute Cattribute--size-small Cattribute--icon-gold">
+                            {gemDisplay}
+                            <a href={`/marketplace?include=sale,sire,other&search=${kitty.id && enhanced_cattributes[i]}`} className="Cattribute-content">
+                                <h3 className="Cattribute-title">{kitty.id && enhanced_cattributes[i].description}</h3>
+                                <span className="Cattribute-type">{kitty.id && enhanced_cattributes[i].type}</span>
+                            </a>
+                        </div>
+                    </span>
+                );
+            });
+        }
+
+        let cattributesDisplay = (kitty.id && !kitty.is_fancy) ?
+            <div className="KittySection">
+                <div className="KittySection-header">
+                    <h2 className="KittySection-header-title">Cattributes</h2>
+                    <div className="KittySection-header-tooltip">
+                        <div className="TooltipNew">
+                            <span className="TooltipNew-wrapper">
+                                <img src={info} alt="CattributesIcon" className="KittyCattributesTooltip-icon"/>
+                            </span>
+                        </div>
+                    </div>            
+                </div>
+                <div className="KittySection-content">
+                    <div className="KittyCattributes">
+                        {eachCattribute}
+                    </div>
+                </div>
+            </div>
+            :
+            null; //need to add functionality to display fancy type
+
+
+        let parentDisplay = (!_.isEmpty(kitty.matron) && !_.isEmpty(kitty.sire)) ?
+        <div className="KittySection">
+            <div className="KittySection-header">
+                <h2 className="KittySection-header-title">Parents</h2>
+            </div>
+            <div className="KittySection-content">
+                <div class="Kitty-Parents">
+                    <div className="KittiesList">
+                        <div className="KittiesList-items">
+                            <div className="KittiesList-item">
+                                <a href={`/kitty/${kitty.id && kitty.sire.id}`} aria-current="false">
+                                    <div className="KittyCard-wrapper">
+                                        <div className="KittyCard KittyCard--bg-topaz KittyCard--thumbnail KittyCard--fancy KittyCard--shadow-topaz">
+                                            <img className="KittyCard-image" src={kitty.id && kitty.sire.image_url} alt="sireImg"/>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div className="KittiesList-item">
+                                <a aria-current="false" href={`/kitty/${kitty.id && kitty.matron.id}`}>
+                                    <div className="KittyCard-wrapper">
+                                        <div className="KittyCard KittyCard--bg-sapphire KittyCard--thumbnail KittyCard--shadow-sapphire">
+                                            <img className="KittyCard-image" src={kitty.id && kitty.matron.image_url} alt="matronImg"/>
+                                            <div className="KittyCard-status"></div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        : null;
+        
+        if (!_.isEmpty(kitty.children))
+        {
+            var allTheChildren = kitty.children.map((e, i) => 
+            {
+                return (
+                    <div className="KittySection-content">
+                        <div className="Kitty-children">
+                            <div className="KittiesList">
+                                <div className="KittiesList-items">
+                                    <div className="KittiesList-item">
+                                        <a href={`/kitty/${kitty.id && kitty.children[i].id}`} aria-current="false">
+                                            <div className="KittyCard-wrapper">
+                                                <div className="KittyCard KittCard--bg-topaz KittyCard--thumbnail KittyCard--shadow-topaz">
+                                                    <img  className="KittyCard-image" src={kitty.id && kitty.children[i].image_url} alt="childImg"/>
+                                                    <div className="KittyCard-status"></div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )
+            })
+        }
+        let childrenDisplay = (!_.isEmpty(kitty.children)) ?
+            <div className="KittySection">
+                <div className="KittySection-header">
+                    <h2 className="KittySection-header-title">Children</h2>
+                </div>
+                {allTheChildren}
+            </div>
+            : null;
+
+        
+        let auction = kitty.auction;
+
+        console.log(_.isEmpty(auction));
+        
+
+
+
         return (
             <div className='Main'>
                 <div className='KittyPage'>
-                    <div className='KittyBanner KittyBanner--bg-topaz'>
-
-                    </div>
+                    {kittyBannerDisplay}
                     <div className="KittyPage-content">
                         <div className="KittyProfile">
                             <div className="Container Container-smGrow">
@@ -21,9 +236,7 @@ class Kitty extends Component {
                                         <div className="KittyHeader">                                        
                                             <div className="KittyHeader-main">
                                                 <div className="KittyHeader-name">
-                                                    <h1 className="KittyHeader-name-text KittyHeader-name-text--editable">
-                                                        Kitty #XXXXXX
-                                                    </h1>
+                                                    {nameDisplay}
                                                 </div>
                                                 <div className="KittyHeader-details">
                                                     <span className="Separator"></span>
@@ -34,7 +247,7 @@ class Kitty extends Component {
                                                     >
                                                         <span>
                                                             <span>
-                                                                Gen X
+                                                                Gen {this.props.kitty.generation}
                                                             </span>
                                                         </span>
                                                     </a>
@@ -49,11 +262,12 @@ class Kitty extends Component {
                                             </div>
                                             <div className="KittyHeader-owner">
                                                 <a className="KittyHeader-owner-imageLink" aria-current='false' href="">
-                                                    <img src="" alt="profileImage"/>
+                                                    <img src={`https://www.cryptokitties.co/profile/profile-${this.props.user.image}.png`} alt="profileImage"/>
                                                 </a>
                                                 <span className="KittyHeader-owner-details">
                                                     <a className="KittyHeader-owner-name" aria-current="false" href="">
-                                                        Owner Name (you) - if looking at own profile
+                                                        {kitty.id && kitty['owner'].nickname}{ kitty.id && kitty['owner'].address === this.state.account ? ' (you)' : null }
+                                                        
                                                     </a>
                                                     <span>Owner</span>
                                                 </span>
@@ -108,121 +322,14 @@ class Kitty extends Component {
                                     <div className="KittySection-content">
                                         <div className="KittySection-content">
                                             <div className="KittyDescription">
-                                                <p>KittyDescription</p>
+                                                <p>{this.props.kitty.bio}</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="KittySection">
-                                    <div className="KittySection-header">
-                                        <h2 className="KittySection-header-title">Cattributes</h2>
-                                        <div className="KittySection-header-tooltip">
-                                            <div className="TooltipNew">
-                                                <span className="TooltipNew-wrapper">
-                                                    <img src={info} alt="CattributesIcon" className="KittyCattributesTooltip-icon"/>
-                                                </span>
-                                            </div>
-                                        </div>            
-                                    </div>
-                                    <div className="KittySection-content">
-                                        <div className="KittyCattributes">
-                                            <span className="KittyCattribute">
-                                                <div className="Cattribute Cattribute--size-small Cattribute--icon-gold">
-
-                                                </div>
-                                            </span>
-                                            <span className="KittyCattribute">
-
-                                            </span>
-                                            <span className="KittyCattribute">
-
-                                            </span>
-                                            <span className="KittyCattribute">
-
-                                            </span>
-                                            <span className="KittyCattribute">
-
-                                            </span>
-                                            <span className="KittyCattribute">
-
-                                            </span>
-                                            <span className="KittyCattribute">
-
-                                            </span>
-                                            <span className="KittyCattribute">
-
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="KittySection">
-                                    <div className="KittySection-header">
-                                        <h2 className="KittySection-header-title">Parents</h2>
-                                    </div>
-                                    <div className="KittySection-content">
-                                        <div class="Kitty-Parents">
-                                            <div className="KittiesList">
-                                                <div className="KittiesList-items">
-                                                    <div className="KittiesList-item">
-                                                        <a href="" aria-current="false">
-                                                            <div className="KittyCard-wrapper">
-                                                                <div className="KittyCard KittyCard--bg-topaz KittyCard--thumbnail KittyCard--fancy KittyCard--shadow-topaz">
-                                                                    <img className="KittyCard-image" src="" alt=""/>
-                                                                    <div className="KittyCard-status">
-                                                                        <div className="KittyStatus">
-                                                                            <div className="KittyStatus-item">
-                                                                                <span className="KittyStatus-itemIcon">
-                                                                                    <i class="Icon Icon--timer"></i>
-                                                                                </span>
-                                                                                <span className="KittyStatus-itemText">
-                                                                                    <span className="KittyStatus-label">Resting</span>
-                                                                                    <span className="KittyStatus-note">Time</span>
-                                                                                </span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div className="KittiesList-item">
-                                                        <a aria-current="false" href="">
-                                                            <div className="KittyCard-wrapper">
-                                                                <div className="KittyCard KittyCard--bg-sapphire KittyCard--thumbnail KittyCard--shadow-sapphire">
-                                                                    <img className="KittyCard-image" src="" alt=""/>
-                                                                    <div className="KittyCard-status"></div>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="KittySection">
-                                    <div className="KittySection-header">
-                                        <h2 className="KittySection-header-title">Children</h2>
-                                    </div>
-                                    <div className="KittySection-content">
-                                        <div className="Kitty-children">
-                                            <div className="KittiesList">
-                                                <div className="KittiesList-items">
-                                                    <div className="KittiesList-item">
-                                                        <a href="" aria-current="false">
-                                                            <div className="KittyCard-wrapper">
-                                                                <div className="KittyCard KittCard--bg-topaz KittyCard--thumbnail KittyCard--shadow-topaz">
-                                                                    <img  className="KittyCarrd-image" src="" alt=""/>
-                                                                    <div className="KittyCard-status"></div>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                {cattributesDisplay}
+                                {parentDisplay}
+                                {childrenDisplay}
                             </div>
 
                         </div>
@@ -235,8 +342,14 @@ class Kitty extends Component {
 
 function mapStateToProps(state) {
     return {
-
+        user: state.user,
+        userActivity: state.userActivity,
+        cattributes: state.cattributes,
+        myKitties: state.myKitties,
+        kitty: state.kitty,
+        specialCats: state.specialCats,
+        forsaleSiringOther: state.forsaleSiringOther
     }
 }
 
-export default connect(mapStateToProps)(Kitty);
+export default connect(mapStateToProps, { getUser, getKitty })(Kitty);
