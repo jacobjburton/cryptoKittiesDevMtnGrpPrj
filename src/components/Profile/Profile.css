@@ -191,6 +191,8 @@
 }
 .kittiesToolbar-includeAndSort-container {
     flex-flow: row wrap;
+    box-orient: horizontal;
+    box-direction: normal;
     justify-content: space-between;
 }
 .kittiesToolbar-include,
@@ -247,16 +249,23 @@
     animation: kittyCardIn .25s cubic-bezier(0.6, .67, .37, .99) forwards
 }
 .kittyCard {
+    --size-card: 22.5rem;
+    --size-image: 16rem;
+    --width-shadow: 8rem;
+    --height-shadow: 1.1rem;
+    --translate-image: 2%;
+    --translate-shadow: 3.6rem;
+    --padding-status: 0.8rem;
     position: relative;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 217.47px;
-    height: 217.47px;
+    width: var(--size-card);
+    height: var(--size-card);
     background-color: #f3f1ee;
     cursor: pointer;
     overflow: hidden;
-    /* box-shadow: var(--box-shadow); */
+    box-shadow: var(--box-shadow);
     border-radius: .7rem;
     transition: box-shadow .2s;
 }
@@ -273,9 +282,9 @@
     width: 217.47px;
     height: 217.47px;
     margin: auto;
-    /* background-color: var(--kitty-shadow-color); */
+    background-color: #a8d5d1;
     border-radius: 50%;
-    /* transform: translate(var(--translate-image), var(--translate-shadow)); */
+    transform: translate(var(--translate-image), var(--translate-shadow));
     content: "";
     z-index: 1
 }
