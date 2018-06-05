@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { getUser, getKitty, getUserActivity, getSpecialCats, getForsaleSiringOther, getFilteredCats } from '../../ducks/reducer';
+import { getUser, getKitty, getUserActivity, getSpecialCats, getFilteredCats } from '../../ducks/reducer';
 import './Settings.css';
 
 class Settings extends Component {
