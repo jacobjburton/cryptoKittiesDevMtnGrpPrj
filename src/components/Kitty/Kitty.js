@@ -37,6 +37,11 @@ class Kitty extends Component {
         //this.props.getKitty(this.props.kittyId)
         console.log(this.props.kitty.id)
     }
+
+    handleClick = (e) => {
+        this.props.getKitty(e);
+        this.props.history.push(`/kitty/${e}`);
+    }
     
     render () {
 
@@ -168,7 +173,7 @@ class Kitty extends Component {
                     <div className="KittiesList">
                         <div className="KittiesList-items">
                             <div className="KittiesList-item">
-                                <a href={`/kitty/${kitty.id && kitty.sire.id}`} aria-current="false">
+                                <a onClick={(e) => {this.handleClick(kitty.sire.id)}} aria-current="false">
                                     <div className="KittyCard-wrapper">
                                         <div className="KittyCard KittyCard--bg-topaz KittyCard--thumbnail KittyCard--fancy KittyCard--shadow-topaz">
                                             <img className="KittyCard-image" src={kitty.id && kitty.sire.image_url} alt="sireImg"/>
@@ -177,7 +182,7 @@ class Kitty extends Component {
                                 </a>
                             </div>
                             <div className="KittiesList-item">
-                                <a aria-current="false" href={`/kitty/${kitty.id && kitty.matron.id}`}>
+                                <a aria-current="false" onClick={(e) => {this.handleClick(kitty.matron.id)}}>
                                     <div className="KittyCard-wrapper">
                                         <div className="KittyCard KittyCard--bg-sapphire KittyCard--thumbnail KittyCard--shadow-sapphire">
                                             <img className="KittyCard-image" src={kitty.id && kitty.matron.image_url} alt="matronImg"/>
@@ -203,7 +208,7 @@ class Kitty extends Component {
                             <div className="KittiesList">
                                 <div className="KittiesList-items">
                                     <div className="KittiesList-item">
-                                        <a href={`/kitty/${kitty.id && kitty.children[i].id}`} aria-current="false">
+                                        <a onClick={(e) => {this.handleClick(kitty.children[i].id)}} aria-current="false">
                                             <div className="KittyCard-wrapper">
                                                 <div className="KittyCard KittCard--bg-topaz KittyCard--thumbnail KittyCard--shadow-topaz">
                                                     <img  className="KittyCard-image" src={kitty.id && kitty.children[i].image_url} alt="childImg"/>
