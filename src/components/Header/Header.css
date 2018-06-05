@@ -4,14 +4,6 @@
     box-sizing: border-box;
 }
 
-.join
-{
-    background-color: #f9f8f6;
-    padding: 1.5rem;
-    border-bottom: .1rem solid #f3f1ee;
-    text-align: center;
-}
-
 .navBar
 {
     display: flex;
@@ -85,10 +77,24 @@ h1 {
 
 .Header-container {
     margin: 0 auto;
+    padding: 0 1.5rem;
     width: 100%;
     max-width: 100%;
+    background-color: white;
+    position:relative;
 }
-
+.join {
+    background-color: #f9f8f6;
+    padding: 1.5rem;
+    border-bottom: .1rem solid #f3f1ee;
+    text-align: center;
+    position: relative;
+}
+.Header-container-fixed {
+    position: static;
+    background: #fff;
+    z-index: 1000
+}
 .Header {
         position: relative;
         display: flex;

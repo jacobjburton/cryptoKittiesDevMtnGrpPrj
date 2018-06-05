@@ -98,24 +98,23 @@ img {
 .landing {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   max-width: 128rem;
-  height: 600px;
-  margin: 0;
+  max-height: 600px;
+  margin: 0 auto;
   font-weight: 100;
 }
 .landing-description {
     width: 50%;
     margin: 1px;
-    margin-top: -6px;
+    margin-top: -30px;
     padding: 1px;
     padding-left: 30px;
-    padding-top: 80px;
     text-align: left;
 }
 .landingHeadline {
-    font-size: 4.9rem;
-    line-height: 0.45;
+    font-size: 8.2rem;
+    line-height: 0.5;
 }
 .landing-slots {   
     padding-right: 25px;
@@ -131,7 +130,8 @@ img {
     font-size: 30px;
     line-height: 1.2;
     color: #82817d;
-    margin-top: 0;
+    margin-top: -20px;
+    margin-bottom: 0;
 }
 .landing-kitty1 {
     width: 202.83px;
@@ -153,7 +153,7 @@ img {
     padding-left: 15px;
     padding-bottom: 15px;
     margin-top: 50px;
-    position: relative;
+    /* position: relative; */
 }
 .landing-kitty2 {
     width: 202.83px;
