@@ -34,7 +34,7 @@ class Kitty extends Component {
         this.state.account && this.props.getUser(this.state.account)
         console.log(this.props.myKitties)
         console.log(this.props.user)
-        this.props.getKitty(611557)
+        this.props.getKitty(776818)
         console.log(this.props.kitty)
     }
     
@@ -70,6 +70,15 @@ class Kitty extends Component {
             <h1 className="KittyHeader-name-text KittyHeader-name-text--editable">{this.props.kitty.name}</h1>
             :
             <h1 className="KittyHeader-name-text KittyHeader-name-text--editable">Kitty #{this.props.kitty.id}</h1>
+
+        let userNameDisplay = _.isEmpty(kitty.auction) ?
+            <a className="KittyHeader-owner-name" aria-current="false" href={`/profile/${kitty.id && kitty['owner'].address}`}>
+                {kitty.id && kitty['owner'].nickname}{ kitty.id && kitty['owner'].address === this.state.account ? ' (you)' : null }
+            </a>
+            :
+            <a className="KittyHeader-owner-name" aria-current="false" href={`/profile/${kitty.id && kitty['auction']['seller'].address}`}>
+                {kitty.id && kitty['auction']['seller'].nickname}{ kitty.id && kitty['auction']['seller'].address === this.state.account ? ' (you)' : null }   
+            </a>
             
         if (!_.isEmpty(enhanced_cattributes)) 
         {
@@ -78,7 +87,8 @@ class Kitty extends Component {
                 var gemDisplay;
                 if (enhanced_cattributes[i].position === -1)
                 {
-                    <a href={`/kitty/${enhanced_cattributes[i].kittyId}`}></a>
+                    gemDisplay = 
+                        <a href={`/kitty/${enhanced_cattributes[i].kittyId}`}></a>
                 }
                 if (enhanced_cattributes[i].position === 1)
                 {
@@ -122,6 +132,8 @@ class Kitty extends Component {
                     </span>
                 );
             });
+
+
         }
 
         let cattributesDisplay = (kitty.id && !kitty.is_fancy) ?
@@ -265,10 +277,7 @@ class Kitty extends Component {
                                                     <img src={`https://www.cryptokitties.co/profile/profile-${this.props.user.image}.png`} alt="profileImage"/>
                                                 </a>
                                                 <span className="KittyHeader-owner-details">
-                                                    <a className="KittyHeader-owner-name" aria-current="false" href="">
-                                                        {kitty.id && kitty['owner'].nickname}{ kitty.id && kitty['owner'].address === this.state.account ? ' (you)' : null }
-                                                        
-                                                    </a>
+                                                    {userNameDisplay}
                                                     <span>Owner</span>
                                                 </span>
                                             </div>
