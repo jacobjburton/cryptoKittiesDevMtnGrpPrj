@@ -152,6 +152,7 @@
     font-size: 1.8rem;
     line-height: 1;
     border: none;
+    padding-left: 15px;
 }
 .searchBar-actionGroup,
 .searchBar-actionGroups {
@@ -177,7 +178,10 @@
     font-weight: 500;
     color: #9c9c9b;
     white-space: nowrap;
-    transition: opacity .2s
+    transition: opacity .2s;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 .searchBar-action:focus {
     outline: none;
@@ -185,6 +189,70 @@
 .searchBar-action:active, 
 .searchBar-action:hover {
     color: #2a2825;
+}
+.kittiesToolbar-filters {
+    margin-top: 1.5rem;
+}
+.container-lg {
+    max-width: 112rem;
+}
+.kittiesFilter-groups {
+    display: flex;
+    box-orient: vertical;
+    box-direction: normal;
+    flex-direction: column;
+    box-pack: start;
+    justify-content: flex-start;
+    margin-top: 1.5rem;
+}
+.kittiesFilter-group1 {
+    margin-bottom: 1.5rem;
+    width: 216.86px;
+    height: 102.59px;
+}
+.kittiesFilter-group2 {
+    margin-bottom: 1.5rem;
+    width: 90px;
+    height: 102.59px;
+}
+.kittiesFilter-group3 {
+    margin-bottom: 1.5rem;
+    width: 551.67px;
+    height: 102.59px;
+}
+.kittiesFilter-group:last-of-type {
+    margin-right: 0;
+}
+.kittiesFilter-group-title {
+    position: absolute;
+    margin-bottom: .96rem;
+    color: #2a2825;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+.kittiesFilter-group-content {
+
+}
+kittiesFilter-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+.filterButton {
+    position: inherit;
+    display: block;
+    margin-bottom: .96rem;
+    margin-right: .8rem;
+    padding: .64rem .96rem;
+    background-color: #f3f1ee;
+    border: none;
+    border-radius: 99rem;
+    color: #9c9c9b;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+    transition: color .25s;
 }
 .kittiesToolbar-includeAndSort {
     margin-top: 3.2rem;
@@ -200,6 +268,9 @@
 .kittiesToolbar-sort {
     display: flex;
     align-items: center;
+}
+.kittiesToolbar-searchBar {
+    max-height: 40px;
 }
 .kittiesToolbar-include,
 .kittiesToolbar-sort {
