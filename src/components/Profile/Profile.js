@@ -223,11 +223,11 @@ class Profile extends Component {
                                             </div>
                                             <div className="kittiesFilter-group-content">
                                                 <div className="kittiesFilter-list">
+                                                    <div className="buttons">
                                                         <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "normal", "", "", "sale", "sire", "other", "id", "desc")}}>Normal</button>
-                                                
                                                         <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "fancy", "", "", "sale", "sire", "other", "id", "desc")}}>Fancy</button>
-                                                  
                                                         <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "exclusive", "", "", "sale", "sire", "other", "id", "desc")}}>Exclusive</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -247,32 +247,23 @@ class Profile extends Component {
                                         </div>
                                         <div className="kittiesFilter-group3">
                                             <div className="kittiesFilter-group-title3">Cooldown</div>
-                                            <div className="kittiesFilter-group-content">
+                                            <div className="kittiesFilter-group-content3">
                                                 <div className="kittiesFilter-list">
-                                                    <div className="kittiesFilter-list-item" role="button">
                                                         <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "fast", "sale", "sire", "other", "id", "desc")}}>Fast</button>
-                                                    </div>
-                                                    <div className="kittiesFilter-list-item" role="button">
+                                                    
                                                         <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "swift", "sale", "sire", "other", "id", "desc")}}>Swift</button>
-                                                    </div>
-                                                    <div className="kittiesFilter-list-item" role="button">
+                                                   
                                                         <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "snappy", "sale", "sire", "other", "id", "desc")}}>Snappy</button>
-                                                    </div>
-                                                    <div className="kittiesFilter-list-item" role="button">
+                                                    
                                                         <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "brisk", "sale", "sire", "other", "id", "desc")}}>Brisk</button>
-                                                    </div>
-                                                    <div className="kittiesFilter-list-item" role="button">
+                                                   
                                                         <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "plodding", "sale", "sire", "other", "id", "desc")}}>Plodding</button>
-                                                    </div>
-                                                    <div className="kittiesFilter-list-item" role="button">
+                                              
                                                         <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "slow", "sale", "sire", "other", "id", "desc")}}>Slow</button>
-                                                    </div>
-                                                    <div className="kittiesFilter-list-item" role="button">
+                                                   
                                                         <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "sluggish", "sale", "sire", "other", "id", "desc")}}>Sluggish</button>
-                                                    </div>
-                                                    <div className="kittiesFilter-list-item" role="button">
+                                                
                                                         <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "catatonic", "sale", "sire", "other", "id", "desc")}}>Catatonic</button>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -334,28 +325,28 @@ class Profile extends Component {
                                         <div className="kittiesToolbar-sort">
                                             <span className="kittiesToolbar-label-alwaysVisible">Sort by</span>
                                             <div className="kittiesToolbar-sort-options">
-                                                <div className="selectionGroup">
+                                                <div className="selectionGroup2">
                                                     <div className="selectionGroup-item">
-                                                        <div className="select-container" role="menu">
+                                                        <div className="select-container1" role="menu">
                                                             <select className="select" placeholder>
                                                                 <option value="age">Age</option>
                                                                 <option value="generation">Generation</option>
                                                                 <option value="cooldown">Cooldown</option>
                                                                 <option value="purr_count">Likes</option>
                                                             </select>
-                                                            <svg className="select-icon" class="IconV2 IconV2--position-default IconV2--display-inlineBlock Select-icon" width="16" height="16" viewBox="0 0 16 16">
+                                                            <svg className="select-icon1" width="16" height="16" viewBox="0 0 16 16">
                                                                 <path d="M3.619 3.729h8.762a.75.75 0 0 1 .637 1.146l-4.381 7.042a.75.75 0 0 1-1.274 0L2.982 4.875a.75.75 0 0 1 .637-1.146z" fill="#c4c3c0" fill-rule="evenodd">
                                                                 </path>
                                                             </svg>
                                                         </div>
                                                     </div>
                                                     <div className="selectionGroup-item">
-                                                        <div className="select-container" role="menu">
+                                                        <div className="select-container2" role="menu">
                                                             <select className="select" placeholder>
-                                                                <option value="asc">Low to High</option>
-                                                                <option value="desc">High to Low</option>
+                                                                <option value="asc">Low to high</option>
+                                                                <option value="desc">High to low</option>
                                                             </select>
-                                                            <svg className="select-icon" class="IconV2 IconV2--position-default IconV2--display-inlineBlock Select-icon" width="16" height="16" viewBox="0 0 16 16">
+                                                            <svg className="select-icon" width="16" height="16" viewBox="0 0 16 16">
                                                                 <path d="M3.619 3.729h8.762a.75.75 0 0 1 .637 1.146l-4.381 7.042a.75.75 0 0 1-1.274 0L2.982 4.875a.75.75 0 0 1 .637-1.146z" fill="#c4c3c0" fill-rule="evenodd">
                                                                 </path>
                                                             </svg>
@@ -376,7 +367,7 @@ class Profile extends Component {
                         </div>
                         <div className="profile">
                             <div className="kittiesGallery">
-                                <div className="container-lg">
+                                <div className="profileContainer">
                                 {allTheKitties}
                                     {/* put kitty card here */}
                                 </div>
