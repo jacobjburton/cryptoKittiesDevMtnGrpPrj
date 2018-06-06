@@ -9,6 +9,7 @@ import gold from '../../images/images/cattributes/gold.svg';
 import silver from '../../images/images/cattributes/silver.svg';
 import bronze from '../../images/images/cattributes/bronze.svg';
 
+
 class Kitty extends Component {
 
     constructor(props) {
@@ -22,33 +23,31 @@ class Kitty extends Component {
     componentDidMount() {
         if (window.web3 && window.web3.currentProvider.isMetaMask) {
 
-            window.web3.eth.getAccounts((error, accounts) => {
-                
+            window.web3.eth.getAccounts((error, accounts) => {              
                 this.setState({ account: accounts[0] });
                 //console.log(`received accounts[0]> `, accounts[0]);
                 //console.log(`this.setState> this.state.account> `, this.state.account);
                 this.props.getUser(accounts[0])
-        })} else {
+                //this.props.getKitty(777368)
+            });
+        } else {
             console.log(`MetaMask account not detected`);
         }
-        this.state.account && this.props.getUser(this.state.account)
+        //this.state.account && this.props.getUser(this.state.account)
 //        console.log(this.props.myKitties)
 //        console.log(this.props.user)
-        //this.props.getKitty(this.props.kittyId)
+        //this.state.account && this.props.getKitty(611557)
         console.log(this.props.kitty.id)
-
-        ////////////////////////////////////////////////////////////
-        // comment the below code out before final build!!!!!!!!! //
-        ////////////////////////////////////////////////////////////
-        if (_.isEmpty(this.props.kitty))
-        {
-            this.props.history.push(`/profile/${this.state.account}`);
-        }
     }
 
     handleClick = (e) => {
         this.props.getKitty(e);
         this.props.history.push(`/kitty/${e}`);
+    }
+
+    handleBuy = (e) => {
+        this.props.getKitty(e);
+        this.props.history.push(`/buy`);
     }
     
     render () {
@@ -63,20 +62,6 @@ class Kitty extends Component {
         // kitty.id ? console.log(kitty.enhanced_cattributes[0].description) : console.log('no kitty');
         
         var kittyBannerDisplay;
-
-        // if (this.props.kitty.color === 'gold')
-        {
-            kittyBannerDisplay =
-                <div className="KittyBanner KittyBanner--bg-gold">
-                    <div className="Container Container--full">
-                        <div className="KittyBanner-container KittyBanner-container--shadow-gold">
-                            <a onClick={(e) => {this.handleClick(kitty.id)}} className="active" aria-current="true">
-                                <img style={{background: '#faf4cf'}} src={kitty.image_url} alt="kittybanner" className="KittyBanner-image"/>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-        }
         
         switch (this.props.kitty.color) {
             case 'strawberry':
@@ -416,60 +401,41 @@ class Kitty extends Component {
             });
         }
 
-        let cattributesDisplay = (kitty.id && !kitty.is_fancy) ?
-            <div className="KittySection">
-                <div className="KittySection-header">
-                    <h2 className="KittySection-header-title">Cattributes</h2>
-                    <div className="KittySection-header-tooltip">
-                        <div className="TooltipNew">
-                            <span className="TooltipNew-wrapper">
-                                <img src={info} alt="CattributesIcon" className="KittyCattributesTooltip-icon"/>
-                            </span>
-                        </div>
-                    </div>            
-                </div>
-                <div className="KittySection-content">
-                    <div className="KittyCattributes">
-                        {eachCattribute}
-                    </div>
-                </div>
-            </div>
-            :
-            null; //need to add functionality to display fancy type
+        
 
-        var ownerActions;
-        var auctionInfo;
-    
-        if ((kitty.id && kitty.owner.address === this.state.account) || (kitty.id && kitty.auction.seller.address === this.state.account)) {
-            if (_.isEmpty(kitty.auction)) {
-                ownerActions = (
-                    <div className="KittyHeader-ownerActions">
-                        <div className="KittyHeader-ownerActions-action">
-                            <a href="" className="Button Button--icon" aria-current="false">
-                                <span className="Button-icon">
-                                    <i className="Icon Icon--eggplant"></i>
-                                </span>
-                                Breed
-                            </a>
-                        </div>
-                        <div className="KittyHeader-ownerActions-action">
-                            <a href="" className="Button Button--icon" aria-current="false">
-                                <span className="Button-icon">
-                                    <i className="Icon Icon--tag"></i>
-                                </span>
-                                Sell
-                            </a>                    
-                        </div>
-                        <div className="KittyHeader-ownerActions-action">
+
+        var ownerActions = null;
+        var auctionInfo = null;
+        console.log(kitty.auction.seller)
+        if (kitty.owner && kitty.owner.address === user.address) {
+            ownerActions =
+                <div className="KittyHeader-ownerActions">
+                    <div className="KittyHeader-ownerActions-action">
+                        <a href="" className="Button Button--icon" aria-current="false">
                             <span className="Button-icon">
-                                <i className="Icon Icon--egglplant"></i>
+                                <i className="Icon Icon--eggplant"></i>
                             </span>
-                            Gift                  
-                        </div>
+                            Breed
+                        </a>
                     </div>
-                )
-                auctionInfo = null;                
-            }
+                    <div className="KittyHeader-ownerActions-action">
+                        <a href="" className="Button Button--icon" aria-current="false">
+                            <span className="Button-icon">
+                                <i className="Icon Icon--tag"></i>
+                            </span>
+                            Sell
+                        </a>                    
+                    </div>
+                    <div className="KittyHeader-ownerActions-action">
+                        <span className="Button-icon">
+                            <i className="Icon Icon--egglplant"></i>
+                        </span>
+                        Gift                  
+                    </div>
+                </div>;
+            // auctionInfo = null;                
+        }
+        if (kitty.auction.seller && (kitty.owner.address === user.address || kitty.auction.seller.address === user.address)) {
 
             if (!_.isEmpty(kitty.auction)) {
                 if (kitty.auction.type === 'sire') {
@@ -565,7 +531,7 @@ class Kitty extends Component {
                         </div>
                         <div className="KittyBid-auctionGraph">
                             <div className="AuctionGraph AuctionGraph--sale">
-                                <svg class="AuctionGraph-chart" viewBox="0 0 720 180">
+                                <svg className="AuctionGraph-chart" viewBox="0 0 720 180">
                                     <defs><linearGradient id="grad" x2="0" y2="1">
                                         <stop offset="0" stop-color="#f5eae2" stop-opacity="0.4"></stop>
                                         <stop offset="1" stop-color="#fff"></stop></linearGradient>
@@ -603,31 +569,31 @@ class Kitty extends Component {
             }
         }
 
-        if ((kitty.id && kitty.owner.address !== this.state.account) && (kitty.id && kitty.auction.seller.address !== this.state.account)) {
+        if (kitty.auction.seller && (kitty.owner.address !== user.address && kitty.auction.seller.address !== user.address)) {
             if (!_.isEmpty(kitty.auction)) {
                 if (kitty.auction.type === 'sire') {
                     auctionInfo =
-                    <div class="KittyBid KittyBid--sire">
-                        <div class="KittyBid-boxes">
-                            <div class="KittyBid-box">
-                                <h3 class="KittyBid-box-title">Breed now price</h3>
-                                <span class="KittyBid-box-subtitle">
+                    <div className="KittyBid KittyBid--sire">
+                        <div className="KittyBid-boxes">
+                            <div className="KittyBid-box">
+                                <h3 className="KittyBid-box-title">Breed now price</h3>
+                                <span className="KittyBid-box-subtitle">
                                     <em>Ξ</em> current price
                                 </span>
                             </div>
-                            <div class="KittyBid-box KittyBid-box--secondary">
-                                <h3 class="KittyBid-box-title">Time left</h3>
-                                <span class="KittyBid-box-subtitle">5.6 months</span>
+                            <div className="KittyBid-box KittyBid-box--secondary">
+                                <h3 className="KittyBid-box-title">Time left</h3>
+                                <span className="KittyBid-box-subtitle">5.6 months</span>
                             </div>
                         </div>
-                        <div class="KittyBid-action">
-                            <a class="Button Button--larger Button--love" aria-current="false" data-tracking="mxpnl-buypage-breednow" href="/kitty/485792/breed">
+                        <div className="KittyBid-action">
+                            <a className="Button Button--larger Button--love" aria-current="false" data-tracking="mxpnl-buypage-breednow" href="/kitty/485792/breed">
                                 Breed now
                             </a>
                         </div>
-                        <div class="KittyBid-auctionGraph">
-                            <div class="AuctionGraph AuctionGraph--sire">
-                                <svg class="AuctionGraph-chart" viewBox="0 0 720 180">
+                        <div className="KittyBid-auctionGraph">
+                            <div className="AuctionGraph AuctionGraph--sire">
+                                <svg className="AuctionGraph-chart" viewBox="0 0 720 180">
                                     <defs>
                                         <linearGradient id="grad" x2="0" y2="1">
                                             <stop offset="0" stop-color="#f5e2f2" stop-opacity="0.4"></stop>
@@ -643,16 +609,16 @@ class Kitty extends Component {
                                     <circle cx="715" cy="175" r="5" fill="#f5e2f2"></circle><circle cx="163.82242953787122" cy="43.02790365723013" r="5" fill="#e96bd4"></circle>
                                     <circle cx="5" cy="5" r="5" fill="#e96bd4"></circle>
                                 </svg>
-                                <div class="AuctionGraph-prices">
-                                    <div class="AuctionGraph-price">
+                                <div className="AuctionGraph-prices">
+                                    <div className="AuctionGraph-price">
                                         Started at 
-                                        <span class="AuctionGraph-price-fee">
+                                        <span className="AuctionGraph-price-fee">
                                             <em>Ξ</em> Starting price
                                         </span>
                                     </div>
-                                    <div class="AuctionGraph-price">
+                                    <div className="AuctionGraph-price">
                                         Price goes to 
-                                        <span class="AuctionGraph-price-fee">
+                                        <span className="AuctionGraph-price-fee">
                                             <em>Ξ</em> 0
                                         </span>
                                     </div>
@@ -663,27 +629,27 @@ class Kitty extends Component {
                 }
                 if (kitty.auction.type === 'sale') {
                     auctionInfo =
-                    <div class="KittyBid KittyBid--sale">
-                        <div class="KittyBid-boxes">
-                            <div class="KittyBid-box">
-                                <h3 class="KittyBid-box-title">Buy now price</h3>
-                                <span class="KittyBid-box-subtitle">
+                    <div className="KittyBid KittyBid--sale">
+                        <div className="KittyBid-boxes">
+                            <div className="KittyBid-box">
+                                <h3 className="KittyBid-box-title">Buy now price</h3>
+                                <span className="KittyBid-box-subtitle">
                                     <em>Ξ</em> 0.0018
                                 </span>
                             </div>
-                            <div class="KittyBid-box KittyBid-box--secondary">
-                                <h3 class="KittyBid-box-title">Time left</h3>
-                                <span class="KittyBid-box-subtitle">5 hours</span>
+                            <div className="KittyBid-box KittyBid-box--secondary">
+                                <h3 className="KittyBid-box-title">Time left</h3>
+                                <span className="KittyBid-box-subtitle">5 hours</span>
                             </div>
                         </div>
-                        <div class="KittyBid-action">
-                            <a class="Button Button--larger Button--buy" aria-current="false" data-tracking="mxpnl-buypage-buynow" href="/kitty/592888/buy">
+                        <div className="KittyBid-action">
+                            <a className="Button Button--larger Button--buy" aria-current="false" data-tracking="mxpnl-buypage-buynow" onClick={(e) => {this.handleBuy(kitty.id)}}>
                                 Buy now
                             </a>
                         </div>
-                        <div class="KittyBid-auctionGraph">
-                            <div class="AuctionGraph AuctionGraph--sale">
-                                <svg class="AuctionGraph-chart" viewBox="0 0 720 180">
+                        <div className="KittyBid-auctionGraph">
+                            <div className="AuctionGraph AuctionGraph--sale">
+                                <svg className="AuctionGraph-chart" viewBox="0 0 720 180">
                                     <defs>
                                         <linearGradient id="grad" x2="0" y2="1">
                                             <stop offset="0" stop-color="#f5eae2" stop-opacity="0.4"></stop>
@@ -700,16 +666,16 @@ class Kitty extends Component {
                                     <circle cx="417.5606203703704" cy="70.8542341589506" r="5" fill="#ff9b6a"></circle>
                                     <circle cx="5" cy="5" r="5" fill="#ff9b6a"></circle>
                                 </svg>
-                                <div class="AuctionGraph-prices">
-                                    <div class="AuctionGraph-price">
+                                <div className="AuctionGraph-prices">
+                                    <div className="AuctionGraph-price">
                                         Started at 
-                                        <span class="AuctionGraph-price-fee">
+                                        <span className="AuctionGraph-price-fee">
                                             <em>Ξ</em> 0.003
                                         </span>
                                     </div>
-                                    <div class="AuctionGraph-price">
+                                    <div className="AuctionGraph-price">
                                         Price goes to 
-                                        <span class="AuctionGraph-price-fee">
+                                        <span className="AuctionGraph-price-fee">
                                             <em>Ξ</em> 0.001
                                         </span>
                                     </div>
@@ -724,7 +690,82 @@ class Kitty extends Component {
             }
         }
                 
-        
+        let cattributesDisplay = (kitty.id && !kitty.is_fancy && !kitty.is_exclusive) ?
+            <div className="KittySection">
+                <div className="KittySection-header">
+                    <h2 className="KittySection-header-title">Cattributes</h2>
+                    <div className="KittySection-header-tooltip">
+                        <div className="TooltipNew">
+                            <span className="TooltipNew-wrapper">
+                                <img src={info} alt="CattributesIcon" className="KittyCattributesTooltip-icon"/>
+                            </span>
+                        </div>
+                    </div>            
+                </div>
+                <div className="KittySection-content">
+                    <div className="KittyCattributes">
+                        {eachCattribute}
+                    </div>
+                </div>
+            </div>
+            :
+            null; //need to add functionality to display fancy type
+
+        var specialContent;
+
+        if (kitty.id && kitty.is_fancy && !kitty.is_exclusive)
+        {
+            specialContent =
+                <div className="SpecialBadge">
+                    <div className="SpecialBadge-icon">
+                        <i className="SpecialBadge-icon-img SpecialBadge-icon-img--fancy"></i>
+                    </div>
+                    <div className="SpecialBadge-content">
+                        <h3 className="SpecialBadge-title">{kitty.fancy_type}</h3>
+                        <span className="SpecialBadge-fraction">
+                            <span className="SpecialBadge-fraction-numerator">#{kitty.fancy_ranking}</span>
+                            <span className="SpecialBadge-fraction-divider"> / </span>
+                            <span className="SpecialBadge-fraction-denominator">{kitty.fancy_limit}</span>
+                        </span>
+                    </div>
+                </div>
+        }
+        if (kitty.id && kitty.is_fancy && kitty.is_exclusive)
+        {
+            specialContent = 
+                <div className="SpecialBadge">
+                    <div className="SpecialBadge-icon">
+                        <i className="SpecialBadge-icon-img SpecialBadge-icon-img--exclusive"></i>
+                    </div>
+                    <div className="SpecialBadge-content">
+                        <h3 className="SpecialBadge-title">{kitty.fancy_type}</h3>
+                        <div className="SpecialBadge-type">exclusive</div>
+                    </div>
+                </div>
+        }
+
+        let showSpecial = (kitty.id && kitty.is_fancy) ?
+            <div className="KittySection">
+                <div className="KittySection-header">
+                    <h2 className="KittySection-header-title">Special features</h2>
+                    <div className="KittySection-header-tooltip">
+                        <div classname="TooltipNew">
+                            <span className="TooltipNew-wrapper">
+                                <img src={info} alt="infoImage" className="KittySpecialTooltip-icon"/>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div className="KittySection-content">
+                    <div className="KittySpecialCattributes">
+                        <a>
+                            {specialContent}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            :
+            null;
 
         let parentDisplay = (!_.isEmpty(kitty.matron) && !_.isEmpty(kitty.sire)) ?
             <div className="KittySection">
@@ -732,7 +773,7 @@ class Kitty extends Component {
                     <h2 className="KittySection-header-title">Parents</h2>
                 </div>
                 <div className="KittySection-content">
-                    <div class="Kitty-Parents">
+                    <div className="Kitty-Parents">
                         <div className="KittiesList">
                             <div className="KittiesList-items">
                                 <div className="KittiesList-item">
@@ -800,6 +841,7 @@ class Kitty extends Component {
         return (
             <div className='Main'>
                 <div className='KittyPage'>
+                    {/* <button onClick={(e)=> this.handleClick(777368)}></button> */}
                     {kittyBannerDisplay}
                     <div className="KittyPage-content">
                         <div className="KittyProfile">
@@ -900,6 +942,7 @@ class Kitty extends Component {
                                         </div>
                                     </div>
                                 </div>
+                                {showSpecial}
                                 {cattributesDisplay}
                                 {parentDisplay}
                                 {childrenDisplay}

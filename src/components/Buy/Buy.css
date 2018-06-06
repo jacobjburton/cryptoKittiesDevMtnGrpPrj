@@ -1,0 +1,188 @@
+body {
+    color: #2a2825;
+    background-color: #fff;
+    font-family: Calibre, Helvetica, Arial, sans-serif;
+    font-size: 2rem;
+    line-height: 1.5;
+}
+
+div {
+    display: block;
+}
+
+.Main {
+    min-height: calc(100vh - 32rem);
+}
+
+.Hero {
+    padding: 2.4rem 0 6.4rem;
+}
+
+.Transaction {
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 4.8rem;
+}
+
+.Transaction-title {
+    margin-bottom: 1.5rem;
+    font-size: 3.2rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    color: #2a2825;
+    line-height: 1.2;
+    font-weight: 500;
+    letter-spacing: -.3px;
+}
+
+.Transaction-flow {
+    display: inline-flex;
+    align-items: center;
+}
+
+.Transaction-item {
+    margin: 0 1.5rem;
+    color: #82817d;
+}
+
+.Transaction-item--transfer {
+    color: #2a2825;
+    font-weight: 500;
+}
+
+.KittyBanner {
+    --size-card: 32rem;
+    --size-image: 32rem;
+    --width-shadow: 16.2rem;
+    --height-shadow: 2rem;
+    --translate-shadow-x: -0.3em;
+    --trnaslate-shadow-y: 6.8rem;    
+}
+
+.KittyBanner--bg-strawberry {
+    background-color: #ffe0e5;
+}
+
+.KittyBanner--bg-sizzurp {
+    background-color: #dfdffa;
+}
+
+.KittyBanner--bg-mintgreen {
+    background-color: #cdf5d4;
+}
+
+.KittyBanner--bg-topaz {
+    background-color: #d1eeeb;
+}
+
+.KittyBanner--bg-gold {
+    background-color: #faf4cf;
+}
+
+.KittyBanner--bg-chestnut {
+    background-color: #efe1da;
+}
+
+.KittyBanner--bg-sapphire {
+    background-color: #d3e8ff;
+}
+
+.KittyBanner--bg-thundergrey {
+    background-color: #eee9e8;
+}
+
+.KittyBanner--bg-limegreen {
+    background-color: #d9f5cb;
+}
+
+.KittyBanner--bg-coralsunrise {
+    background-color: #fde9e4;
+}
+
+.KittyBanner--bg-cyan {
+    background-color: #c5eefa;
+}
+
+.KittyBanner--bg-bubblegum {
+    background-color: #fadff4;
+}
+
+.KittyBanner--bg-forgetmenot {
+    background-color: #dcebfc;
+}
+
+.KittyBanner--bg-parakeet {
+    background-color: #e5f3e2;
+}
+
+.KittyBanner--bg-pumpkin {
+    background-color: #fae1ca;
+}
+
+.KittyBanner--bg-doridnudibranch {
+    background-color: #faeefa;
+}
+
+.KittyBanner--bg-twilightsparkle {
+    background-color: #ede2f5;
+}
+
+.KittyBanner--bg-eclipse {
+    background-color: #e5e7ef;
+}
+
+.KittyBanner--bg-babypuke {
+    background-color: #eff1e0;
+}
+
+.KittyBanner--bg-dahlia {
+    background-color: #e6eafd;
+}
+
+.Container--full {
+    max-width: 100%;
+}
+
+.Container {
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    width: 100%;
+    max-width: 96rem;
+}
+
+.KittyBanner-container {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: var(--size-card);
+    margin: 0 auto;
+}
+
+@media (min-width: 960px) {
+    .KittyBanner {
+        --size-card: 45rem;
+        --size-image: 45rem;
+        --width-shadow: 22.6rem;
+        --height-shadow: 3rem;
+        --translate-shadow-x: -0.4rem;
+        --trnaslate-shadow-y: 9.7rem;
+    }
+}
+
+@media (min-width: 760px) {
+    .Hero {
+        padding: 3.2rem 0 6.4rem;
+    }
+    .Container {
+        padding: 0 3.2rem;
+    }
+}
+
+@media (min-width: 480px) {
+    .Container {
+        padding: 0 2.4rem;
+    }
+}

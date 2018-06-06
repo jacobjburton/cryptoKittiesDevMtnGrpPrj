@@ -41,7 +41,7 @@ class Profile extends Component {
 
         let nameDisplay;
         if (myKitties.kitties){
-            nameDisplay = <span className="kittyCard-details-item-highlight">{myKitties.kitties[0] && myKitties.kitties[0].name || myKitties.kitties[0].id} </span>
+            nameDisplay = <span className="kittyCard-details-item-highlight">{(myKitties.kitties[0] && myKitties.kitties[0].name) || myKitties.kitties[0].id} </span>
         } else {
             nameDisplay = null
         }
@@ -135,6 +135,7 @@ class Profile extends Component {
         : null;
    return (
         <main className="main">
+            <button onClick={(e)=> this.handleClick(615010)}>someone else's kitty</button>
             <div className="profilePage">
                 <div className="profileHeader">
                     <div className="container-lg">
