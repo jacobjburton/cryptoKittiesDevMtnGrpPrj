@@ -1,0 +1,16 @@
+#h2weighted {
+    font-weight: 500;
+    font-size: 4.2rem;
+    color: #2a2825;
+    margin-bottom: 1.5rem;
+    font-family: Calibre;
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+}
+
+#settings-profile-pic {
+    border-radius: 100%;
+    cursor: pointer;
+    height: 7.2rem;
+    width: 7.2rem;
+}
