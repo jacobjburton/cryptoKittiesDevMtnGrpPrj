@@ -18,6 +18,7 @@ import Activity from './components/Activity/Activity';
 import Newsletter from './components/Newsletter/Newsletter';
 import Careers from './components/Careers/Careers';
 import Settings from './components/Settings/Settings';
+import Buy from './components/Buy/Buy';
 
 export default (
     <Switch>
@@ -39,5 +40,6 @@ export default (
         <Route path='/newsletter' component={Newsletter}/>
         <Route path='/careers' component={Careers}/>
         <Route path='/settings' component={Settings}/>
+        <Route path='/buy' component={Buy}/>
     </Switch>
 )
