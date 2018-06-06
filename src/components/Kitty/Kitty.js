@@ -36,6 +36,10 @@ class Kitty extends Component {
 //        console.log(this.props.user)
         //this.props.getKitty(this.props.kittyId)
         console.log(this.props.kitty.id)
+        if (_.isEmpty(this.props.kitty))
+        {
+            this.props.history.push(`/profile/${this.state.account}`);
+        }
     }
 
     handleClick = (e) => {
@@ -48,7 +52,7 @@ class Kitty extends Component {
         
 
 
-        let { kitty } = this.props;
+        let { kitty, user } = this.props;
         let { enhanced_cattributes } = this.props.kitty;
         console.log(kitty)
         console.log(enhanced_cattributes);
@@ -62,7 +66,7 @@ class Kitty extends Component {
                 <div className="KittyBanner KittyBanner--bg-gold">
                     <div className="Container Container--full">
                         <div className="KittyBanner-container KittyBanner-container--shadow-gold">
-                            <a href={`/kitty/${kitty.id}`} className="active" aria-current="true">
+                            <a onClick={(e) => {this.handleClick(kitty.id)}} className="active" aria-current="true">
                                 <img style={{background: '#faf4cf'}} src={kitty.image_url} alt="kittybanner" className="KittyBanner-image"/>
                             </a>
                         </div>
@@ -162,6 +166,295 @@ class Kitty extends Component {
             :
             null; //need to add functionality to display fancy type
 
+        var ownerActions;
+        var auctionInfo;
+    
+        if ((kitty.id && kitty.owner.address === this.state.account) || (kitty.id && kitty.auction.seller.address === this.state.account)) {
+            if (_.isEmpty(kitty.auction)) {
+                ownerActions = (
+                    <div className="KittyHeader-ownerActions">
+                        <div className="KittyHeader-ownerActions-action">
+                            <a href="" className="Button Button--icon" aria-current="false">
+                                <span className="Button-icon">
+                                    <i className="Icon Icon--eggplant"></i>
+                                </span>
+                                Breed
+                            </a>
+                        </div>
+                        <div className="KittyHeader-ownerActions-action">
+                            <a href="" className="Button Button--icon" aria-current="false">
+                                <span className="Button-icon">
+                                    <i className="Icon Icon--tag"></i>
+                                </span>
+                                Sell
+                            </a>                    
+                        </div>
+                        <div className="KittyHeader-ownerActions-action">
+                            <span className="Button-icon">
+                                <i className="Icon Icon--egglplant"></i>
+                            </span>
+                            Gift                  
+                        </div>
+                    </div>
+                )
+                auctionInfo = null;   
+                
+            }
+            if (!_.isEmpty(kitty.auction)) {
+                if (kitty.auction.type === 'sire') {
+                    auctionInfo =
+                        <div className="KittyBid KittyBid--sire">
+                            <div className="KittyBid-boxes">
+                                <div className="KittyBid-box">
+                                    <h3 className="KittyBid-box-title">Breed now price</h3>
+                                    <span className="KittyBid-box-subtitle">
+                                        <em>Ξ</em>
+                                        current price of siring
+                                    </span>
+                                </div>
+                                <div className="KittyBid-box KittyBid-box--secondary">
+                                    <h3 className="KittyBid-box-title">Time left</h3>
+                                    <span className="KittyBid-box-subtitle">
+                                        amount of time left before auction hits min price
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="KittyBid-action">
+                                <button type="button" className="Button Button--icon">
+                                    <span>
+                                        <i className="Icon Icon--eggplantCancel"></i>
+                                    </span>
+                                    Cancel siring
+                                </button>
+                            </div>
+                            <div className="KittyBid-auctionGraph">
+                                <div className="AuctionGraph AuctionGraph--sire">
+                                    <svg className="AuctionGraph-chart" viewBox="0 0 720 180">
+                                        <defs>
+                                            <linearGradient id="grad" x2="0" y2="1">
+                                                <stop offset="0" stop-color="#f5e2f2" stop-opacity="0.4"></stop>
+                                                <stop offset="1" stop-color="#fff"></stop>
+                                            </linearGradient>
+                                        </defs>
+                                        <polygon points="5,5 459.0473146219136,70.22838748055555 715,107 715,175 5,175 5,5" fill="url(#grad)"></polygon>
+                                        <rect x="5" y="5" width="710" height="170" fill="none" stroke="#f5e2f2" stroke-width="2"></rect>
+                                        <line x1="241.66666666666666" x2="241.66666666666666" y1="5" y2="175" stroke="#f5e2f2" stroke-width="2"></line>
+                                        <line x1="478.3333333333333" x2="478.3333333333333" y1="5" y2="175" stroke="#f5e2f2" stroke-width="2"></line>
+                                        <line x1="5" x2="459.0473146219136" y1="5" y2="70.22838748055555" stroke="#e96bd4" stroke-width="2"></line>
+                                        <line x1="459.0473146219136" x2="715" y1="70.22838748055555" y2="107" stroke="#f5e2f2" stroke-width="2"></line>
+                                        <circle cx="715" cy="107" r="5" fill="#f5e2f2"></circle>
+                                        <circle cx="459.0473146219136" cy="70.22838748055555" r="5" fill="#e96bd4"></circle>
+                                        <circle cx="5" cy="5" r="5" fill="#e96bd4"></circle>
+                                    </svg>
+                                    <div className="AuctionGraph-prices">
+                                        <div className="AuctionGraph-price">
+                                            Started at
+                                            <span className="AuctionGraph-price-fee">
+                                                <em>Ξ</em>
+                                                starting price
+                                            </span>
+                                        </div>
+                                        <div className="AuctionGraph-price">
+                                            Price goes to
+                                            <span className="AuctionGraph-price-fee">
+                                                <em>Ξ</em>
+                                                end price
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                }
+                if (kitty.auction.type === 'sale') {
+                    auctionInfo =
+                    <div className="KittyBid KittyBid--sale">
+                        <div className="KittyBid-boxes">
+                            <div className="KittyBid-box">
+                                <h3 className="KittyBid-box-title">Buy now price</h3>
+                                <span className="KittyBid-box-subtitle">
+                                    <em>Ξ</em>
+                                    current sale price
+                                </span>
+                            </div>
+                            <div className="KittyBid-box KittyBid-box--secondary">
+                                <h3 className="KittyBid-box-title">Time left</h3>
+                                <span className="KittyBid-box-subtitle">
+                                    amount of time left before auction hits min price
+                                </span>
+                            </div>
+                        </div>
+                        <div className="KittyBid-action">
+                            <button type="button" className="Button Button--icon">
+                                <span>
+                                    <i className="Icon Icon--tagCancel"></i>
+                                </span>
+                                Cancel sale
+                            </button>
+                        </div>
+                        <div className="KittyBid-auctionGraph">
+                            <div className="AuctionGraph AuctionGraph--sale">
+                                <svg class="AuctionGraph-chart" viewBox="0 0 720 180">
+                                    <defs><linearGradient id="grad" x2="0" y2="1">
+                                        <stop offset="0" stop-color="#f5eae2" stop-opacity="0.4"></stop>
+                                        <stop offset="1" stop-color="#fff"></stop></linearGradient>
+                                    </defs>
+                                    <polygon points="5,5 5.753853182870371,5.040363041955999 715,90 715,175 5,175 5,5" fill="url(#grad)"></polygon>
+                                    <rect x="5" y="5" width="710" height="170" fill="none" stroke="#f5eae2" stroke-width="2"></rect>
+                                    <line x1="241.66666666666666" x2="241.66666666666666" y1="5" y2="175" stroke="#f5eae2" stroke-width="2"></line>
+                                    <line x1="478.3333333333333" x2="478.3333333333333" y1="5" y2="175" stroke="#f5eae2" stroke-width="2"></line>
+                                    <line x1="5" x2="5.753853182870371" y1="5" y2="5.040363041955999" stroke="#ff9b6a" stroke-width="2"></line>
+                                    <line x1="5.753853182870371" x2="715" y1="5.040363041955999" y2="90" stroke="#f5eae2" stroke-width="2"></line>
+                                    <circle cx="715" cy="90" r="5" fill="#f5eae2"></circle>
+                                    <circle cx="5.753853182870371" cy="5.040363041955999" r="5" fill="#ff9b6a"></circle>
+                                    <circle cx="5" cy="5" r="5" fill="#ff9b6a"></circle>
+                                </svg>
+                                <div className="AuctionGraph-prices">
+                                    <div className="AuctionGraph-price">
+                                        Started at
+                                        <span className="AuctionGraph-price-fee">
+                                            <em>Ξ</em>
+                                            starting price
+                                        </span>
+                                    </div>
+                                    <div className="AuctionGraph-price">
+                                        Price goes to
+                                        <span className="AuctionGraph-price-fee">
+                                            <em>Ξ</em>
+                                            end price
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+
+        if ((kitty.id && kitty.owner.address !== this.state.account) && (kitty.id && kitty.auction.seller.address !== this.state.account)) {
+            if (!_.isEmpty(kitty.auction)) {
+                if (kitty.auction.type === 'sire') {
+                    auctionInfo =
+                    <div class="KittyBid KittyBid--sire">
+                        <div class="KittyBid-boxes">
+                            <div class="KittyBid-box">
+                                <h3 class="KittyBid-box-title">Breed now price</h3>
+                                <span class="KittyBid-box-subtitle">
+                                    <em>Ξ</em> 
+                                        current price
+                                </span>
+                            </div>
+                            <div class="KittyBid-box KittyBid-box--secondary">
+                                <h3 class="KittyBid-box-title">Time left</h3>
+                                <span class="KittyBid-box-subtitle">5.6 months</span>
+                            </div>
+                        </div>
+                        <div class="KittyBid-action">
+                            <a class="Button Button--larger Button--love" aria-current="false" data-tracking="mxpnl-buypage-breednow" href="/kitty/485792/breed">
+                                Breed now
+                            </a>
+                        </div>
+                        <div class="KittyBid-auctionGraph">
+                            <div class="AuctionGraph AuctionGraph--sire">
+                                <svg class="AuctionGraph-chart" viewBox="0 0 720 180">
+                                    <defs>
+                                        <linearGradient id="grad" x2="0" y2="1">
+                                            <stop offset="0" stop-color="#f5e2f2" stop-opacity="0.4"></stop>
+                                            <stop offset="1" stop-color="#fff"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <polygon points="5,5 163.82242953787122,43.02790365723013 715,175 715,175 5,175 5,5" fill="url(#grad)"></polygon>
+                                    <rect x="5" y="5" width="710" height="170" fill="none" stroke="#f5e2f2" stroke-width="2"></rect>
+                                    <line x1="241.66666666666666" x2="241.66666666666666" y1="5" y2="175" stroke="#f5e2f2" stroke-width="2"></line>
+                                    <line x1="478.3333333333333" x2="478.3333333333333" y1="5" y2="175" stroke="#f5e2f2" stroke-width="2"></line>
+                                    <line x1="5" x2="163.82242953787122" y1="5" y2="43.02790365723013" stroke="#e96bd4" stroke-width="2"></line>
+                                    <line x1="163.82242953787122" x2="715" y1="43.02790365723013" y2="175" stroke="#f5e2f2" stroke-width="2"></line>
+                                    <circle cx="715" cy="175" r="5" fill="#f5e2f2"></circle><circle cx="163.82242953787122" cy="43.02790365723013" r="5" fill="#e96bd4"></circle>
+                                    <circle cx="5" cy="5" r="5" fill="#e96bd4"></circle>
+                                </svg>
+                                <div class="AuctionGraph-prices">
+                                    <div class="AuctionGraph-price">
+                                        Started at 
+                                        <span class="AuctionGraph-price-fee">
+                                            <em>Ξ</em> Starting price
+                                        </span>
+                                    </div>
+                                    <div class="AuctionGraph-price">
+                                        Price goes to 
+                                        <span class="AuctionGraph-price-fee">
+                                            <em>Ξ</em> 0
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                if (kitty.auction.type === 'sale') {
+                    auctionInfo =
+                    <div class="KittyBid KittyBid--sale">
+                        <div class="KittyBid-boxes">
+                            <div class="KittyBid-box">
+                                <h3 class="KittyBid-box-title">Buy now price</h3>
+                                <span class="KittyBid-box-subtitle">
+                                    <em>Ξ</em> 0.0018
+                                </span>
+                            </div>
+                            <div class="KittyBid-box KittyBid-box--secondary">
+                                <h3 class="KittyBid-box-title">Time left</h3>
+                                <span class="KittyBid-box-subtitle">5 hours</span>
+                            </div>
+                        </div>
+                        <div class="KittyBid-action">
+                            <a class="Button Button--larger Button--buy" aria-current="false" data-tracking="mxpnl-buypage-buynow" href="/kitty/592888/buy">
+                                Buy now
+                            </a>
+                        </div>
+                        <div class="KittyBid-auctionGraph">
+                            <div class="AuctionGraph AuctionGraph--sale">
+                                <svg class="AuctionGraph-chart" viewBox="0 0 720 180">
+                                    <defs>
+                                        <linearGradient id="grad" x2="0" y2="1">
+                                            <stop offset="0" stop-color="#f5eae2" stop-opacity="0.4"></stop>
+                                            <stop offset="1" stop-color="#fff"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <polygon points="5,5 417.5606203703704,70.8542341589506 715,118.33333333333334 715,175 5,175 5,5" fill="url(#grad)"></polygon>
+                                    <rect x="5" y="5" width="710" height="170" fill="none" stroke="#f5eae2" stroke-width="2"></rect>
+                                    <line x1="241.66666666666666" x2="241.66666666666666" y1="5" y2="175" stroke="#f5eae2" stroke-width="2"></line>
+                                    <line x1="478.3333333333333" x2="478.3333333333333" y1="5" y2="175" stroke="#f5eae2" stroke-width="2"></line>
+                                    <line x1="5" x2="417.5606203703704" y1="5" y2="70.8542341589506" stroke="#ff9b6a" stroke-width="2"></line>
+                                    <line x1="417.5606203703704" x2="715" y1="70.8542341589506" y2="118.33333333333334" stroke="#f5eae2" stroke-width="2"></line>
+                                    <circle cx="715" cy="118.33333333333334" r="5" fill="#f5eae2"></circle>
+                                    <circle cx="417.5606203703704" cy="70.8542341589506" r="5" fill="#ff9b6a"></circle>
+                                    <circle cx="5" cy="5" r="5" fill="#ff9b6a"></circle>
+                                </svg>
+                                <div class="AuctionGraph-prices">
+                                    <div class="AuctionGraph-price">
+                                        Started at 
+                                        <span class="AuctionGraph-price-fee">
+                                            <em>Ξ</em> 0.003
+                                        </span>
+                                    </div>
+                                    <div class="AuctionGraph-price">
+                                        Price goes to 
+                                        <span class="AuctionGraph-price-fee">
+                                            <em>Ξ</em> 0.001
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            if (_.isEmpty(kitty.auction)) {
+                auctionInfo = null;
+            }
+        }
+                
+        
 
         let parentDisplay = (!_.isEmpty(kitty.matron) && !_.isEmpty(kitty.sire)) ?
         <div className="KittySection">
@@ -259,7 +552,7 @@ class Kitty extends Component {
                                                     >
                                                         <span>
                                                             <span>
-                                                                Gen {this.props.kitty.generation}
+                                                                Gen {kitty.generation}
                                                             </span>
                                                         </span>
                                                     </a>
@@ -274,7 +567,7 @@ class Kitty extends Component {
                                             </div>
                                             <div className="KittyHeader-owner">
                                                 <a className="KittyHeader-owner-imageLink" aria-current='false' href="">
-                                                    <img src={`https://www.cryptokitties.co/profile/profile-${this.props.user.image}.png`} alt="profileImage"/>
+                                                    <img src={`https://www.cryptokitties.co/profile/profile-${user.image}.png`} alt="profileImage"/>
                                                 </a>
                                                 <span className="KittyHeader-owner-details">
                                                     {userNameDisplay}
@@ -307,17 +600,20 @@ class Kitty extends Component {
                                                         </span>
                                                     </div>
                                                 </div>
+                                                <div className="KittyHeader-actionsGroup">
+                                                    {ownerActions}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     
                                 </div>
-                                <div classname="KittySection">
+                                <div className="KittySection">
                                     <div className="KittySection-content">
-                                        
+                                        {auctionInfo}
                                     </div>
                                 </div>
-                                <div classname="KittySection">
+                                <div className="KittySection">
                                     <div className="KittySection-header">
                                         <h2 className="KittySection-header-title">Bio</h2>
                                         <div className="KittySection-header-tooltip">
@@ -352,7 +648,6 @@ class Kitty extends Component {
 function mapStateToProps(state) {
     return {
         user: state.user,
-        cattributes: state.cattributes,
         myKitties: state.myKitties,
         kitty: state.kitty
     }

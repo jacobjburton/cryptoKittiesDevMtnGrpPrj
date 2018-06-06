@@ -496,3 +496,7 @@ kittiesFilter-list {
     display: block;
     pointer-events: none
 }
+
+a:hover {
+    cursor: pointer;
+}
