@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import './Profile.css';
-import {getUser, getFilteredCats} from '../../ducks/reducer';
+import {getUser, getFilteredCats, getKitty} from '../../ducks/reducer';
 import _ from 'lodash';
 
 class Profile extends Component {
@@ -26,8 +26,16 @@ class Profile extends Component {
         }
         this.state.account && this.props.getUser(this.state.account)
     }
+
+    handleClick = (e) => {
+        this.props.getKitty(e);
+        this.props.history.push(`/kitty/${e}`);
+    }
+
+
     render(){
-        let {myKitties, owner_wallet_address, cooldown, sale, sire, other, type, orderBy, gen, orderDirection} = this.props;
+
+        let {myKitties, kitty, owner_wallet_address, cooldown, sale, sire, other, type, orderBy, gen, orderDirection} = this.props;
         console.log(myKitties.kitties && myKitties.kitties[0])
 
 
@@ -57,9 +65,10 @@ class Profile extends Component {
 
                     <div className="kittiesGrid">
                     <div className="kittiesGrid-item">
-                        <a href={`/kitty/${myKitties.kitties ? myKitties.kitties[i].id : null}`}>
+                        <a onClick={(e) => {this.handleClick(myKitties.kitties[i].id)}}>
+                            
                         {/* enables the entire div to be clickable which brings you to the kitty's profile page */}
-                            <div className="kittyCard-wrapper">
+                            <div className="kittyCard-wrapper" >
                                 <div className="kittyCard-background">
                                 <img class="KittyCard-image" src={myKitties.kitties ? myKitties.kitties[i].image_url_cdn : null} alt="kitty"/>
                                                             {/* display's the kitty's image */}
@@ -384,7 +393,8 @@ function mapStateToProps(state){
     return{
         user: state.user,
         myKitties: state.myKitties,
+        kitty: state.kitty,
         cattributes: state.cattributes
     }
 }
-export default connect(mapStateToProps, {getUser, getFilteredCats})(Profile);
+export default connect(mapStateToProps, {getUser, , getKitty, getFilteredCats})(Profile);

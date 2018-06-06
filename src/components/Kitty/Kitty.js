@@ -11,8 +11,8 @@ import bronze from '../../images/images/cattributes/bronze.svg';
 
 class Kitty extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             account: null
@@ -25,17 +25,22 @@ class Kitty extends Component {
             window.web3.eth.getAccounts((error, accounts) => {
                 
                 this.setState({ account: accounts[0] });
-                console.log(`received accounts[0]> `, accounts[0]);
-                console.log(`this.setState> this.state.account> `, this.state.account);
+                //console.log(`received accounts[0]> `, accounts[0]);
+                //console.log(`this.setState> this.state.account> `, this.state.account);
                 this.props.getUser(accounts[0])
         })} else {
-        console.log(`MetaMask account not detected`);
+            console.log(`MetaMask account not detected`);
         }
         this.state.account && this.props.getUser(this.state.account)
-        console.log(this.props.myKitties)
-        console.log(this.props.user)
-        this.props.getKitty(776818)
-        console.log(this.props.kitty)
+//        console.log(this.props.myKitties)
+//        console.log(this.props.user)
+        //this.props.getKitty(this.props.kittyId)
+        console.log(this.props.kitty.id)
+    }
+
+    handleClick = (e) => {
+        this.props.getKitty(e);
+        this.props.history.push(`/kitty/${e}`);
     }
     
     render () {
@@ -66,10 +71,10 @@ class Kitty extends Component {
         }
         
         
-        let nameDisplay = this.props.kitty.name ?
-            <h1 className="KittyHeader-name-text KittyHeader-name-text--editable">{this.props.kitty.name}</h1>
+        let nameDisplay = kitty.name ?
+            <h1 className="KittyHeader-name-text KittyHeader-name-text--editable">{kitty.name}</h1>
             :
-            <h1 className="KittyHeader-name-text KittyHeader-name-text--editable">Kitty #{this.props.kitty.id}</h1>
+            <h1 className="KittyHeader-name-text KittyHeader-name-text--editable">Kitty #{kitty.id}</h1>
 
         let userNameDisplay = _.isEmpty(kitty.auction) ?
             <a className="KittyHeader-owner-name" aria-current="false" href={`/profile/${kitty.id && kitty['owner'].address}`}>
@@ -168,7 +173,7 @@ class Kitty extends Component {
                     <div className="KittiesList">
                         <div className="KittiesList-items">
                             <div className="KittiesList-item">
-                                <a href={`/kitty/${kitty.id && kitty.sire.id}`} aria-current="false">
+                                <a onClick={(e) => {this.handleClick(kitty.sire.id)}} aria-current="false">
                                     <div className="KittyCard-wrapper">
                                         <div className="KittyCard KittyCard--bg-topaz KittyCard--thumbnail KittyCard--fancy KittyCard--shadow-topaz">
                                             <img className="KittyCard-image" src={kitty.id && kitty.sire.image_url} alt="sireImg"/>
@@ -177,7 +182,7 @@ class Kitty extends Component {
                                 </a>
                             </div>
                             <div className="KittiesList-item">
-                                <a aria-current="false" href={`/kitty/${kitty.id && kitty.matron.id}`}>
+                                <a aria-current="false" onClick={(e) => {this.handleClick(kitty.matron.id)}}>
                                     <div className="KittyCard-wrapper">
                                         <div className="KittyCard KittyCard--bg-sapphire KittyCard--thumbnail KittyCard--shadow-sapphire">
                                             <img className="KittyCard-image" src={kitty.id && kitty.matron.image_url} alt="matronImg"/>
@@ -203,7 +208,7 @@ class Kitty extends Component {
                             <div className="KittiesList">
                                 <div className="KittiesList-items">
                                     <div className="KittiesList-item">
-                                        <a href={`/kitty/${kitty.id && kitty.children[i].id}`} aria-current="false">
+                                        <a onClick={(e) => {this.handleClick(kitty.children[i].id)}} aria-current="false">
                                             <div className="KittyCard-wrapper">
                                                 <div className="KittyCard KittCard--bg-topaz KittyCard--thumbnail KittyCard--shadow-topaz">
                                                     <img  className="KittyCard-image" src={kitty.id && kitty.children[i].image_url} alt="childImg"/>
@@ -228,11 +233,6 @@ class Kitty extends Component {
             </div>
             : null;
 
-        
-        let auction = kitty.auction;
-
-        console.log(_.isEmpty(auction));
-        
 
 
 
@@ -352,12 +352,9 @@ class Kitty extends Component {
 function mapStateToProps(state) {
     return {
         user: state.user,
-        userActivity: state.userActivity,
         cattributes: state.cattributes,
         myKitties: state.myKitties,
-        kitty: state.kitty,
-        specialCats: state.specialCats,
-        forsaleSiringOther: state.forsaleSiringOther
+        kitty: state.kitty
     }
 }
 
