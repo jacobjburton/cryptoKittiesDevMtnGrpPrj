@@ -18,48 +18,12 @@ app.use(express.json());
 app.use(cors());
 
 
+//CRUD
+app.post(`/email`, kc.createEmail);
+app.get('/nickname/:id', kc.readNickname);
+app.put('/marketing/:id', kc.updateMarketing);
+app.delete('/wallet/:id', kc.deleteWallet);
 
-
-
-
-// app.get('/kitties', kc.getKitties)
-// app.get('/seedKitties/:kitty_number', kc.getExternalApi_SeedOurDb_ReturnToOurFrontEnd)
-
-// //USER
-// // Sign-in metamask address / username
-// // When gifting on input of which address to gift too.
-// app.get('/user/:user_address', kc.getUser)
-//https://www.cryptokitties.co/profile/0x95b8fd185eb9b485663cb51b9782d6e418294b98
-
-// get kitties based on marketplace kitties price low to high
-
-// click user name/ pic || profile/user address
-
-
-
-// transaction history
-// https://api.chameleon.axiom.works/v1/transaction-bundle/0x4541e1ea15fab6920b6f0da0c31da0fea74e3535/all
-
-// transaction view details button
-// same transaction address
-// https://etherscan.io/address/0x4541e1ea15fab6920b6f0da0c31da0fea74e3535
-//find transaction hash by time stamp
-
-//SELL
-// app.post('/sell', kc.sellAKitty)
-
-
-// //Breed Public
-// app.get('/breedPublic')
-// // post to transaction
-
-// //Breed Private
-// app.get('/breedPrivate', kc.getNonIncestKitties)
-// app.post('/newKitty', kc.createKitten)
-
-// //GIFT
-
-// app.put('/gift', kc.giftAKitty)
 
 
 
