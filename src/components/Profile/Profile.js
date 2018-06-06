@@ -9,7 +9,7 @@ class Profile extends Component {
         super(props)
         this.state = {
             account: null,
-            cooldown_index: ['Fast', 'Swift', 'Snappy', 'Brisk', 'Plodding', 'Slow', 'Sluggish', 'Catatonic']
+            cooldown_index: ['fast', 'swift', 'snappy', 'brisk', 'plodding', 'slow', 'sluggish', 'catatonic']
         }
     }
     componentDidMount(){
@@ -31,12 +31,16 @@ class Profile extends Component {
         this.props.getKitty(e);
         this.props.history.push(`/kitty/${e}`);
     }
+    handleInput(e){
+        this.props.getFilteredCats(`${this.props.user.address}`, "", `${e.toString()}`, "", "sale", "sire", "other", "id", "desc")
+    }
 
 
     render(){
 
-        let {myKitties, kitty, owner_wallet_address, cooldown, sale, sire, other, type, orderBy, gen, orderDirection} = this.props;
+        let {myKitties, kitty, user} = this.props;
         console.log(myKitties.kitties && myKitties.kitties[0])
+        console.log(user)
 
 
 
@@ -163,9 +167,9 @@ class Profile extends Component {
                 <div className="profilePage-tabs">
                     <div className="container-lg">
                         <div className="TabNav">
-                            <a className="TabNav-tab" href={`/profile/${this.props.user.address}`}>Kitties</a>
-                            <a className="TabNav-tab" href={`/profile/${this.props.user.address}/special-cats`}>Special Cats</a>   
-                            <a className="TabNav-tab" href={`/profile/${this.props.user.address}/catdex`}>Cat Codex</a>
+                            <a className="TabNav-tab" href={`/profile/${user.address}`}>Kitties</a>
+                            <a className="TabNav-tab" href={`/profile/${user.address}/special-cats`}>Special Cats</a>   
+                            <a className="TabNav-tab" href={`/profile/${user.address}/catdex`}>Cat Codex</a>
                         </div>
                     </div>
                 </div>
@@ -189,7 +193,7 @@ class Profile extends Component {
                                                 <div className="searchBar-actionGroup">
                                                     <button className="searchBar-action" type="button">
                                                         filters
-                                                        <svg className="iconV2" class="IconV2 IconV2--position-default IconV2--display-inlineBlock" width="24" height="24" viewBox="0 0 16 16">
+                                                        <svg className="iconV2" width="24" height="24" viewBox="0 0 16 16">
                                                             <g fill="none" fill-rule="evenodd" stroke="#c4c3c0" stroke-width="1.5" transform="matrix(-1 0 0 1 12.48 2.56)" vector-effect="non-scaling-stroke">
                                                                 <g stroke-linecap="round">
                                                                     <path d="M0 1.28h5.04m2.76 0h1.16M0 5.12h1.186m2.86 0H8.96M0 9.28h5.117m2.787 0H8.96">
@@ -214,63 +218,60 @@ class Profile extends Component {
                                 <div className="container-lg">
                                     <div className="kittiesFilter-groups">
                                         <div className="kittiesFilter-group1">
-                                            <div className="kittiesFilter-group-title">
+                                            <div className="kittiesFilter-group-title1">
                                                 Kitty type
                                             </div>
                                             <div className="kittiesFilter-group-content">
                                                 <div className="kittiesFilter-list">
-                                                    <div className="kittiesFilter-list-item">
-                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(owner_wallet_address, "normal", gen, cooldown, sale, sire, other, orderBy, orderDirection)}}>Normal</button>
-                                                    </div>
-                                                    <div className="kittiesFilter-list-item">
-                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(owner_wallet_address, "fancy", gen, cooldown, sale, sire, other, orderBy, orderDirection)}}>Fancy</button>
-                                                    </div>
-                                                    <div className="kittiesFilter-list-item">
-                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(owner_wallet_address, "exclusive", gen, cooldown, sale, sire, other, orderBy, orderDirection)}}>Exclusive</button>
-                                                    </div>
+                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "normal", "", "", "sale", "sire", "other", "id", "desc")}}>Normal</button>
+                                                
+                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "fancy", "", "", "sale", "sire", "other", "id", "desc")}}>Fancy</button>
+                                                  
+                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "exclusive", "", "", "sale", "sire", "other", "id", "desc")}}>Exclusive</button>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="kittiesFilter-group2">
-                                            <div className="kittiesFilter-group-title">
+                                            <div className="kittiesFilter-group-title2">
                                                 Generation
                                             </div>
                                             <div className="kittiesFilter-group-content">
                                                 <div className="kittiesFilter-number">
-                                                    <input className="kittiesFilter-number-input" type="number" step="1" min="0" value="0" placeholder="All"/>
+                                                    <input className="kittiesFilter-number-input" type="number" step="1" min="0" placeholder="All" onChange={(e) => {this.handleInput(e.target.value)}}/>
                                                     <div className="kittiesFilter-number-reset">
-                                                        <span className="kittiesFilter-number-reset-button" role="button">Reset</span>
+                                                        {/* <span className="kittiesFilter-number-reset-button" role="button">Reset</span> */}
+                                                        {/* do we want to implement the reset filters button? */}
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="kittiesFilter-group3">
-                                            <div className="kittiesFilter-group-title">Cooldown</div>
+                                            <div className="kittiesFilter-group-title3">Cooldown</div>
                                             <div className="kittiesFilter-group-content">
                                                 <div className="kittiesFilter-list">
                                                     <div className="kittiesFilter-list-item" role="button">
-                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(owner_wallet_address, type, gen, this.state.cooldown_index[0], sale, sire, other, orderBy, orderDirection)}}>Fast</button>
+                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "fast", "sale", "sire", "other", "id", "desc")}}>Fast</button>
                                                     </div>
                                                     <div className="kittiesFilter-list-item" role="button">
-                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(owner_wallet_address, type, gen, this.state.cooldown_index[1], sale, sire, other, orderBy, orderDirection)}}>Swift</button>
+                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "swift", "sale", "sire", "other", "id", "desc")}}>Swift</button>
                                                     </div>
                                                     <div className="kittiesFilter-list-item" role="button">
-                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(owner_wallet_address, type, gen, this.state.cooldown_index[2], sale, sire, other, orderBy, orderDirection)}}>Snappy</button>
+                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "snappy", "sale", "sire", "other", "id", "desc")}}>Snappy</button>
                                                     </div>
                                                     <div className="kittiesFilter-list-item" role="button">
-                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(owner_wallet_address, type, gen, this.state.cooldown_index[3], sale, sire, other, orderBy, orderDirection)}}>Brisk</button>
+                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "brisk", "sale", "sire", "other", "id", "desc")}}>Brisk</button>
                                                     </div>
                                                     <div className="kittiesFilter-list-item" role="button">
-                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(owner_wallet_address, type, gen, this.state.cooldown_index[4], sale, sire, other, orderBy, orderDirection)}}>Plodding</button>
+                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "plodding", "sale", "sire", "other", "id", "desc")}}>Plodding</button>
                                                     </div>
                                                     <div className="kittiesFilter-list-item" role="button">
-                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(owner_wallet_address, type, gen, this.state.cooldown_index[5], sale, sire, other, orderBy, orderDirection)}}>Slow</button>
+                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "slow", "sale", "sire", "other", "id", "desc")}}>Slow</button>
                                                     </div>
                                                     <div className="kittiesFilter-list-item" role="button">
-                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(owner_wallet_address, type, gen, this.state.cooldown_index[6], sale, sire, other, orderBy, orderDirection)}}>Sluggish</button>
+                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "sluggish", "sale", "sire", "other", "id", "desc")}}>Sluggish</button>
                                                     </div>
                                                     <div className="kittiesFilter-list-item" role="button">
-                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(owner_wallet_address, type, gen, this.state.cooldown_index[7], sale, sire, other, orderBy, orderDirection)}}>Catatonic</button>
+                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "catatonic", "sale", "sire", "other", "id", "desc")}}>Catatonic</button>
                                                     </div>
                                                 </div>
                                             </div>
