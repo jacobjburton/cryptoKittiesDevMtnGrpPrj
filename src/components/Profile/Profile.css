@@ -18,7 +18,8 @@
     background-position: 50%;
     background-repeat: no-repeat;
     padding: .8rem;
-    vertical-align: middle
+    vertical-align: middle;
+    padding-bottom: 15px;
 }
 .profilePage {
     padding-bottom: 6.4rem;
@@ -26,6 +27,7 @@
 .profilePage-tabs {
     position: relative;
     margin-bottom: 2.4rem;
+    max-height: 84px;
 }
 .profilePage-tabs:before {
     position: absolute;
@@ -62,11 +64,14 @@
     font-size: 2.8rem;
     line-height: 1.33;
     margin-bottom: 0;
+    text-align: left;
 }
 .profileHeader-wallet {
     margin: 0;
-    font-size: 1.6rem;
+    font-size: .1rem;
     color: #82817d;
+    display: inline-block;
+    
 }
 .profileHeader-settings {
     color: #82817d;
@@ -91,19 +96,17 @@
 }
 .profileHeader-container {
     display: flex;
-    align-items: center;
     padding: 2.4rem 0;
 }
 .TabNav {
     display: flex;
     align-items: center;
-    margin: .8rem 00;
 }
 .TabNav-tab {
     position: relative;
-    margin-right: 1.5rem;
-    padding: 1.5rem 0;
-    font-size: 1.4rem;
+    margin-right: 3.7rem;
+    padding-top: 30px;
+    font-size: 2.4rem;
     font-weight: 500;
     color: #9c9c9b;
     white-space: nowrap;
@@ -200,9 +203,12 @@
 .container-lg {
     max-width: 112rem;
 }
+.reportPage {
+    display: inline-block;
+}
 .kittiesFilter-groups {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 245px 175px 500px;
     grid-gap: 10px;
 }
 .kittiesFilter-group1 {
@@ -224,9 +230,11 @@
 .kittiesFilter-group:last-of-type {
     margin-right: 0;
 }
+.kittiesFilter-group-content3 {
+}
 .kittiesFilter-group-title1 {
     /* position: absolute; */
-    margin-bottom: .96rem;
+    margin-bottom: .5rem;
     color: #2a2825;
     font-size: 2rem;
     font-weight: 500;
@@ -234,31 +242,29 @@
     min-width: 216.86px;
     /* text-align: left; */
     padding-top: 20px;
-    padding-right: 115px;
+    padding-right: 155px;
 }
 .kittiesFilter-group-title2 {
     /* position: absolute; */
-    margin-bottom: .96rem;
+    margin-bottom: .5rem;
     color: #2a2825;
     font-size: 2rem;
     font-weight: 500;
     float: left;
-    min-width: 216.86px;
+    max-width: 90px;
     /* text-align: left; */
     padding-top: 20px;
-    padding-right: 73px;
+    padding-left: 30px;
 }
 .kittiesFilter-group-title3 {
-    /* position: absolute; */
-    margin-bottom: .96rem;
+    margin-bottom: .5rem;
     color: #2a2825;
     font-size: 2rem;
     font-weight: 500;
     float: left;
-    min-width: 216.86px;
-    /* text-align: left; */
+    min-width: 551.67px;
+    text-align: left;
     padding-top: 20px;
-    padding-right: 70px;
 }
 .kittiesFilter-number {
     padding-left: 30px;
@@ -273,7 +279,7 @@
 .kittiesFilter-number-input::placeholder {
     font-size: 1.8rem;
     color: black;
-    text-align: center;
+    padding: 30px;
 }
 .kittiesFilter-number-reset-button {
     display: block;
@@ -285,10 +291,7 @@
     padding-top: 5px;
 }
 kittiesFilter-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
-    width: 216.86px;
+    min-width: 300px;
     max-height: 38.38;
 }
 .filterButton {
@@ -308,6 +311,12 @@ kittiesFilter-list {
     cursor: pointer;
     transition: color .25s;
 }
+.filterButton:hover {
+    color: black;
+}
+.buttons {
+    float: left;
+}
 .kittiesToolbar-includeAndSort {
     margin-top: 3.2rem;
 }
@@ -316,32 +325,58 @@ kittiesFilter-list {
     box-direction: normal;
     justify-content: space-between;
 }
+.kittiesToolbar-include {
+    max-width: 305.52px;
+}
 .kittiesToolbar-include,
-.kittiesToolbar-includeAndSort-container,
-.kittiesToolbar-sort {
+.kittiesToolbar-includeAndSort-container {
     display: flex;
     align-items: center;
 }
 .kittiesToolbar-searchBar {
     max-height: 40px;
 }
-.kittiesToolbar-include,
-.kittiesToolbar-sort {
+.kittiesToolbar-include {
     flex: 0 0 100%;
 }
 .kittiesToolbar-sort {
     margin-top: .8rem;
+    max-width: 291.36px;
 }
-.kittiesToolbar-include-options,
 .kittiesToolbar-sort-options {
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+    align-content: flex-start;
+}
+.kittiesToolbar-include-options {
     flex: 1;
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+    align-content: flex-start;
+    max-width: 226px;
 }
 .kittiesToolbar-label {
-    margin-right: 1.5rem;
+    margin-right: 1.7rem;
+    margin-left: 3px;
     color: #9c9c9b;
     font-weight: 500;
     font-size: 1.8rem;
-    text-transform: lowercase
+    text-transform: lowercase;
+}
+.kittiesToolbar-label-alwaysVisible {
+    display: block;
+    float: left;
+    color: #9c9c9b;
+    font-weight: 500;
+    font-size: 1.8rem;
+    text-transform: lowercase;
+    padding-right: 15px;
 }
 .kittiesToolbar-filters {
     margin-top: 1.5rem;
@@ -352,6 +387,9 @@ kittiesFilter-list {
     font-weight: 500;
     font-size: 1.6rem;
 }
+.kittiesToolbar {
+    max-height: 279.59px;
+}
 .kittiesGalleryPagination {
     padding: 2.4rem;
     max-width: 112rem;
@@ -360,13 +398,18 @@ kittiesFilter-list {
 .kittiesGrid {
     position: relative;
     display: grid;
+    grid-template-columns: repeat(4, 247px)
     /* grid-gap: var(--size-gap); */
     /* grid-template-columns: repeat(var(--num-columns), 1fr) */
 }
 .kittiesGrid-item .kittyCard {
     opacity: 0;
     transform: translateY(2.4rem);
-    animation: kittyCardIn .25s cubic-bezier(0.6, .67, .37, .99) forwards
+    animation: kittyCardIn .25s cubic-bezier(0.6, .67, .37, .99) forwards;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-gap: 10px;
 }
 .kittyCard {
     --size-card: 22.5rem;
@@ -416,16 +459,16 @@ kittiesFilter-list {
  /* --box-shadow: inset 0 0 0 0 #fff; */
  width: 217.47px;
  height: 217.47px;
+ padding: 10px;
 }
 .kittyCard-wrapper:hover {
     /* --box-shadow: inset 0 0 0 0.4rem #fff; */
    }
 .kittyCard-image {
-    position: relative;
     width: 217.47px;
     height: 217.47px;
     /* transform: translate(var(--translate-image)); */
-    z-index: 2
+    z-index: 2;
 }
 .kittyCard-status {
     position: absolute;
@@ -437,15 +480,17 @@ kittiesFilter-list {
     padding: 0 .4rem;
     color: #82817d;
     font-size: 1.6rem;
-    font-weight: 500
+    font-weight: 500;
+    position: relative;
 }
 .kittyCard-details {
     margin-top: .4rem;
     padding: 0 .4rem;
     font-size: 1.6rem;
     font-weight: 500;
-    color: #82817d;
+    color: black;
     text-align: left;
+    position: relative;
 }
 .kittyCard-details-item {
     margin-right: .8rem;
@@ -495,11 +540,20 @@ kittiesFilter-list {
     user-select: none;
     cursor: pointer;
 }
+.checkbox-label-icon {
+    padding-top: 5px;
+}
 .checkbox-label-text-left {
-    margin-right: 1rem;
+    margin-right: 1.5rem;
+    color: black;
+    padding-left: 10px;
+    text-transform: lowercase;
 }
 .checkbox-label-text-right {
-    margin-right: 1rem;
+    margin-right: 1.2rem;
+    color: black;
+    padding-left: 7px;
+    text-transform: lowercase;
 }
 .checkbox-checked {
     background-color: transparent;
@@ -517,35 +571,64 @@ kittiesFilter-list {
 }
 .selectionGroup-item {
     flex: 1;
+    display: inline-block;
 }
-.select-container {
+.selectionGroup {
+    min-width: 239.02px;
+}
+.selectionGroup2 {
+    min-width: 226px;
+}
+.select-container1 {
     display: inline-block;
     position: relative;
+    width: 103px;
+    height: 27px;
+}
+.select-container2 {
+    display: inline-block;
+    position: relative;
+    width: 108.27;
+    height: 27px;
 }
 .select {
     display: block;
-    padding: 0 2.4rem 0 0;
-    width: 100%;
+    width: fit-content;
     color: #2a2825;
     font-weight: 500;
     font-size: 1.8rem;
     cursor: pointer;
     appearance: none;
-    transition: color .2s
+    transition: color .2s;
+    background: none;
+    border: none;
 }
 .select:active,
 .select:focus {
     border: none;
     outline: none;
 }
-.select-icon {
-    position: absolute;
-    top: 37%;
-    right: 0;
-    display: block;
-    pointer-events: none
+.select-icon1 {
+    position: relative;
+    bottom: 22px;
 }
-
+.select-icon1:hover {
+    color: black;
+}
+.select-icon {
+    margin-left: 90px;
+    position: relative;
+    bottom: 22px;
+}
+.select-icon:hover {
+    color: black;
+}
 a:hover {
     cursor: pointer;
+}
+.profile {
+    display: inline-block;
+}
+.kittiesGallery {
+    display: grid;
 }
