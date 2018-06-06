@@ -397,4 +397,4 @@ function mapStateToProps(state){
         cattributes: state.cattributes
     }
 }
-export default connect(mapStateToProps, {getUser, , getKitty, getFilteredCats})(Profile);
+export default connect(mapStateToProps, {getUser, getKitty, getFilteredCats})(Profile);
