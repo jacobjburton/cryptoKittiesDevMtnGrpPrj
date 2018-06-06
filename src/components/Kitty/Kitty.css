@@ -60,6 +60,10 @@ a {
     background-color: transparent;
 }
 
+a:hover {
+    cursor: pointer;
+}
+
 img {
     border-style: none;
 }
