@@ -13,6 +13,11 @@
     color: #2a2825;
     border-bottom: .2rem solid #82817d;
 }
+.profileContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 25px ;
+}
 .separator {
     display: inline-block;
     background-position: 50%;
@@ -397,8 +402,8 @@ kittiesFilter-list {
 }
 .kittiesGrid {
     position: relative;
-    display: grid;
-    grid-template-columns: repeat(4, 247px)
+    /* display: grid;
+    grid-template-columns: repeat(4, 247px) */
     /* grid-gap: var(--size-gap); */
     /* grid-template-columns: repeat(var(--num-columns), 1fr) */
 }

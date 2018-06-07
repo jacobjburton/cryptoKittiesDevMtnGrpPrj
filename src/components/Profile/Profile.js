@@ -34,6 +34,9 @@ class Profile extends Component {
     handleInput(e){
         this.props.getFilteredCats(`${this.props.user.address}`, "", `${e.toString()}`, "", "sale", "sire", "other", "id", "desc")
     }
+    componentDidUpdate(oldprops, newprops){
+
+    }
 
 
     render(){
