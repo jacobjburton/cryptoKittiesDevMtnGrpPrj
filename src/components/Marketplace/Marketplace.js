@@ -3,9 +3,10 @@ import {connect} from 'react-redux';
 import './Marketplace.css';
 import {getFilteredCats} from '../../ducks/reducer';
 
-// class Marketplace extends Component {
-//     render() {
-//         return (
+class Marketplace extends Component {
+    render() {
+        return (
+            <div></div>
 //             <main class="Main">
 //             <div class="BrowsePage">
 //             <div class="BrowsePage-tabs">
@@ -1282,8 +1283,8 @@ import {getFilteredCats} from '../../ducks/reducer';
 //                </div>
 //                </div>
 //                </main>
-//         )
-//     }
-// }
+        )
+    }
+}
 
-// export default Marketplace;
+export default Marketplace;

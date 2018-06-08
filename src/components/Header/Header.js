@@ -137,11 +137,11 @@ class Header extends Component
                                         <img src={cross} alt="less" className="Header-more-toggleIcon"/>
                                     </div>
                                 </div>
-                                <div className="Dropdown-content u-slide--up">
+                                {/* <div className="Dropdown-content u-slide--up">
                                     <a href="/about" className="Header-navigation-item Header-navigation-dropdown-item">About</a>
                                     <a href="/newsletter" className="Header-navigation-item Header-navigation-dropdown-item">Newsletter</a>
                                     <a href="/careers" className="Header-navigation-item Header-navigation-dropdown-item">Careers</a>
-                                </div>
+                                </div> */}
                                 {/* <button onClick={this.showMenu} >More
                                     {menuIcon}
                                     {menuShow}
