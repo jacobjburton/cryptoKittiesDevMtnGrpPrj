@@ -51,7 +51,7 @@ module.exports={
         let dbInstance = req.app.get('db');
         dbInstance.delete_wallet([id])
         .then( account => {
-            console.log(`/wallet/kc.deleteWallet>RETURNING> |[${account}]|`);
+            console.log(`/wallet/kc.deleteWallet>RETURNING> |${account}|`);
             res.status(200).send(account)
         })
         .catch( err => {
