@@ -1,0 +1,91 @@
+{
+	"info": {
+		"_postman_id": "f77d6f00-c6a8-4389-a7d7-4eac3e852776",
+		"name": "CryptoKitties",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET - Nickname",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "804345c7-2b08-4703-adb2-8965af082695",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function() {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Status code name has string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"jacob test\");",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 600ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:3005/nickname/30",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"nickname",
+						"30"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3005/marketing/t",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f7444115-abfb-45be-8ff3-6fc08c049700",
+						"type": "text/javascript",
+						"exec": [
+							"const responseJSON = pm.response.json();",
+							"",
+							"pm.test(\"Status code is 500\", function() {",
+							"  pm.response.to.have.status(500);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:3005/marketing/t",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"marketing",
+						"t"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

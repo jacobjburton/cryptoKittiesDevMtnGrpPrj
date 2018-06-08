@@ -53,7 +53,7 @@ class Header extends Component
             <div className="Header-group">
                 <a className="Header-navigation-item" aria-current="false" href='/profile'>My Kitties</a>
                 <a className="Header-navigation-item" aria-current="false" href='/marketplace'>Marketplace</a>
-                <a className="Header-navigation-item" aria-current="false" href='/activity'>Activity</a>
+                <a className="Header-navigation-item" aria-current="false" href='https://etherscan.io/tx/0xa02b9b74fff73fe44d46833e0f0f630d81e2e0ebf0578105fbf1c3d87f5ca136' target="_blank">Activity</a>
             </div>
             :
             <div className="Header-group">
@@ -137,11 +137,11 @@ class Header extends Component
                                         <img src={cross} alt="less" className="Header-more-toggleIcon"/>
                                     </div>
                                 </div>
-                                <div className="Dropdown-content u-slide--up">
+                                {/* <div className="Dropdown-content u-slide--up">
                                     <a href="/about" className="Header-navigation-item Header-navigation-dropdown-item">About</a>
                                     <a href="/newsletter" className="Header-navigation-item Header-navigation-dropdown-item">Newsletter</a>
                                     <a href="/careers" className="Header-navigation-item Header-navigation-dropdown-item">Careers</a>
-                                </div>
+                                </div> */}
                                 {/* <button onClick={this.showMenu} >More
                                     {menuIcon}
                                     {menuShow}
