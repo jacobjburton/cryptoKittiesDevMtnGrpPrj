@@ -1,0 +1,240 @@
+{
+	"info": {
+		"_postman_id": "412105bd-0426-4353-a55c-fe1008823605",
+		"name": "Group_project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Delete specific user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3ca764fd-165a-4c8b-b9a6-4ab53e63b6a2",
+						"type": "text/javascript",
+						"exec": [
+							"const user = pm.response.json()[0];",
+							"",
+							"pm.test(\"Returned user ID is equal to 7\", function() {",
+							"  pm.expect(user.id).to.eql(7);",
+							"});",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3005/wallet/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"wallet",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Code 200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1fa953ba-828a-4aa7-95c3-2cd0734420fb",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function() {",
+							"  pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3005/wallet/15",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"wallet",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Code 404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "11ce7052-04a8-4fcc-8b15-3829ec924cd0",
+						"type": "text/javascript",
+						"exec": [
+							"const user = pm.response.json()[0];",
+							"",
+							"pm.test(\"Returned user ID is equal to 13\", function() {",
+							"  pm.expect(user.id).to.eql(13);",
+							"});",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3005/wallet/13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"wallet",
+						"13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "response.text",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e964ea36-04b0-4c26-82e2-90b79a5ea206",
+						"type": "text/javascript",
+						"exec": [
+							"const user = pm.response.json()[0];",
+							"",
+							"pm.test(\"Status code is 404\", function() {",
+							"  pm.response.to.have.status(404);",
+							"});",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3005/wallet/13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"wallet",
+						"13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Code 400",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "32450291-9e32-4372-b2a4-08e65d71c98c",
+						"type": "text/javascript",
+						"exec": [
+							"const user = pm.response.json()[0];",
+							"",
+							"pm.test(\"Status code is 400\", function() {",
+							"  pm.response.to.have.status(400);",
+							"});",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3005/wallet/13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"wallet",
+						"13"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
