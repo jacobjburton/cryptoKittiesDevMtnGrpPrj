@@ -143,7 +143,7 @@ class Profile extends Component {
         : null;
    return (
         <main className="main">
-            <button onClick={(e)=> this.handleClick(615010)}>someone else's kitty</button>
+            <button onClick={(e)=> this.handleClick(793148)}>someone else's kitty</button>
             <div className="profilePage">
                 <div className="profileHeader">
                     <div className="container-lg">

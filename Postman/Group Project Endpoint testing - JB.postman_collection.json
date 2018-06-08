@@ -1,0 +1,117 @@
+{
+	"info": {
+		"_postman_id": "c5060689-8b66-4586-8eff-d52bc032d0df",
+		"name": "Group Project Endpoint testing - JB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET - nickname by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9d9ded00-5e17-4318-b05f-195375168269",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function() ",
+							"{",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Return correct nickname for id = 1\", function()",
+							"{",
+							"    //arrange",
+							"    const nicknameObj = [{",
+							"        \"nickname\": \"reducer_nickname\"",
+							"    }]",
+							"    let response = pm.response.json();",
+							"    //act & assert",
+							"    pm.expect(response).to.eql(nicknameObj); ",
+							"    ",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:3005/nickname/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"nickname",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST - create new account in settings",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6d01bcac-e28a-402a-b6b7-6f9dcf66ef9c",
+						"type": "text/javascript",
+						"exec": [
+							"const response = pm.response.json();",
+							"",
+							"pm.test(\"Status code is 200\", function() {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const settings = response[0];",
+							"",
+							"pm.test(\"Returned email is 'jacob@email.test'\", function () {",
+							"    pm.expect(settings.email).to.eql(\"jacob@email.test\");  ",
+							"});",
+							"",
+							"pm.test(\"Returned nickname is 'jacob test'\", function() {",
+							"    pm.expect(settings.nickname).to.eql(\"jacob test\");",
+							"});",
+							"",
+							"pm.test(\"Returned marketing is 'true'\", function() {",
+							"    pm.expect(settings.marketing).to.eql(true);",
+							"});",
+							"",
+							"pm.test(\"Returned wallet is 'true'\", function() {",
+							"    pm.expect(settings.wallet).to.eql(true);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"jacob@email.test\",\n    \"nickname\": \"jacob test\",\n    \"marketing\": \"true\",\n    \"wallet\": \"true\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3005/email",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"email"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

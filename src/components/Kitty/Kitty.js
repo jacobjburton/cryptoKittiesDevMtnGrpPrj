@@ -35,7 +35,7 @@ class Kitty extends Component {
         }
         //this.state.account && this.props.getUser(this.state.account)
 //        console.log(this.props.myKitties)
-//        console.log(this.props.user)
+       console.log(this.props.user)
         //this.state.account && this.props.getKitty(611557)
         console.log(this.props.kitty.id)
     }
