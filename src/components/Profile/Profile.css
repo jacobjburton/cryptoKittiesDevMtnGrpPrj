@@ -16,7 +16,7 @@
 .profileContainer {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 25px ;
+    grid-gap: 45px ;
 }
 .separator {
     display: inline-block;
@@ -414,7 +414,7 @@ kittiesFilter-list {
     padding: 10px;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
-    grid-gap: 10px;
+    grid-gap: 20px;
 }
 .kittyCard {
     --size-card: 22.5rem;
@@ -633,7 +633,12 @@ a:hover {
 }
 .profile {
     display: inline-block;
+    margin-right: 40px;
 }
 .kittiesGallery {
     display: grid;
+}
+.kittyContainer-lg {
+    margin-bottom: 60px;
+    margin-right: 900px;
 }

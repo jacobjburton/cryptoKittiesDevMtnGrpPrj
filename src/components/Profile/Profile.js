@@ -363,7 +363,7 @@ class Profile extends Component {
                                 </div>
                             </div>
                             <div className="kittiesToolbar-count">
-                                <div className="container-lg">
+                                <div className="kittyContainer-lg">
                                     <span>{myKitties.total ? myKitties.total : null} Kitties</span> 
                                     {/* displays how many kitties a specific user has */}
                                 </div>
