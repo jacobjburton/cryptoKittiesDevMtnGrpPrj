@@ -267,7 +267,7 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, {pending: true});
         
         case GET_FILTERED_CATS + '_FULFILLED':
-            return Object.assign({}, state, {filteredCats: action.payload, pending: false});
+            return Object.assign({}, state, {myKitties: action.payload, pending: false});
 
         case GET_OPTIONS + '_PENDING':
             return Object.assign({}, state, {pending: true});

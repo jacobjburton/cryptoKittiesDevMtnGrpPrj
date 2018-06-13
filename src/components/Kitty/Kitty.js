@@ -478,7 +478,7 @@ let cattributesDisplay = (kitty.id && !kitty.is_fancy && !kitty.is_exclusive) ?
                         </span>
                         Gift                  
                     </div>
-                </div>;
+                </div>
             // auctionInfo = null;                
         }
         if (kitty.auction.seller && (kitty.owner.address === user.address || kitty.auction.seller.address === user.address)) {
@@ -965,7 +965,7 @@ let cattributesDisplay = (kitty.id && !kitty.is_fancy && !kitty.is_exclusive) ?
                                     <div className="KittySection-content">
                                         <div className="KittySection-content">
                                             <div className="KittyDescription">
-                                                <p>{this.props.kitty.bio}</p>
+                                                <p className="ptag">{this.props.kitty.bio}</p>
                                             </div>
                                         </div>
                                     </div>
