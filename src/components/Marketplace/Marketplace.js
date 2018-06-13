@@ -2,29 +2,33 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import './Marketplace.css';
 import {getFilteredCats} from '../../ducks/reducer';
+import './Marketplace.css';
 
 class Marketplace extends Component {
     render() {
+        let {myKitties, kitty, user} = this.props;
         return (
-            <main class="Main">
-            <div class="BrowsePage">
-            <div class="BrowsePage-tabs">
-            <div class="Container Container--lg"><div class="TabNav">
-            <a class="TabNav-tab TabNav-tab--active" aria-current="true" data-tracking="mxpnl-tabNav-kitties" href="/marketplace">
+            <main className="Main">
+            <div className="BrowsePage">
+            <div className="BrowsePage-tabs">
+            <div className="Container Container--lg">
+            <div className="TabNav">
+            <a className="TabNav-tab TabNav-tab--active" aria-current="true" data-tracking="mxpnl-tabNav-kitties" href="/marketplace">
             All Kitties
             </a>
-            <a class="TabNav-tab" aria-current="false" data-tracking="mxpnl-tabNav-gen0" href="/marketplace?include=sale&amp;orderBy=age&amp;orderDirection=asc&amp;search=gen:0">
+            <a className="TabNav-tab" aria-current="false" data-tracking="mxpnl-tabNav-gen0" href="/marketplace?include=sale&amp;orderBy=age&amp;orderDirection=asc&amp;search=gen:0">
             Gen 0
             </a>
             </div>
             </div>
             </div>
-            <div class="KittiesToolbar">
-            <div class="KittiesToolbar-searchBar">
-            <div class="Container Container--lg">
-            <div class="SearchBar"><div class="SearchBar-container">
-            <div class="SearchBar-icon">
-            <svg class="IconV2 IconV2--position-default IconV2--display-inlineBlock" width="16" height="16" viewBox="0 0 16 16">
+            <div className="kittiesToolbar">
+            <div className="kittiesToolbar-searchBar">
+            <div className="container--lg">
+            <div className="searchBar">
+            <div className="searchBar-container">
+            <div className="searchBar-icon">
+            <svg className="iconV2" width="16" height="16" viewBox="0 0 16 16">
             <g fill="none" fill-rule="evenodd" stroke="#C4C3C0" stroke-width="2" vector-effect="non-scaling-stroke">
             <path d="M11.438 11.438c2.379-2.379 2.379-6.275 0-8.654C9.06.405 5.163.405 2.784 2.784c-2.379 2.378-2.379 6.275 0 8.654 2.378 2.379 6.275 2.379 8.654 0z">
             </path>
@@ -33,12 +37,12 @@ class Marketplace extends Component {
             </g>
             </svg>
             </div>
-            <input type="text" class="SearchBar-input" value="" placeholder="Search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></input>
-            <div class="SearchBar-actionGroups">
-            <div class="SearchBar-actionGroup">
-            <button type="button" class="SearchBar-action SearchBar-action--active">
+            <input type="text" className="searchBar-input" value="" placeholder="Search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></input>
+            <div className="searchBar-actionGroups">
+            <div className="searchBar-actionGroup">
+            <button type="button" className="searchBar-action">
             filters 
-            <svg class="IconV2 IconV2--position-default IconV2--display-inlineBlock" width="24" height="24" viewBox="0 0 16 16">
+            <svg className="iconV2" width="24" height="24" viewBox="0 0 16 16">
             <g fill="none" fill-rule="evenodd" stroke="#EF52D1" stroke-width="1.5" transform="matrix(-1 0 0 1 12.48 2.56)" vector-effect="non-scaling-stroke">
             <g stroke-linecap="round">
             <path d="M0 1.28h1.276m3.204 0h4.48M0 5.12h1.186m2.86 0H8.96M0 9.28h1.356m3.124 0h4.48">
@@ -58,93 +62,71 @@ class Marketplace extends Component {
             </div>
             </div>
             </div>
-            <div class="KittiesToolbar-filters">
-            <div class="Container Container--lg">
-            <div class="KittiesFilter-groups">
-            <div class="KittiesFilter-group">
-            <div class="KittiesFilter-group-title">
+            <div className="kittiesToolbar-filters">
+            <div className="container--lg">
+            <div className="kittiesFilter-groups">
+            <div className="kittiesFilter-group">
+            <div className="kittiesFilter-group-title">
             Kitty type
             </div>
-            <div class="KittiesFilter-group-content">
-            <div class="KittiesFilter-list KittiesFilter-list--sm">
-            <div class="KittiesFilter-list-item" role="button">
-            <span>
-            Normal
-            </span>
+            <div className="kittiesFilter-group-content">
+            <div className="kittiesFilter-list">
+            <div className="kittiesFilter-list-item" role="button">
+            <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "normal", "", "", "sale", "sire", "other", "id", "desc")}}><span className="filterButton-span">Normal</span></button>
             </div>
-            <div class="KittiesFilter-list-item" role="button">
-            <span>
-            Fancy
-            </span>
+            <div className="KittiesFilter-list-item" role="button">
+            <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "fancy", "", "", "sale", "sire", "other", "id", "desc")}}><span className="filterButton-span">Fancy</span></button>
             </div>
-            <div class="KittiesFilter-list-item" role="button">
-            <span>
-            Exclusive
-            </span>
+            <div className="KittiesFilter-list-item" role="button">
+            <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "exclusive", "", "", "sale", "sire", "other", "id", "desc")}}><span className="filterButton-span">Exclusive</span></button>
             </div>
             </div>
             </div>
             </div>
-            <div class="KittiesFilter-group">
-            <div class="KittiesFilter-group-title">
+            <div className="kittiesFilter-group">
+            <div className="kittiesFilter-group-title">
             Generation
             </div>
-            <div class="KittiesFilter-group-content">
-            <div class="KittiesFilter-number">
-            <input type="number" step="1" min="0" class="KittiesFilter-number-input Number" value="" placeholder="All"/>
-            <div class="KittiesFilter-number-reset">
-            <span class="KittiesFilter-number-reset-button KittiesFilter-number-reset-button--isDisabled" role="button">
+            <div className="kittiesFilter-group-content">
+            <div className="kittiesFilter-number">
+            <input type="number" step="1" min="0" className="KittiesFilter-number-input Number" value="" placeholder="All"/>
+            <div className="kittiesFilter-number-reset">
+            <span className="kittiesFilter-number-reset-button KittiesFilter-number-reset-button--isDisabled" role="button">
             Reset
             </span>
             </div>
             </div>
             </div>
             </div>
-            <div class="KittiesFilter-group">
-            <div class="KittiesFilter-group-title">
+            <div className="kittiesFilter-group">
+            <div className="kittiesFilter-group-title">
             Cooldown
             </div>
-            <div class="KittiesFilter-group-content">
-            <div class="KittiesFilter-list">
-            <div class="KittiesFilter-list-item" role="button">
-            <span>
-            Fast
-            </span>
+            <div className="kittiesFilter-group-content">
+            <div className="kittiesFilter-list">
+            <div className="kittiesFilter-list-item" role="button">
+            <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "fast", "sale", "sire", "other", "id", "desc")}}>Fast</button>
             </div>
-            <div class="KittiesFilter-list-item" role="button">
-            <span>
-            Swift
-            </span>
+            <div className="kittiesFilter-list-item" role="button">
+            <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "swift", "sale", "sire", "other", "id", "desc")}}>Swift</button>
             </div>
-            <div class="KittiesFilter-list-item" role="button">
-            <span>
-            Snappy
-            </span>
+            <div className="kittiesFilter-list-item" role="button">
+            <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "snappy", "sale", "sire", "other", "id", "desc")}}>Snappy</button>
             </div>
-            <div class="KittiesFilter-list-item" role="button">
-            <span>
-            Brisk
-            </span>
+            <div className="kittiesFilter-list-item" role="button">
+            <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "brisk", "sale", "sire", "other", "id", "desc")}}>Brisk</button>
             </div>
-            <div class="KittiesFilter-list-item" role="button">
-            <span>
-            Plodding
-            </span>
+            <div className="kittiesFilter-list-item" role="button">
+            <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "plodding", "sale", "sire", "other", "id", "desc")}}>Plodding</button>
             </div>
-            <div class="KittiesFilter-list-item" role="button">
-            <span>
-            Slow
-            </span>
+            <div className="kittiesFilter-list-item" role="button">
+            <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "slow", "sale", "sire", "other", "id", "desc")}}>Slow</button>
             </div>
-            <div class="KittiesFilter-list-item" role="button">
-            <span>
-            Sluggish
-            </span>
+            <div class="kittiesFilter-list-item" role="button">
+            <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "sluggish", "sale", "sire", "other", "id", "desc")}}>Sluggish</button>
             </div>
-            <div class="KittiesFilter-list-item" role="button">
-            <span>
-            Catatonic
-            </span>
+            <div class="kittiesFilter-list-item" role="button">
+            <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "catatonic", "sale", "sire", "other", "id", "desc")}}>Catatonic</button>
             </div>
             </div>
             </div>
@@ -152,52 +134,52 @@ class Marketplace extends Component {
             </div>
             </div>
             </div>
-            <div class="KittiesToolbar-includeAndSort">
-            <div class="Container Container--lg">
-            <div class="KittiesToolbar-includeAndSort-container">
-            <div class="KittiesToolbar-include">
-            <span class="KittiesToolbar-label">
+            <div class="kittiesToolbar-includeAndSort">
+            <div class="sortContainer-lg">
+            <div class="kittiesToolbar-includeAndSort-container">
+            <div class="kittiesToolbar-include">
+            <span class="kittiesToolbar-label">
             include
             </span>
-            <div class="KittiesToolbar-include-options">
-            <div class="SelectionGroup SelectionGroup--display-inlineFlex">
-            <div class="SelectionGroup-item">
-            <div role="checkbox" class="Checkbox Checkbox--checked Checkbox--disabled Checkbox--lowercase" aria-checked="true">
-            <input type="checkbox" id="For Sale" class="Checkbox-input" disabled="" value="on"/>
-            <label class="Checkbox-label" for="For Sale">
-            <span class="Checkbox-label-icon">
+            <div class="kittiesToolbar-include-options">
+            <div class="selectionGroup">
+            <div class="selectionGroup-item">
+            <div role="checkbox" class="checkbox" aria-checked="true">
+            <input type="checkbox" id="For Sale" class="checkbox-input" disabled="" value="on"/>
+            <label class="checkbox-label" for="For Sale">
+            <span class="checkbox-label-icon">
             <svg class="IconV2 IconV2--position-default IconV2--display-inlineBlock" width="16" height="16" viewBox="0 0 16 16">
             <path fill="none" fill-rule="evenodd" stroke="#EF52D1" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M5.333 7.023L8.06 10l5.843-7.737a.5.5 0 0 1 .9.301v10.272a2 2 0 0 1-2 2H3.11a2 2 0 0 1-2-2V3.072a2 2 0 0 1 2-2H9.73" vector-effect="non-scaling-stroke">
             </path>
             </svg>
             </span>
-            <span class="Checkbox-label-text Checkbox-label-text--right">
+            <span class="checkbox-label-text-left">
             For Sale
             </span>
             </label>
             </div>
             </div>
-            <div class="SelectionGroup-item">
-            <div role="checkbox" class="Checkbox Checkbox--lowercase" aria-checked="false">
-            <input type="checkbox" id="Siring" class="Checkbox-input" value="on"/>
-            <label class="Checkbox-label" for="Siring">
-            <span class="Checkbox-label-icon">
+            <div class="selectionGroup-item">
+            <div role="checkbox" class="checkbox" aria-checked="false">
+            <input type="checkbox" id="Siring" class="checkbox-input" value="on"/>
+            <label class="checkbox-label" for="Siring">
+            <span class="checkbox-label-icon">
             <svg class="IconV2 IconV2--position-default IconV2--display-inlineBlock" width="16" height="16" viewBox="0 0 16 16">
             <rect width="14.5" height="14.5" x=".75" y=".75" fill="none" fill-rule="evenodd" stroke="#C4C3C0" stroke-width="1.5" rx="3" vector-effect="non-scaling-stroke">
             </rect>
             </svg>
             </span>
-            <span class="Checkbox-label-text Checkbox-label-text--right">
+            <span class="checkbox-label-text-right">
             Siring
             </span>
             </label>
             </div>
             </div>
-            <div class="SelectionGroup-item">
-            <div role="checkbox" class="Checkbox Checkbox--lowercase" aria-checked="false">
+            <div class="selectionGroup-item">
+            <div role="checkbox" class="checkbox" aria-checked="false">
             <input type="checkbox" id="Other" class="Checkbox-input" value="on"/>
-            <label class="Checkbox-label" for="Other">
-            <span class="Checkbox-label-icon">
+            <label class="checkbox-label" for="Other">
+            <span class="checkbox-label-icon">
             <svg class="IconV2 IconV2--position-default IconV2--display-inlineBlock" width="16" height="16" viewBox="0 0 16 16">
             <rect width="14.5" height="14.5" x=".75" y=".75" fill="none" fill-rule="evenodd" stroke="#C4C3C0" stroke-width="1.5" rx="3" vector-effect="non-scaling-stroke">
             </rect>

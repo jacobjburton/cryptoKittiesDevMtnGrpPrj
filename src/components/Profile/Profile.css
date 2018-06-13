@@ -16,7 +16,8 @@
 .profileContainer {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 45px ;
+    grid-gap: 20px;
+    grid-row-gap: 120px;
 }
 .separator {
     display: inline-block;
@@ -104,17 +105,28 @@
 .container-lg {
     margin-right: 80px;
     margin-left: 80px;
+    /* margin-top: 80px; */
     padding-left: 20px;
     padding-right: 20px;
-    height: 120px;
+    max-height: 120px;
+    line-height: 1.5em;
+}
+.sortContainer-lg {
+    margin-right: 80px;
+    margin-left: 80px;
+    /* margin-top: 80px; */
+    padding-left: 20px;
+    padding-right: 20px;
+    max-height: 120px;
+    line-height: 1.5em;
 }
 .profileHeader-container {
     display: flex;
     padding: 2.4rem 0;
 }
 .TabNav {
-    /* display: flex; */
-    align-items: center;
+    display: flex;
+    align-items: left;
 }
 .TabNav-tab {
     position: relative;
@@ -245,8 +257,6 @@
 .kittiesFilter-group:last-of-type {
     margin-right: 0;
 }
-.kittiesFilter-group-content3 {
-}
 .kittiesFilter-group-title1 {
     /* position: absolute; */
     margin-bottom: .5rem;
@@ -285,16 +295,25 @@
     padding-left: 30px;
 }
 .kittiesFilter-number-input {
-    width: 90px;
+    width: 85px;
     height: 55px;
     border-radius: 5px;
     border-color: #9c9c9b;
-    opacity: 0.5;
+    opacity: 1;
+    border:2px solid #e7e6e4;
+    position: relative;
+    background-image: url('../../images/images/form-value-bg.svg');
+    background-repeat: no-repeat;
+    /* position: absolute; */
+    background-position: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
 }
 .kittiesFilter-number-input::placeholder {
     font-size: 1.8rem;
     color: black;
-    padding: 30px;
+    padding-left: 15px;
 }
 .kittiesFilter-number-reset-button {
     display: block;
@@ -315,6 +334,7 @@ kittiesFilter-list {
     /* margin-bottom: .96rem; */
     /* padding-bottom: 10px;
     padding-top: 10px; */
+    vertical-align: bottom;
     margin-right: .8rem;
     padding: .64rem .96rem!important;
     background-color: #f3f1ee;
@@ -403,6 +423,7 @@ kittiesFilter-list {
     color: #9c9c9b;
     font-weight: 500;
     font-size: 1.6rem;
+    
 }
 .kittiesToolbar {
     max-height: 279.59px;
@@ -414,6 +435,7 @@ kittiesFilter-list {
 }
 .kittiesGrid {
     position: relative;
+    /* margin-left: 5px; */
     /* display: grid;
     grid-template-columns: repeat(4, 247px) */
     /* grid-gap: var(--size-gap); */
@@ -426,7 +448,8 @@ kittiesFilter-list {
     padding: 10px;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
-    grid-gap: 20px 20px;
+    grid-gap: 20px;
+    grid-row-gap: 50px!important;
 }
 .kittyCard {
     --size-card: 22.5rem;
@@ -469,21 +492,18 @@ kittiesFilter-list {
     z-index: 1
 }
 .kittyCard-background {
-    width: 217.47px;
-    height: 217.47px;
+    width: 250px;
+    height: 250px;
 }
 .kittyCard-wrapper {
  /* --box-shadow: inset 0 0 0 0 #fff; */
- width: 217.47px;
- height: 217.47px;
+ width: 250px;
+ height: 250px;
  /* padding: 10px; */
 }
-.kittyCard-wrapper:hover {
-    /* --box-shadow: inset 0 0 0 0.4rem #fff; */
-   }
 .kittyCard-image {
-    width: 217.47px !important;
-    height: 217.47px !important;
+    min-width: 250px !important;
+    min-height: 250px !important;
     /* transform: translate(var(--translate-image)); */
     z-index: 2;
 }
@@ -493,7 +513,9 @@ kittiesFilter-list {
 }
 .kittyCard-name {
     overflow: hidden;
-    margin-top: .4rem;
+    margin-top: .7rem;
+    margin-bottom: 0;
+    padding-bottom: 0;
     padding: 0 .4rem;
     color: #82817d;
     font-size: 1.6rem;
@@ -502,7 +524,6 @@ kittiesFilter-list {
     text-align: left;
 }
 .kittyCard-details {
-    margin-top: .4rem;
     padding: 0 .4rem;
     font-size: 1.6rem;
     font-weight: 500;
@@ -652,8 +673,10 @@ a:hover {
 }
 .kittiesGallery {
     display: grid;
+    margin-left: 30px;
 }
 .kittyContainer-lg {
-    margin-bottom: 60px;
-    margin-right: 900px;
+    margin-bottom: 40px;
+    margin-right: 1010px;
+
 }

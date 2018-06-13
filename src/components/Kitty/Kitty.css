@@ -12,6 +12,7 @@
     width: 100%;
     cursor: default;
     overflow: hidden;
+    height: 450px;
 }
 
 .Container {
@@ -76,9 +77,10 @@ img {
 
 .KittyBanner-image {
     position: relative;
-    width: var(--size-image);
-    height: var(--size-image);
+    width: 450px;
+    height: 450px;;
     z-index: 2;
+    margin-top: 110px;
 }
 
 .KittyBanner--bg-strawberry {
@@ -330,12 +332,22 @@ img {
     font-weight: 500;
     text-transform: lowercase;
 }
-
+.KittyHeader-ownerActions {
+    display: flex;
+    flex-direction: row;
+}
+.KittyHeader-ownerActions-action {
+    border: 1px solid #9c9c9b;
+    border-radius: 5px;
+    margin-right: 10px;
+}
 .Cattribute--size-small .Cattribute-type {
     color: #9c9c9b;
     font-size: 1.4rem;
 }
-
+.ptag {
+    text-align: left;
+}
 .KittyHeader-main {
     /* flex: 1; */
     min-width: 0;
@@ -344,6 +356,7 @@ img {
 
 .KittyHeader-name {
     overflow: hidden;
+    display: flex;
 }
 
 .KittyHeader-name-text {
