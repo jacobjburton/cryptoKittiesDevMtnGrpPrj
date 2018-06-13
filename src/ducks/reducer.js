@@ -14,7 +14,8 @@ const initialState = {
         email: '',
         nickname: '',
         marketing: '',
-        wallet: ''}
+        wallet: ''},
+    pending: false
 }
 
 const GET_USER = 'GET_USER';
@@ -231,28 +232,48 @@ export function deleteWallet(id) {
 export default function reducer(state = initialState, action) {
     switch (action.type) {
 
+        case GET_USER + '_PENDING':
+            return Object.assign({}, state, {pending: true});
+
         case GET_USER + '_FULFILLED':
             return Object.assign({}, state, {
                 user: action.payload.user, 
                 cattributes: action.payload.cattributes,
-                myKitties: action.payload.myKitties});
+                myKitties: action.payload.myKitties,
+                pending: false});
+        
+        case GET_USER_ACTIVITY + '_PENDING':
+            return Object.assign({}, state, {pending: true});
         
         case GET_USER_ACTIVITY + '_FULFILLED':
-            return Object.assign({}, state, {userActivity: action.payload});
+            return Object.assign({}, state, {userActivity: action.payload, pending: false});
 
+        case GET_KITTY + '_PENDING':
+            return Object.assign({}, state, {pending: true});
+        
         case GET_KITTY + '_FULFILLED':
-            return Object.assign({}, state, {kitty: action.payload});
+            return Object.assign({}, state, {kitty: action.payload, pending: false});
 
+        case GET_SPECIAL_CATS + '_PENDING':
+            return Object.assign({}, state, {pending: true});
+        
         case GET_SPECIAL_CATS + '_FULFILLED':
             return Object.assign({}, state, {
                 mySpecialCats: action.payload.mySpecialCats,
-                allSpecialCats: action.payload.allSpecialCats});
+                allSpecialCats: action.payload.allSpecialCats, 
+                pending: false});
 
+        case GET_FILTERED_CATS + '_PENDING':
+            return Object.assign({}, state, {pending: true});
+        
         case GET_FILTERED_CATS + '_FULFILLED':
-            return Object.assign({}, state, {filteredCats: action.payload});
+            return Object.assign({}, state, {filteredCats: action.payload, pending: false});
 
+        case GET_OPTIONS + '_PENDING':
+            return Object.assign({}, state, {pending: true});
+        
         case GET_OPTIONS + '_FULFILLED':
-            return Object.assign({}, state, {options: action.payload});
+            return Object.assign({}, state, {options: action.payload, pending: false});
 // CRUD
         case CREATE_EMAIL + '_FULFILLED':
         let email = Object.assign({}, state.settings, {email : action.payload})
