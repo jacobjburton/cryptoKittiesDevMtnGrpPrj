@@ -21,7 +21,10 @@
     box-shadow: inset 0 0 0 .4rem #d850b1, 0 .4rem 0 0 #e7e6e4;
     max-width: 167.67px;
     height: 70px;
-    font-size: 50px;
+    font-size: 2rem!important;
+}
+Link.button1 {
+    font-size: 2.2rem;
 }
 .button1:hover {
     transform: translateY(-2px)

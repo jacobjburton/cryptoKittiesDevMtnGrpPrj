@@ -81,13 +81,15 @@ class Profile extends Component {
                                                             {/* display's the kitty's image */}
                                 <div className="kittyCard-status"></div>
                                 </div>
-                                <div className="kittyCard-name">{myKitties.kitties[i].name ? myKitties.kitties[i].name : 'ID: #' + myKitties.kitties[i].id}</div>
+                                <div className="kittyCard-name">{myKitties.kitties[i].name ? myKitties.kitties[i].name : 'Kitty #' + myKitties.kitties[i].id}</div>
                                 {/* displays the kitty's name if the user specified a name, otherwise it will display the kitty's id # */}
                                 <div className="kittyCard-details">
-                                        Kitty #{myKitties.kitties ? myKitties.kitties[i].id: null}
+                                        <span>Kitty #{myKitties.kitties ? myKitties.kitties[i].id: null}</span>
+                                        <span className="separator2"><svg xmlns="http://www.w3.org/2000/svg" width="3" height="3"><circle cx="179.5" cy="421.5" r="1.5" transform="translate(-178 -420)" fill="#DCDBD9" fill-rule="evenodd"/></svg></span>
                                         {/* displays the kitty's id # */}
                                     <span className="kittyCard-details-item">
                                         <span>Gen {myKitties.kitties ? myKitties.kitties[i].generation : null}</span>
+                                        <span className="separator2"><svg xmlns="http://www.w3.org/2000/svg" width="3" height="3"><circle cx="179.5" cy="421.5" r="1.5" transform="translate(-178 -420)" fill="#DCDBD9" fill-rule="evenodd"/></svg></span>
                                         {/* displays the generation number for the kitty */}
                                     </span>
                                     <span className="kittyCard-details-item">{myKitties.kitties ? this.state.cooldown_index[myKitties.kitties[i].status.cooldown_index]: null}</span>
@@ -228,9 +230,9 @@ class Profile extends Component {
                                             <div className="kittiesFilter-group-content">
                                                 <div className="kittiesFilter-list">
                                                     <div className="buttons">
-                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "normal", "", "", "sale", "sire", "other", "id", "desc")}}>Normal</button>
-                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "fancy", "", "", "sale", "sire", "other", "id", "desc")}}>Fancy</button>
-                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "exclusive", "", "", "sale", "sire", "other", "id", "desc")}}>Exclusive</button>
+                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "normal", "", "", "sale", "sire", "other", "id", "desc")}}><span className="filterButton-span">Normal</span></button>
+                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "fancy", "", "", "sale", "sire", "other", "id", "desc")}}><span className="filterButton-span">Fancy</span></button>
+                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "exclusive", "", "", "sale", "sire", "other", "id", "desc")}}><span className="filterButton-span">Exclusive</span></button>
                                                     </div>
                                                 </div>
                                             </div>
