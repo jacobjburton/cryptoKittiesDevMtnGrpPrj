@@ -42,7 +42,7 @@ import etherdiamond from '../../images/images/ether-diamond.gif';
          </div>
          :
          <div>
-             <Link to="Sign-in"><button className="button1">Start Meow</button></Link>
+             <Link to="/Profile"><button className="button1">Start Meow</button></Link>
          </div>
     return (
         <div>
