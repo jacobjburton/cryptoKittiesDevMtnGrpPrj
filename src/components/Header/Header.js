@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import carrot from '../../images/icons/carrot.svg';
 import cross from '../../images/icons/cross.svg';
 import './Header.css';
-import dots from '../../images/icons/group.svg';
-import iconCancel from '../../images/icons/icon-cancel.svg';
+// import dots from '../../images/icons/group.svg';
+// import iconCancel from '../../images/icons/icon-cancel.svg';
 //import { connect } from 'react-redux';
  
 class Header extends Component
@@ -41,10 +41,7 @@ class Header extends Component
 
     showMenu = () =>
     {
-        this.state.showMenu ?
-            this.setState({ showMenu: false })
-            :
-            this.setState({ showMenu: true });
+        this.setState({ showMenu: !this.state.showMenu })
     }
 
     render()
@@ -61,24 +58,36 @@ class Header extends Component
                 <a className="Header-navigation-item" aria-current="false" href='/marketplace'>Marketplace</a>
             </div>;
 
-        let menuShow = this.state.showMenu ?
-            <div>
-                <Link to='/about'>About</Link>
-                <Link to='/newsletter'>Newsletter</Link>
-                <Link to='/careers'>Careers</Link>
+        let menuDisplay = this.state.showMenu ?
+            <div className="Dropdown Dropdown--isOpen" role="button" onClick={this.showMenu}>
+                <div className="Dropdown-toggle Dropdown-toggle--close">
+                    <div className="Header-navigation-item">
+                        More
+                        <img src={cross} alt="less" className="Header-more-toggleIcon"/>
+                    </div>
+                </div>
+                <div className="Dropdown-content u-slide--up">
+                    <a href="/about" className="Header-navigation-item Header-navigation-dropdown-item">About</a>
+                    <a href="/newsletter" className="Header-navigation-item Header-navigation-dropdown-item">Newsletter</a>
+                    <a href="/careers" className="Header-navigation-item Header-navigation-dropdown-item">Careers</a>
+                </div>
             </div>
-            : null;
-        let menuIcon = this.state.showMenu ?
-            <img src={cross} alt="cross"/>  
             :
-            <img src={carrot} alt="carrot"/>
+            <div className="Dropdown Dropdown--isOpen" role="button" onClick={this.showMenu}>
+                <div className="Dropdown-toggle Dropdown-toggle--open">
+                    <div className="Header-navigation-item">
+                        More
+                        <img src={carrot} alt="more" className="Header-more-toggleIcon"/>
+                    </div>
+                </div>
+            </div>;
 
-        let tooltipShow = this.state.showToolTip ?
-            <div className="TooltipNew-content TooltipNew-content--bottom">
-                <p>Looks like the network is functioning at optimal cat-pacity!</p>
-            </div>
-            :
-            null;
+        // let tooltipShow = this.state.showToolTip ?
+        //     <div className="TooltipNew-content TooltipNew-content--bottom">
+        //         <p>Looks like the network is functioning at optimal cat-pacity!</p>
+        //     </div>
+        //     :
+        //     null;
             
         
         return (
@@ -100,10 +109,10 @@ class Header extends Component
                                     <span className="TooltipNew-wrapper">
                                         <span className="NetworkStatus-message">
                                             <span className="NetworkStatus-badge"></span>
-                                            <span className="NetwrokStatus-status">Network Good</span>
+                                            <span className="NetworkStatus-status">Network Good</span>
                                         </span>
                                     </span>
-                                    {tooltipShow}
+                                    {/* {tooltipShow} */}
                                     {/* <div className="TooltipNew-content TooltipNew-content--bottom">
                                         <p>Looks like the network is functioning at optimal cat-pacity!</p>
                                     </div> */}
@@ -124,31 +133,9 @@ class Header extends Component
                             >
                                 Blog
                             </a>
-                            <div className="Dropdown Dropdown--isOpen" role="button">
-                                <div className="Dropdown-toggle Dropdown-toggle--open">
-                                    <div className="Header-navigation-item">
-                                        More
-                                        <img src={carrot} alt="more" className="Header-more-toggleIcon"/>
-                                    </div>
-                                </div>
-                                <div className="Dropdown-toggle Dropdown-toggle--close">
-                                    <div className="Header-navigation-item">
-                                        More
-                                        <img src={cross} alt="less" className="Header-more-toggleIcon"/>
-                                    </div>
-                                </div>
-                                <div className="Dropdown-content u-slide--up">
-                                    <a href="/about" className="Header-navigation-item Header-navigation-dropdown-item">About</a>
-                                    <a href="/newsletter" className="Header-navigation-item Header-navigation-dropdown-item">Newsletter</a>
-                                    <a href="/careers" className="Header-navigation-item Header-navigation-dropdown-item">Careers</a>
-                                </div>
-                                {/* <button onClick={this.showMenu} >More
-                                    {menuIcon}
-                                    {menuShow}
-                                </button> */}
-                            </div>
+                            {menuDisplay}
                         </div>
-                        <div className="Header-secondaryNav-narrow">
+                        {/* <div className="Header-secondaryNav-narrow">
                              <div className="Dropdown" role="button">
                                 <div className="Dropdown-toggle Dropdown-toggle--open">
                                     <img src={dots} alt="dotmenu"/>
@@ -157,7 +144,7 @@ class Header extends Component
                                     <img src={iconCancel} alt="cancelMenu"/>
                                 </div>
                              </div>   
-                        </div>
+                        </div> */}
                     </div>
                 </div>                
             </div>

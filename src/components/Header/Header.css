@@ -52,6 +52,7 @@
     border-radius: 50%;
     box-shadow: inset 0, 0, 0, 0.2rem #43edac;
 } */
+
 a {
     color: #2a2825;
     text-decoration: none;
@@ -81,7 +82,7 @@ h1 {
     width: 100%;
     max-width: 100%;
     background-color: white;
-    position:relative;
+    position: relative;
 }
 .join {
     background-color: #f9f8f6;
@@ -101,7 +102,7 @@ h1 {
         align-items: center;
         margin: 0 auto;
         z-index: 10;
-        justify-content: space-between
+        justify-content: space-between;
 }
 
 .Header-group-home {
@@ -148,7 +149,7 @@ h1 {
 .Header-networkStatus {
     margin-left: 2rem;
     display: none;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .TooltipNew {
@@ -158,6 +159,10 @@ h1 {
 
 .TooltipNew-wrapper {
     cursor: pointer;
+}
+
+.NetworkStatus .NetworkStatus--1 {
+    align-items: center;
 }
 
 .NetworkStatus-message {
@@ -171,21 +176,21 @@ h1 {
     box-shadow: inset 0 0 0 0.2rem #43edac; 
 }
 
+.NetworkStatus-badge {
+    display: inline-block;
+    width: 1.3rem;
+    height: 1.3rem;
+    background-color: #eee;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
 .NetworkStatus-status {
     display: inline-flex;
     margin-left: 0.8rem;
     color: #2a2825;
     font-size: 1.4rem;
     font-weight: 500;
-    vertical-align: middle;
-}
-
-.NetworkStatus-badge {
-    display: inline-block;
-    width: 1.2rem;
-    height: 1.2rem;
-    background-color: #eee;
-    border-radius: 50%;
     vertical-align: middle;
 }
 
@@ -246,6 +251,12 @@ p {
 .Header-group:nth-child(2) {
     justify-content: flex-end;
     flex: 2;
+}
+
+.Header-group:nth-child(3) {
+    margin-left: 0.5em;
+    justify-content: flex-end;
+    flex: unset;
 }
 
 .Header-navigation-item {
@@ -363,6 +374,10 @@ Dropdown-content::after {
         justify-content: center;
         flex: 1;
     }
+    .Header-group:nth-child(3) {
+        flex: 1;
+        margin-left: 0;
+    }
     .Header-navigation-item {
         font-size: 2rem;
     }
@@ -399,6 +414,9 @@ Dropdown-content::after {
     }
     .Header-group {
         flex: 1;
+    }
+    .Header-group:nth-child(3) {
+        margin-left: 1 em;
     }
     .Header-home {
         margin: 0;
