@@ -1,4 +1,6 @@
-
+.Main {
+    min-height: calc(100vh -32rem);
+}
 
 .KittyBanner {
     --size-card: 32rem;
@@ -28,6 +30,10 @@
     padding: 0 1.5rem;
     width: 100%;
     max-width: 96rem;
+}
+
+.Container--smGrow {
+    max-width: 72rem;
 }
 
 .KittyBanner-container {
@@ -75,12 +81,135 @@ img {
     z-index: 2;
 }
 
+.KittyBanner--bg-strawberry {
+    background-color: #ffe0e5;
+}
+
+.KittyBanner--bg-sizzurp {
+    background-color: #dfdffa;
+}
+
+.KittyBanner--bg-mintgreen {
+    background-color: #cdf5d4;
+}
+
+.KittyBanner--bg-topaz {
+    background-color: #d1eeeb;
+}
+
+.KittyBanner--bg-gold {
+    background-color: #faf4cf;
+}
+
+.KittyBanner--bg-chestnut {
+    background-color: #efe1da;
+}
+
+.KittyBanner--bg-sapphire {
+    background-color: #d3e8ff;
+}
+
+.KittyBanner--bg-thundergrey {
+    background-color: #eee9e8;
+}
+
+.KittyBanner--bg-limegreen {
+    background-color: #d9f5cb;
+}
+
+.KittyBanner--bg-coralsunrise {
+    background-color: #fde9e4;
+}
+
+.KittyBanner--bg-cyan {
+    background-color: #c5eefa;
+}
+
+.KittyBanner--bg-bubblegum {
+    background-color: #fadff4;
+}
+
+.KittyBanner--bg-forgetmenot {
+    background-color: #dcebfc;
+}
+
+.KittyBanner--bg-parakeet {
+    background-color: #e5f3e2;
+}
+
+.KittyBanner--bg-pumpkin {
+    background-color: #fae1ca;
+}
+
+.KittyBanner--bg-doridnudibranch {
+    background-color: #faeefa;
+}
+
+.KittyBanner--bg-twilightsparkle {
+    background-color: #ede2f5;
+}
+
+.KittyBanner--bg-eclipse {
+    background-color: #e5e7ef;
+}
+
+.KittyBanner--bg-babypuke {
+    background-color: #eff1e0;
+}
+
+.KittyBanner--bg-dahlia {
+    background-color: #e6eafd;
+}
+
 .KittyBanner-status {
     position: absolute;
     top: 0;
     left: 0;
     padding: 2.4rem 0;
     z-index: 3;
+}
+
+.KittyStatus--list {
+    display: block;
+    background-color: transparent;
+    padding: 0;
+    height: auto;
+    width: 0;
+    white-space: normal;
+}
+
+.KittyStatus {
+    position: relative;
+    display: inline-block;
+    padding: 0.4rem 0.7rem 0;
+    height: 2.6rem;
+    border-radius: 3.2rem;
+    color: #0b0b0b;
+    font-size: 1.2rem;
+    font-weight: 500;
+    background-color: hsla(0, 0%, 100%, 0.4);
+    background-blend-mode: soft-light;
+    white-space: nowrap;
+}
+
+.KittyStatus--list .KittyStatus-item {
+    display: inline-block;
+    position: relative;
+    padding: 0.5rem 1rem 0;
+    height: 3rem;
+    margin-bottom: 0.6rem;
+    background-color: hsla(0, 0%, 100%, 0.4);
+    background-blend-mode: soft-light;
+    white-space: nowrap;
+}
+
+.KittyStatus-item:first-child {
+    padding: 0;
+}
+
+.KittyStatus-item {
+    display: inline-block;
+    padding-left: 0.8rem;
 }
 
 .KittyBanner-share {
@@ -98,20 +227,123 @@ img {
     margin: 0 0 3.2rem;
 }
 
+.KittySection-header {
+    display: flex;
+    align-items: center;
+    margin: 0 0 1.5rem;
+}
+
+.KittySection-header-title {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+.KittySection-header-tooltip {
+    margin-left: 0.8rem;
+}
+
+.TooltipNew {
+    position: relative;
+    display: inline-block;
+}
+
+.TooltipNew-wrapper {
+    cursor: pointer;
+}
+
+.KittyCattributesTooltip-icon {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.KittyCattributes {
+    display: grid;
+    grid-gap: 1.2rem;
+    grid-template-columns: repeat(2, auto);
+    padding-top: 0.8rem;
+}
+
+.KittyCattribute {
+    min-width: 0;
+}
+
+.Cattribute {
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.Cattribute--size-small .Cattribute--icon-diamond .Cattribute-icon {
+    background-color: #fdf0fa;
+    box-shadow: inset 0 0 0 0.2rem #f9a7ea  
+        inset 0 0 0 0.4rem #fff;
+}
+
+.Cattribute--size-small .Cattribute-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 4.2rem;
+    width: 4.2rem;
+    height: 4.2rem;
+    border-radius: 2.5rem;
+}
+
+.Cattribute--size-small .Cattribute-icon-img--diamond {
+    background-image: url(../../images/images/cattributes/diamond.svg);
+}
+
+.Cattribute-icon {
+    position: relative;
+    top: -.1em;
+    overflow: hidden;
+}
+
+.Cattribute-content {
+    position: relative;
+    top: -0.1em;
+    overflow: hidden;
+}
+
+.Cattribute--size-small .Cattribute-title {
+    font-size: 1.6rem;
+}
+
+.Cattribute--size-small .Cattribute-title, .Cattribute--size-small .Cattribute-type {
+    line-height: 1.2;
+}
+
+.Cattribute-title {
+    overflow: hidden;
+    color: #2a2825;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.Cattribute-title, .Cattribute-type {
+    display: block;
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    text-transform: lowercase;
+}
+
+.Cattribute--size-small .Cattribute-type {
+    color: #9c9c9b;
+    font-size: 1.4rem;
+}
+
 .KittyHeader-main {
-    flex: 1;
+    /* flex: 1; */
     min-width: 0;
     margin-bottom: 2.4rem;
 }
 
 .KittyHeader-name {
     overflow: hidden;
-}
-
-.KittyHeader-name-text--editable {
-    position: relative;
-    cursor: pointer;
-    transition: color .2s;
 }
 
 .KittyHeader-name-text {
@@ -124,6 +356,12 @@ img {
     line-height: 1;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.KittyHeader-name-text--editable {
+    position: relative;
+    cursor: pointer;
+    transition: color .2s;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -188,6 +426,65 @@ h1 {
     pointer-events: none;
 }
 
+.KittyHeader-owner {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2.4rem;
+    color: #9c9c9b;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.KittyHeader-owner-image {
+    position: relative;
+    margin-right: 1.5rem;
+    width: 4.2rem;
+    height: 4.2rem;
+    border-radius: 100%;
+}
+
+.KittyHeader-owner-image::before {
+    content: "";
+    background-image: url(../../images/images/circleDotsActive.svg);
+}
+
+.KittyHeader-owner-image img {
+    width: 100%;
+}
+
+img {
+    border-style: none;
+}
+
+.KittyHeader-owner-image::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -0.6rem;
+    right: -0.6rem;
+    bottom: -0.6rem;
+    left: -0.6rem;
+    margin: auto;
+    background-image: url(../../images/images/circleDots.svg);
+    background-position: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: -2;
+}
+
+.KittyHeader-owner-details {
+    font-size: 1.8rem;
+    line-height: 1.2;
+}
+
+.KittyHeader-owner-details>* {
+    display: block;
+}
+
+.KittyHeader-owner-name {
+    color: #2a2825;
+}
+
 .KittyBanner-bg--gold {
     background-color: #faf4cf;
 
@@ -196,6 +493,21 @@ h1 {
 .KittyBanner-container--shadow-gold {
     --kitty-shadow-color: #e3daa1;
 }
+
+.KittyHeader-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 2.4rem 0 0;
+    flex: 0 0 100%;
+}
+
+.KittyHeader-publicActions {
+    position: relative;
+    padding: 0.8rem 0 0.4rem;
+}
+
 
 @media (min-width: 960px) {
     .KittyBanner {
@@ -206,7 +518,10 @@ h1 {
         --translate-shadow-x: -0.4rem;
         --translate-shadow-y: 9.7rem;
     }
-
+    .KittyStatus--list .KittyStatus-item {
+        padding: 0.5rem 1.3rem 0;
+        height: 3.4rem;
+    }
 }
 
 @media (min-width: 760px) {
@@ -235,10 +550,51 @@ h1 {
     .KittyHeader-name-text {
         font-size: 4.2rem;
     }
+    .KittyHeader-owner {
+        flex-direction: row-reverse;
+        margin-bottom: 0;
+    }
+    .KittyHeader-owner-image {
+        width: 4.8rem;
+        height: 4.8rem;
+        margin-left: 1.5rem;
+        margin-right: 0;
+    }
+    .KittyHeader-owner-details {
+        font-size: 2rem;
+        text-align: right;
+    }
+    .KittyHeader-actions {
+        flex-direction: row;
+    }
+    .KittyHeader-publicActions {
+        margin-bottom: 0;
+    }
+    .KittyCattributes {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .Cattribute--size-small .Cattribute-icon {
+        margin-right: 1.2rem;
+        flex: 0 0 4.8rem;
+        width: 4.8rem;
+        height: 4.8rem;
+    }
+    .Cattribute--size-small .Cattribute-title {
+        font-size: 1.8rem;
+    }
 }
 
 @media (min-wdith: 480px) {
     .Container {
         padding: 0 2.4rem;
+    }
+    .KittyStatus {
+        font-size: 1.4rem;
+        padding: 0.5rem 1rem 0;
+        height: 3rem;
+    }
+    .KittyCattributes {
+        grid-gap: 2.2rem;
+        grid-template-columns: repeat(3, auto);
     }
 }

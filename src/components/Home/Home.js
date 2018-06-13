@@ -37,9 +37,9 @@ import etherdiamond from '../../images/images/ether-diamond.gif';
     }
      render(){
          let startMeow = this.state.account ?
-         <div>
-             <Link to="/Profile"><button className="button1">Start Meow</button></Link>
-         </div>
+         
+             <a href="/Profile"><button className="button1">Start Meow</button></a>
+         
          :
          <div>
              <Link to="/Profile"><button className="button1">Start Meow</button></Link>

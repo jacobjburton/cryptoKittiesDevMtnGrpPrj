@@ -50,7 +50,7 @@ class Header extends Component
             <div className="Header-group">
                 <a className="Header-navigation-item" aria-current="false" href='/profile'>My Kitties</a>
                 <a className="Header-navigation-item" aria-current="false" href='/marketplace'>Marketplace</a>
-                <a className="Header-navigation-item" aria-current="false" href='https://etherscan.io/tx/0xa02b9b74fff73fe44d46833e0f0f630d81e2e0ebf0578105fbf1c3d87f5ca136' target="_blank">Activity</a>
+                <a className="Header-navigation-item" aria-current="false" href='https://etherscan.io/tx/0xa02b9b74fff73fe44d46833e0f0f630d81e2e0ebf0578105fbf1c3d87f5ca136' target="_blank" rel="noopener noreferrer">Activity</a>
             </div>
             :
             <div className="Header-group">

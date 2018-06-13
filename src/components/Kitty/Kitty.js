@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 import './Kitty.css';
 import { getUser, getKitty } from '../../ducks/reducer.js';
 import _ from 'lodash';
-import diamond from '../../images/images/cattributes/diamond.svg';
+// import diamond from '../../images/images/cattributes/diamond.svg';
 import gold from '../../images/images/cattributes/gold.svg';
 import silver from '../../images/images/cattributes/silver.svg';
 import bronze from '../../images/images/cattributes/bronze.svg';
+// import loading from '../../images/images/loader.gif';
 
 
 class Kitty extends Component {
@@ -355,54 +356,99 @@ class Kitty extends Component {
                 if (enhanced_cattributes[i].position === -1)
                 {
                     gemDisplay = 
-                        <a href={`/kitty/${enhanced_cattributes[i].kittyId}`}></a>
+                        <div className="Cattribute Cattribute--size-small Cattribute--icon-none">
+                            <a href={`/marketplace?include=sale,sire,other&search=${enhanced_cattributes[i].description}`} className="Cattribute-icon" ></a>
+                            <a href={`/kitty/${enhanced_cattributes[i].description}`} className="Cattribute-content">
+                                <h3 className="Cattribute-title">{kitty.id && enhanced_cattributes[i].description}</h3>
+                                <span className="Cattribute-type">{kitty.id && enhanced_cattributes[i].type}</span>
+                            </a>
+                        </div>;
                 }
                 if (enhanced_cattributes[i].position === 1)
                 {
                     gemDisplay = 
-                        <a className="Cattribute-icon" href={`/kitty/${enhanced_cattributes[i].kittyId}`}>
-                            <i className="Cattribute-icon-img" style={{backgroundImage: diamond}}></i>
-                        </a>
+                        <div className="Cattribute Cattribute--size-small Cattribute--icon-diamond">
+                            <a className="Cattribute-icon" href={`/kitty/${enhanced_cattributes[i].kittyId}`}>
+                                <i className="Cattribute-icon-img Cattribute-icon-img--diamond"></i>
+                            </a>
+                            <a className="Cattribute-content" href={`/marketplace?include=sale,sire,other&search=${enhanced_cattributes[i].description}`}>
+                                <h3 className="Cattribute-title">{kitty.id && enhanced_cattributes[i].description}</h3>
+                                <span className="Cattribute-type">{kitty.id && enhanced_cattributes[i].type}</span>
+                            </a>
+                        </div>;
                 }
                 if (enhanced_cattributes[i].position1 > 1 && enhanced_cattributes[i].position <= 10)
                 {
                     gemDisplay = 
-                        <a className="Cattribute-icon" href={`/kitty/${enhanced_cattributes[i].kittyId}`}>
-                            <i className="Cattribute-icon-img" style={{backgroundImage: gold}}></i>
-                        </a>
-                }
-                if (enhanced_cattributes[i].position1 > 10 && enhanced_cattributes[i].position <= 100)
-                {
-                    gemDisplay = 
-                        <a className="Cattribute-icon" href={`/kitty/${enhanced_cattributes[i].kittyId}`}>
-                            <i className="Cattribute-icon-img" style={{backgroundImage: silver}}></i>
-                        </a>
-                }
-                if (enhanced_cattributes[i].position1 > 100 && enhanced_cattributes[i].position <= 500)
-                {
-                    gemDisplay = 
-                        <a className="Cattribute-icon" href={`/kitty/${enhanced_cattributes[i].kittyId}`}>
-                            <i className="Cattribute-icon-img" style={{backgroundImage: bronze}}></i>
-                        </a>
-                }
-                
-
-                return (
-                    <span className="KittyCattribute">
                         <div className="Cattribute Cattribute--size-small Cattribute--icon-gold">
-                            {gemDisplay}
+                            <a className="Cattribute-icon" href={`/kitty/${enhanced_cattributes[i].kittyId}`}>
+                                <i className="Cattribute-icon-img" style={{backgroundImage: gold}}></i>
+                            </a>
                             <a href={`/marketplace?include=sale,sire,other&search=${kitty.id && enhanced_cattributes[i]}`} className="Cattribute-content">
                                 <h3 className="Cattribute-title">{kitty.id && enhanced_cattributes[i].description}</h3>
                                 <span className="Cattribute-type">{kitty.id && enhanced_cattributes[i].type}</span>
                             </a>
-                        </div>
+                        </div>;
+                }
+                if (enhanced_cattributes[i].position1 > 10 && enhanced_cattributes[i].position <= 100)
+                {
+                    gemDisplay = 
+                        <div className="Cattribute Cattribute--size-small Cattribute--icon-silver">
+                            <a className="Cattribute-icon" href={`/kitty/${enhanced_cattributes[i].kittyId}`}>
+                                <i className="Cattribute-icon-img Cattribute-icon-img--silver" style={{backgroundImage: silver}}></i>
+                            </a>
+                            <a className="Cattribute-content" href={`/marketplace?include=sale,sire,other&search=${enhanced_cattributes[i].description}`}>
+                                <h3 className="Cattribute-title">{enhanced_cattributes[i].description}</h3>
+                                <span className="Cattribute-type">{enhanced_cattributes[i].type}</span>
+                            </a>
+                        </div>;
+                }
+                if (enhanced_cattributes[i].position1 > 100 && enhanced_cattributes[i].position <= 500)
+                {
+                    gemDisplay = 
+                        <div className="Cattribute Cattribute--size-small Cattribute--icon-bronze">
+                            <a className="Cattribute-icon" href={`/kitty/${enhanced_cattributes[i].kittyId}`}>
+                                <i className="Cattribute-icon-img Cattribute-icon-img--bronze" style={{backgroundImage: bronze}}></i>
+                            </a>
+                            <a className="Cattribute-content" href={`/marketplace?include=sale,sire,other&search=${enhanced_cattributes[i].description}`}>
+                                <h3 className="Cattribute-title">{enhanced_cattributes[i].description}</h3>
+                                <span className="Cattribute-type">{enhanced_cattributes[i].type}</span>
+                            </a>
+                        </div>;
+                }
+                
+                
+                return (
+                    <span className="KittyCattribute">
+                        {gemDisplay}
                     </span>
                 );
             });
         }
-
         
-
+let cattributesDisplay = (kitty.id && !kitty.is_fancy && !kitty.is_exclusive) ?
+    <div className="KittySection">
+        <div className="KittySection-header">
+            <h2 className="KittySection-header-title">Cattributes</h2>
+            <div className="KittySection-header-tooltip">
+                <div className="TooltipNew">
+                    <span className="TooltipNew-wrapper">
+                        <img src={info} alt="CattributesIcon" className="KittyCattributesTooltip-icon"/>
+                    </span>
+                </div>
+            </div>            
+        </div>
+        <div className="KittySection-content">
+            <div className="KittyCattributes">
+                {eachCattribute}
+            </div>
+        </div>
+    </div>
+    :
+    null; //need to add functionality to display fancy type
+        
+        
+        
 
         var ownerActions = null;
         var auctionInfo = null;
@@ -445,7 +491,7 @@ class Kitty extends Component {
                                 <div className="KittyBid-box">
                                     <h3 className="KittyBid-box-title">Breed now price</h3>
                                     <span className="KittyBid-box-subtitle">
-                                        <em>Ξ</em>
+                                        <em>&#8801;</em>
                                         current price of siring
                                     </span>
                                 </div>
@@ -487,14 +533,14 @@ class Kitty extends Component {
                                         <div className="AuctionGraph-price">
                                             Started at
                                             <span className="AuctionGraph-price-fee">
-                                                <em>Ξ</em>
+                                                <em>&#8801;</em>
                                                 starting price
                                             </span>
                                         </div>
                                         <div className="AuctionGraph-price">
                                             Price goes to
                                             <span className="AuctionGraph-price-fee">
-                                                <em>Ξ</em>
+                                                <em>&#8801;</em>
                                                 end price
                                             </span>
                                         </div>
@@ -510,7 +556,7 @@ class Kitty extends Component {
                             <div className="KittyBid-box">
                                 <h3 className="KittyBid-box-title">Buy now price</h3>
                                 <span className="KittyBid-box-subtitle">
-                                    <em>Ξ</em>
+                                    <em>&#8801;</em>
                                     current sale price
                                 </span>
                             </div>
@@ -550,14 +596,14 @@ class Kitty extends Component {
                                     <div className="AuctionGraph-price">
                                         Started at
                                         <span className="AuctionGraph-price-fee">
-                                            <em>Ξ</em>
+                                            <em>&#8801;</em>
                                             starting price
                                         </span>
                                     </div>
                                     <div className="AuctionGraph-price">
                                         Price goes to
                                         <span className="AuctionGraph-price-fee">
-                                            <em>Ξ</em>
+                                            <em>&#8801;</em>
                                             end price
                                         </span>
                                     </div>
@@ -578,7 +624,7 @@ class Kitty extends Component {
                             <div className="KittyBid-box">
                                 <h3 className="KittyBid-box-title">Breed now price</h3>
                                 <span className="KittyBid-box-subtitle">
-                                    <em>Ξ</em> current price
+                                    <em>&#8801;</em> current price
                                 </span>
                             </div>
                             <div className="KittyBid-box KittyBid-box--secondary">
@@ -613,13 +659,13 @@ class Kitty extends Component {
                                     <div className="AuctionGraph-price">
                                         Started at 
                                         <span className="AuctionGraph-price-fee">
-                                            <em>Ξ</em> Starting price
+                                            <em>&#8801;</em> Starting price
                                         </span>
                                     </div>
                                     <div className="AuctionGraph-price">
                                         Price goes to 
                                         <span className="AuctionGraph-price-fee">
-                                            <em>Ξ</em> 0
+                                            <em>&#8801;</em> 0
                                         </span>
                                     </div>
                                 </div>
@@ -634,7 +680,7 @@ class Kitty extends Component {
                             <div className="KittyBid-box">
                                 <h3 className="KittyBid-box-title">Buy now price</h3>
                                 <span className="KittyBid-box-subtitle">
-                                    <em>Ξ</em> 0.0018
+                                    <em>&#8801;</em> 0.0018
                                 </span>
                             </div>
                             <div className="KittyBid-box KittyBid-box--secondary">
@@ -670,13 +716,13 @@ class Kitty extends Component {
                                     <div className="AuctionGraph-price">
                                         Started at 
                                         <span className="AuctionGraph-price-fee">
-                                            <em>Ξ</em> 0.003
+                                            <em>&#8801;</em> 0.003
                                         </span>
                                     </div>
                                     <div className="AuctionGraph-price">
                                         Price goes to 
                                         <span className="AuctionGraph-price-fee">
-                                            <em>Ξ</em> 0.001
+                                            <em>&#8801;</em> 0.001
                                         </span>
                                     </div>
                                 </div>
@@ -689,27 +735,6 @@ class Kitty extends Component {
                 auctionInfo = null;
             }
         }
-                
-        let cattributesDisplay = (kitty.id && !kitty.is_fancy && !kitty.is_exclusive) ?
-            <div className="KittySection">
-                <div className="KittySection-header">
-                    <h2 className="KittySection-header-title">Cattributes</h2>
-                    <div className="KittySection-header-tooltip">
-                        <div className="TooltipNew">
-                            <span className="TooltipNew-wrapper">
-                                <img src={info} alt="CattributesIcon" className="KittyCattributesTooltip-icon"/>
-                            </span>
-                        </div>
-                    </div>            
-                </div>
-                <div className="KittySection-content">
-                    <div className="KittyCattributes">
-                        {eachCattribute}
-                    </div>
-                </div>
-            </div>
-            :
-            null; //need to add functionality to display fancy type
 
         var specialContent;
 
@@ -837,6 +862,7 @@ class Kitty extends Component {
 
 
 
+            
 
         return (
             <div className='Main'>
@@ -854,11 +880,12 @@ class Kitty extends Component {
                                                     {nameDisplay}
                                                 </div>
                                                 <div className="KittyHeader-details">
+                                                    <span className="KittyHeader-details-item">Kitty {kitty.id}</span>
                                                     <span className="Separator"></span>
                                                     <a 
-                                                        className='KittyHeader-details-item Kittyheader-details-generation' 
+                                                        className='KittyHeader-details-item KittyHeader-details-generation' 
                                                         aria-current='false' 
-                                                        href="/marketplace?include=sale,sire,other&search=gen:10"
+                                                        href={`/marketplace?include=sale,sire,other&search=gen:${kitty.generation}`}
                                                     >
                                                         <span>
                                                             <span>
@@ -877,7 +904,9 @@ class Kitty extends Component {
                                             </div>
                                             <div className="KittyHeader-owner">
                                                 <a className="KittyHeader-owner-imageLink" aria-current='false' href="">
-                                                    <img src={`https://www.cryptokitties.co/profile/profile-${user.image}.png`} alt="profileImage"/>
+                                                    <div className="KittyHeader-owner-image">
+                                                        <img src={`https://www.cryptokitties.co/profile/profile-${user.image}.png`} alt="profileImage"/>
+                                                    </div>
                                                 </a>
                                                 <span className="KittyHeader-owner-details">
                                                     {userNameDisplay}
@@ -915,8 +944,7 @@ class Kitty extends Component {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    
+                                    </div>                                    
                                 </div>
                                 <div className="KittySection">
                                     <div className="KittySection-content">
@@ -947,10 +975,9 @@ class Kitty extends Component {
                                 {parentDisplay}
                                 {childrenDisplay}
                             </div>
-
                         </div>
                     </div>
-                </div>
+                </div>        
             </div>
         )
     }
@@ -960,7 +987,8 @@ function mapStateToProps(state) {
     return {
         user: state.user,
         myKitties: state.myKitties,
-        kitty: state.kitty
+        kitty: state.kitty,
+        pending: state.pending
     }
 }
 

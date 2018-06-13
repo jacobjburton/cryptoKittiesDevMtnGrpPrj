@@ -139,10 +139,10 @@ h1 {
 
 .Header-wordmark {
     margin: 0;
-    padding-left: 1 rem;
-    font-size: 1.6rem;
+    padding-left: 1rem;
+    font-size: 2.0rem;
     font-weight: 500;
-    line-height: 1;
+    line-height: 1.5;
     display: none;
 }
 
@@ -400,9 +400,6 @@ Dropdown-content::after {
     }
     .Header-wordmark {
         display: block;
-    }
-    .Header-navigation-item {
-        font-size: 1.6rem;
     }
     .Header-navigation-item {
         font-size: 1.6rem;

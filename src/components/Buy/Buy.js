@@ -57,7 +57,7 @@ class Buy extends Component {
                                             <span className="KittyStatus-itemText">
                                                 <span className="KittyStatus-label">For sale</span>
                                                 <span className="KittyStatus-note">
-                                                    <small>Ξ</small> SELLPRICE
+                                                    <small>&#8801;</small> SELLPRICE
                                                 </span>
                                             </span>
                                         </div>
@@ -87,7 +87,7 @@ class Buy extends Component {
                                             <span className="KittyStatus-itemText">
                                                 <span className="KittyStatus-label">For sale</span>
                                                 <span className="KittyStatus-note">
-                                                    <small>Ξ</small> SELLPRICE
+                                                    <small>&#8801;</small> SELLPRICE
                                                 </span>
                                             </span>
                                         </div>
@@ -117,7 +117,7 @@ class Buy extends Component {
                                             <span className="KittyStatus-itemText">
                                                 <span className="KittyStatus-label">For sale</span>
                                                 <span className="KittyStatus-note">
-                                                    <small>Ξ</small> SELLPRICE
+                                                    <small>&#8801;</small> SELLPRICE
                                                 </span>
                                             </span>
                                         </div>
@@ -147,7 +147,7 @@ class Buy extends Component {
                                             <span className="KittyStatus-itemText">
                                                 <span className="KittyStatus-label">For sale</span>
                                                 <span className="KittyStatus-note">
-                                                    <small>Ξ</small> SELLPRICE
+                                                    <small>&#8801;</small> SELLPRICE
                                                 </span>
                                             </span>
                                         </div>
@@ -177,7 +177,7 @@ class Buy extends Component {
                                             <span className="KittyStatus-itemText">
                                                 <span className="KittyStatus-label">For sale</span>
                                                 <span className="KittyStatus-note">
-                                                    <small>Ξ</small> SELLPRICE
+                                                    <small>&#8801;</small> SELLPRICE
                                                 </span>
                                             </span>
                                         </div>
@@ -207,7 +207,7 @@ class Buy extends Component {
                                             <span className="KittyStatus-itemText">
                                                 <span className="KittyStatus-label">For sale</span>
                                                 <span className="KittyStatus-note">
-                                                    <small>Ξ</small> SELLPRICE
+                                                    <small>&#8801;</small> SELLPRICE
                                                 </span>
                                             </span>
                                         </div>
@@ -237,7 +237,7 @@ class Buy extends Component {
                                             <span className="KittyStatus-itemText">
                                                 <span className="KittyStatus-label">For sale</span>
                                                 <span className="KittyStatus-note">
-                                                    <small>Ξ</small> SELLPRICE
+                                                    <small>&#8801;</small> SELLPRICE
                                                 </span>
                                             </span>
                                         </div>
@@ -267,7 +267,7 @@ class Buy extends Component {
                                             <span className="KittyStatus-itemText">
                                                 <span className="KittyStatus-label">For sale</span>
                                                 <span className="KittyStatus-note">
-                                                    <small>Ξ</small> SELLPRICE
+                                                    <small>&#8801;</small> SELLPRICE
                                                 </span>
                                             </span>
                                         </div>
@@ -297,7 +297,7 @@ class Buy extends Component {
                                             <span className="KittyStatus-itemText">
                                                 <span className="KittyStatus-label">For sale</span>
                                                 <span className="KittyStatus-note">
-                                                    <small>Ξ</small> SELLPRICE
+                                                    <small>&#8801;</small> SELLPRICE
                                                 </span>
                                             </span>
                                         </div>
@@ -327,7 +327,7 @@ class Buy extends Component {
                                             <span className="KittyStatus-itemText">
                                                 <span className="KittyStatus-label">For sale</span>
                                                 <span className="KittyStatus-note">
-                                                    <small>Ξ</small> SELLPRICE
+                                                    <small>&#8801;</small> SELLPRICE
                                                 </span>
                                             </span>
                                         </div>
@@ -357,7 +357,7 @@ class Buy extends Component {
                                             <span className="KittyStatus-itemText">
                                                 <span className="KittyStatus-label">For sale</span>
                                                 <span className="KittyStatus-note">
-                                                    <small>Ξ</small> SELLPRICE
+                                                    <small>&#8801;</small> SELLPRICE
                                                 </span>
                                             </span>
                                         </div>
@@ -387,7 +387,7 @@ class Buy extends Component {
                                             <span className="KittyStatus-itemText">
                                                 <span className="KittyStatus-label">For sale</span>
                                                 <span className="KittyStatus-note">
-                                                    <small>Ξ</small> SELLPRICE
+                                                    <small>&#8801;</small> SELLPRICE
                                                 </span>
                                             </span>
                                         </div>
@@ -417,7 +417,7 @@ class Buy extends Component {
                                             <span className="KittyStatus-itemText">
                                                 <span className="KittyStatus-label">For sale</span>
                                                 <span className="KittyStatus-note">
-                                                    <small>Ξ</small> SELLPRICE
+                                                    <small>&#8801;</small> SELLPRICE
                                                 </span>
                                             </span>
                                         </div>
@@ -447,7 +447,7 @@ class Buy extends Component {
                                             <span className="KittyStatus-itemText">
                                                 <span className="KittyStatus-label">For sale</span>
                                                 <span className="KittyStatus-note">
-                                                    <small>Ξ</small> SELLPRICE
+                                                    <small>&#8801;</small> SELLPRICE
                                                 </span>
                                             </span>
                                         </div>
@@ -477,7 +477,7 @@ class Buy extends Component {
                                             <span className="KittyStatus-itemText">
                                                 <span className="KittyStatus-label">For sale</span>
                                                 <span className="KittyStatus-note">
-                                                    <small>Ξ</small> SELLPRICE
+                                                    <small>&#8801;</small> SELLPRICE
                                                 </span>
                                             </span>
                                         </div>
@@ -507,7 +507,7 @@ class Buy extends Component {
                                             <span className="KittyStatus-itemText">
                                                 <span className="KittyStatus-label">For sale</span>
                                                 <span className="KittyStatus-note">
-                                                    <small>Ξ</small> SELLPRICE
+                                                    <small>&#8801;</small> SELLPRICE
                                                 </span>
                                             </span>
                                         </div>
@@ -537,7 +537,7 @@ class Buy extends Component {
                                             <span className="KittyStatus-itemText">
                                                 <span className="KittyStatus-label">For sale</span>
                                                 <span className="KittyStatus-note">
-                                                    <small>Ξ</small> SELLPRICE
+                                                    <small>&#8801;</small> SELLPRICE
                                                 </span>
                                             </span>
                                         </div>
@@ -567,7 +567,7 @@ class Buy extends Component {
                                             <span className="KittyStatus-itemText">
                                                 <span className="KittyStatus-label">For sale</span>
                                                 <span className="KittyStatus-note">
-                                                    <small>Ξ</small> SELLPRICE
+                                                    <small>&#8801;</small> SELLPRICE
                                                 </span>
                                             </span>
                                         </div>
@@ -597,7 +597,7 @@ class Buy extends Component {
                                             <span className="KittyStatus-itemText">
                                                 <span className="KittyStatus-label">For sale</span>
                                                 <span className="KittyStatus-note">
-                                                    <small>Ξ</small> SELLPRICE
+                                                    <small>&#8801;</small> SELLPRICE
                                                 </span>
                                             </span>
                                         </div>
@@ -627,7 +627,7 @@ class Buy extends Component {
                                             <span className="KittyStatus-itemText">
                                                 <span className="KittyStatus-label">For sale</span>
                                                 <span className="KittyStatus-note">
-                                                    <small>Ξ</small> SELLPRICE
+                                                    <small>&#8801;</small> SELLPRICE
                                                 </span>
                                             </span>
                                         </div>
@@ -657,7 +657,7 @@ class Buy extends Component {
                                             <span className="KittyStatus-itemText">
                                                 <span className="KittyStatus-label">For sale</span>
                                                 <span className="KittyStatus-note">
-                                                    <small>Ξ</small> SELLPRICE
+                                                    <small>&#8801;</small> SELLPRICE
                                                 </span>
                                             </span>
                                         </div>
@@ -687,7 +687,7 @@ class Buy extends Component {
                                             <span className="KittyStatus-itemText">
                                                 <span className="KittyStatus-label">For sale</span>
                                                 <span className="KittyStatus-note">
-                                                    <small>Ξ</small> SELLPRICE
+                                                    <small>&#8801;</small> SELLPRICE
                                                 </span>
                                             </span>
                                         </div>
@@ -714,7 +714,7 @@ class Buy extends Component {
                             <svg width="32" height="1" viewBox="0 0 32 1" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M.98.5h30.07" stroke="#DCDBD9" fill="none" fill-rule="evenodd" stroke-linecap="square"></path>
                             </svg>
-                            <span className="Transaction-item Transaction-item--transfer">Ξ SELLPRICE</span>
+                            <span className="Transaction-item Transaction-item--transfer">&#8801; SELLPRICE</span>
                             <svg width="29" height="13" viewBox="0 0 29 13" xmlns="http://www.w3.org/2000/svg">
                                 <g stroke="#DCDBD9" fill="none" fill-rule="evenodd">
                                     <path d="M.5 6.5h28" stroke-linecap="square"></path>

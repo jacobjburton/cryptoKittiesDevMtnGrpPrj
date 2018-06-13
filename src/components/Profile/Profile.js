@@ -70,18 +70,18 @@ class Profile extends Component {
             var allTheKitties = myKitties.kitties.map((e, i) => {
                 return (
 
-                    <div className="kittiesGrid">
+                <div className="kittiesGrid">
                     <div className="kittiesGrid-item">
                         <a onClick={(e) => {this.handleClick(myKitties.kitties[i].id)}}>
                             
                         {/* enables the entire div to be clickable which brings you to the kitty's profile page */}
                             <div className="kittyCard-wrapper" >
                                 <div className="kittyCard-background">
-                                <img class="KittyCard-image" src={myKitties.kitties ? myKitties.kitties[i].image_url_cdn : null} alt="kitty"/>
+                                <img class="KittyCard-image" src={myKitties.kitties ? myKitties.kitties[i].image_url : null} alt="kitty"/>
                                                             {/* display's the kitty's image */}
                                 <div className="kittyCard-status"></div>
                                 </div>
-                                <div className="kittyCard-name">{nameDisplay}</div>
+                                <div className="kittyCard-name">{myKitties.kitties[i].name ? myKitties.kitties[i].name : 'ID: #' + myKitties.kitties[i].id}</div>
                                 {/* displays the kitty's name if the user specified a name, otherwise it will display the kitty's id # */}
                                 <div className="kittyCard-details">
                                         Kitty #{myKitties.kitties ? myKitties.kitties[i].id: null}
