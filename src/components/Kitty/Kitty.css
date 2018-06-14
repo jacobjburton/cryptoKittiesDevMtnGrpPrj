@@ -283,6 +283,26 @@ img {
     box-shadow: inset 0 0 0 0.2rem #f9a7ea  
         inset 0 0 0 0.4rem #fff;
 }
+.Cattribute--size-small .Cattribute--icon-gold .Cattribute-icon {
+    background-color: #fdfae6;
+    box-shadow: inset 0 0 0 0.2rem #fff095  
+        inset 0 0 0 0.4rem #fff;
+}
+.Cattribute--size-small .Cattribute--icon-silver .Cattribute-icon {
+    background-color: #f6f1fa;
+    box-shadow: inset 0 0 0 0.2rem #ddc4ff 
+        inset 0 0 0 0.4rem #fff;
+}
+.Cattribute--size-small .Cattribute--icon-bronze .Cattribute-icon {
+    background-color: #e9f4ff;
+    box-shadow: inset 0 0 0 0.2rem #a6bdf7  
+        inset 0 0 0 0.4rem #fff;
+}
+.Cattribute--size-small .Cattribute--icon-none .Cattribute-icon {
+    background-color: #fcfbfa;
+    box-shadow: inset 0 0 0 0.2rem #f3f1ee  
+        inset 0 0 0 0.4rem #fff;
+}
 
 .Cattribute--size-small .Cattribute-icon {
     display: flex;
@@ -296,6 +316,15 @@ img {
 
 .Cattribute--size-small .Cattribute-icon-img--diamond {
     background-image: url(../../images/images/cattributes/diamond.svg);
+}
+.Cattribute-icon-img .Cattribute-icon-img--gold {
+    background-image: url(../../images/images/cattributes/gold.svg);
+}
+.Cattribute-icon-img .Cattribute-icon-img--silver {
+    background-image: url(../../images/images/cattributes/silver.svg);
+}
+.Cattribute-icon-img .Cattribute-icon-img--bronze {
+    background-image: url(../../images/images/cattributes/bronze.svg);
 }
 
 .Cattribute-icon {
