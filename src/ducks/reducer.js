@@ -4,11 +4,11 @@ const initialState = {
     user: {},
     userActivity: [],
     cattributes: [],
-    myKitties: {},
+    myKitties: [],
     kitty: {},
     allSpecialCats: [],
     mySpecialCats: [],
-    filteredCats: {},
+    filteredCats: [],
     options: [],
     settings: {
         email: '',
