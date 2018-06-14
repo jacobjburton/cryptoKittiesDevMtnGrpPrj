@@ -121,11 +121,9 @@ class Kitty extends Component {
             </a>
             
         if (!_.isEmpty(enhanced_cattributes)) {
-            var eachCattribute = enhanced_cattributes.map((e, i) =>
-            {
+            var eachCattribute = enhanced_cattributes.map((e, i) => {
                 var gemDisplay;
-                if (enhanced_cattributes[i].position === -1)
-                {
+                if (enhanced_cattributes[i].position === -1 || enhanced_cattributes[i].position > 500) {
                     gemDisplay = 
                         <div className="Cattribute Cattribute--size-small Cattribute--icon-none">
                             <a href={`/marketplace?include=sale,sire,other&search=${enhanced_cattributes[i].description}`} className="Cattribute-icon" ></a>
@@ -135,8 +133,7 @@ class Kitty extends Component {
                             </a>
                         </div>;
                 }
-                if (enhanced_cattributes[i].position === 1)
-                {
+                if (enhanced_cattributes[i].position === 1) {
                     gemDisplay = 
                         <div className="Cattribute Cattribute--size-small Cattribute--icon-diamond">
                             <a className="Cattribute-icon" href={`/kitty/${enhanced_cattributes[i].kittyId}`}>
@@ -148,8 +145,7 @@ class Kitty extends Component {
                             </a>
                         </div>;
                 }
-                if (enhanced_cattributes[i].position > 1 && enhanced_cattributes[i].position <= 10)
-                {
+                if (enhanced_cattributes[i].position > 1 && enhanced_cattributes[i].position <= 10) {
                     gemDisplay = 
                     <div className="Cattribute Cattribute--size-small Cattribute--icon-gold">
                         <a className="Cattribute-icon" href={`/kitty/${enhanced_cattributes[i].kittyId}`}>
@@ -161,8 +157,7 @@ class Kitty extends Component {
                         </a>
                     </div>;
                 }
-                if (enhanced_cattributes[i].position > 10 && enhanced_cattributes[i].position <= 100)
-                {
+                if (enhanced_cattributes[i].position > 10 && enhanced_cattributes[i].position <= 100) {
                     gemDisplay = 
                         <div className="Cattribute Cattribute--size-small Cattribute--icon-silver">
                             <a className="Cattribute-icon" href={`/kitty/${enhanced_cattributes[i].kittyId}`}>
@@ -174,8 +169,7 @@ class Kitty extends Component {
                             </a>
                         </div>;
                 }
-                if (enhanced_cattributes[i].position > 100 && enhanced_cattributes[i].position <= 500)
-                {
+                if (enhanced_cattributes[i].position > 100 && enhanced_cattributes[i].position <= 500) {
                     gemDisplay = 
                         <div className="Cattribute Cattribute--size-small Cattribute--icon-bronze">
                             <a className="Cattribute-icon" href={`/kitty/${enhanced_cattributes[i].kittyId}`}>
@@ -190,16 +184,16 @@ class Kitty extends Component {
                 
                 
                 return (
-                    <span className="KittyCattribute">
+                    <span key={i} className="KittyCattribute">
                         {gemDisplay}
                     </span>
                 );
             });
         }
         
-eachCattribute = kitty.id && eachCattribute.sort((a, b) => {
-    return a.position - b.position;
-})
+// eachCattribute = kitty.id && eachCattribute.sort((a, b) => {
+//     return a.position - b.position;
+// })
 
 let cattributesDisplay = (kitty.id && !kitty.is_fancy && !kitty.is_exclusive) ?
     <div className="KittySection">
