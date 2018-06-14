@@ -119,14 +119,30 @@ class Kitty extends Component {
             <a className="KittyHeader-owner-name" aria-current="false" href={`/profile/${kitty.id && kitty['auction']['seller'].address}`}>
                 {kitty.id && kitty['auction']['seller'].nickname}{ kitty.id && kitty['auction']['seller'].address === this.state.account ? ' (you)' : null }   
             </a>
-            
+        let sortedCattributes = kitty.id && enhanced_cattributes.sort((a, b) => {
+            return a.position - b.position;
+        })
+        console.log(sortedCattributes);
+        let temp = sortedCattributes;
+        if (temp) {
+            for (let i = sortedCattributes.length - 1; i >= 0; i--) {
+                if (temp[i].position < 0) {
+                    let item = temp.splice(i, 1);
+                    temp.push(item[0]);
+                }
+            }
+        }
+        console.log(temp);
+        
         if (!_.isEmpty(enhanced_cattributes)) {
-            var eachCattribute = enhanced_cattributes.map((e, i) => {
+            var eachCattribute = temp.map((e, i) => {
                 var gemDisplay;
                 if (enhanced_cattributes[i].position === -1 || enhanced_cattributes[i].position > 500) {
                     gemDisplay = 
                         <div className="Cattribute Cattribute--size-small Cattribute--icon-none">
-                            <a href={`/marketplace?include=sale,sire,other&search=${enhanced_cattributes[i].description}`} className="Cattribute-icon" ></a>
+                            <a href={`/marketplace?include=sale,sire,other&search=${enhanced_cattributes[i].description}`} className="Cattribute-icon" >
+                                <i className="Cattribute-icon-img Cattribute-icon-img--none"></i>
+                            </a>
                             <a href={`/kitty/${enhanced_cattributes[i].description}`} className="Cattribute-content">
                                 <h3 className="Cattribute-title">{kitty.id && enhanced_cattributes[i].description}</h3>
                                 <span className="Cattribute-type">{cattributeLabel[enhanced_cattributes[i].type]}</span>
@@ -136,7 +152,7 @@ class Kitty extends Component {
                 if (enhanced_cattributes[i].position === 1) {
                     gemDisplay = 
                         <div className="Cattribute Cattribute--size-small Cattribute--icon-diamond">
-                            <a className="Cattribute-icon" href={`/kitty/${enhanced_cattributes[i].kittyId}`}>
+                            <a className="Cattribute-icon Cattribute-icon-diamond" href={`/kitty/${enhanced_cattributes[i].kittyId}`}>
                                 <i className="Cattribute-icon-img Cattribute-icon-img--diamond"></i>
                             </a>
                             <a className="Cattribute-content" href={`/marketplace?include=sale,sire,other&search=${enhanced_cattributes[i].description}`}>
@@ -148,8 +164,9 @@ class Kitty extends Component {
                 if (enhanced_cattributes[i].position > 1 && enhanced_cattributes[i].position <= 10) {
                     gemDisplay = 
                     <div className="Cattribute Cattribute--size-small Cattribute--icon-gold">
-                        <a className="Cattribute-icon" href={`/kitty/${enhanced_cattributes[i].kittyId}`}>
+                        <a className="Cattribute-icon Cattribute-icon-gold" href={`/kitty/${enhanced_cattributes[i].kittyId}`}>
                             <i className="Cattribute-icon-img Cattribute-icon-img--gold"></i>
+         
                         </a>
                         <a className="Cattribute-content" href={`/marketplace?include=sale,sire,other&search=${enhanced_cattributes[i].description}`}>
                             <h3 className="Cattribute-title">{kitty.id && enhanced_cattributes[i].description}</h3>
@@ -160,7 +177,7 @@ class Kitty extends Component {
                 if (enhanced_cattributes[i].position > 10 && enhanced_cattributes[i].position <= 100) {
                     gemDisplay = 
                         <div className="Cattribute Cattribute--size-small Cattribute--icon-silver">
-                            <a className="Cattribute-icon" href={`/kitty/${enhanced_cattributes[i].kittyId}`}>
+                            <a className="Cattribute-icon Cattribute-icon-silver" href={`/kitty/${enhanced_cattributes[i].kittyId}`}>
                                 <i className="Cattribute-icon-img Cattribute-icon-img--silver"></i>
                             </a>
                             <a className="Cattribute-content" href={`/marketplace?include=sale,sire,other&search=${enhanced_cattributes[i].description}`}>
@@ -172,7 +189,7 @@ class Kitty extends Component {
                 if (enhanced_cattributes[i].position > 100 && enhanced_cattributes[i].position <= 500) {
                     gemDisplay = 
                         <div className="Cattribute Cattribute--size-small Cattribute--icon-bronze">
-                            <a className="Cattribute-icon" href={`/kitty/${enhanced_cattributes[i].kittyId}`}>
+                            <a className="Cattribute-icon Cattribute-icon-bronze" href={`/kitty/${enhanced_cattributes[i].kittyId}`}>
                                 <i className="Cattribute-icon-img Cattribute-icon-img--bronze"></i>
                             </a>
                             <a className="Cattribute-content" href={`/marketplace?include=sale,sire,other&search=${enhanced_cattributes[i].description}`}>
@@ -191,32 +208,29 @@ class Kitty extends Component {
             });
         }
         
-// eachCattribute = kitty.id && eachCattribute.sort((a, b) => {
-//     return a.position - b.position;
-// })
 
-let cattributesDisplay = (kitty.id && !kitty.is_fancy && !kitty.is_exclusive) ?
-    <div className="KittySection">
-        <div className="KittySection-header">
-            <h2 className="KittySection-header-title">Cattributes</h2>
-            <div className="KittySection-header-tooltip">
-                <div className="TooltipNew">
-                    <span className="TooltipNew-wrapper">
-                        <img src={info} alt="CattributesIcon" className="KittyCattributesTooltip-icon"/>
-                    </span>
+
+
+    let cattributesDisplay = (kitty.id && !kitty.is_fancy && !kitty.is_exclusive) ?
+        <div className="KittySection">
+            <div className="KittySection-header">
+                <h2 className="KittySection-header-title">Cattributes</h2>
+                <div className="KittySection-header-tooltip">
+                    <div className="TooltipNew">
+                        <span className="TooltipNew-wrapper">
+                            <img src={info} alt="CattributesIcon" className="KittyCattributesTooltip-icon"/>
+                        </span>
+                    </div>
+                </div>            
+            </div>
+            <div className="KittySection-content">
+                <div className="KittyCattributes">
+                    {eachCattribute}
                 </div>
-            </div>            
-        </div>
-        <div className="KittySection-content">
-            <div className="KittyCattributes">
-                {eachCattribute}
             </div>
         </div>
-    </div>
-    :
-    null; //need to add functionality to display fancy type
-        
-        
+        :
+        null;       
         
 
         var ownerActions = null;
@@ -243,7 +257,7 @@ let cattributesDisplay = (kitty.id && !kitty.is_fancy && !kitty.is_exclusive) ?
                     </div>
                     <div className="KittyHeader-ownerActions-action">
                         <span className="Button-icon">
-                            <i className="Icon Icon--egglplant"></i>
+                            <i className="Icon Icon--eggplant"></i>
                         </span>
                         Gift                  
                     </div>

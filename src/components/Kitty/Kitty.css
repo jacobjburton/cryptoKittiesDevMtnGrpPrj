@@ -229,6 +229,10 @@ img {
     margin: 0 0 3.2rem;
 }
 
+.KittySection-content {
+    display: block;
+}
+
 .KittySection-header {
     display: flex;
     align-items: center;
@@ -265,10 +269,12 @@ img {
     grid-gap: 1.2rem;
     grid-template-columns: repeat(2, auto);
     padding-top: 0.8rem;
+    margin: 1rem;
 }
 
 .KittyCattribute {
     min-width: 0;
+    margin: 1rem;
 }
 
 .Cattribute {
@@ -276,35 +282,10 @@ img {
     align-items: center;
     overflow: hidden;
     max-width: 100%;
+    padding: 1rem;
 }
 
-.Cattribute--size-small .Cattribute--icon-diamond .Cattribute-icon {
-    background-color: #fdf0fa;
-    box-shadow: inset 0 0 0 0.2rem #f9a7ea  
-        inset 0 0 0 0.4rem #fff;
-}
-.Cattribute--size-small .Cattribute--icon-gold .Cattribute-icon {
-    background-color: #fdfae6;
-    box-shadow: inset 0 0 0 0.2rem #fff095  
-        inset 0 0 0 0.4rem #fff;
-}
-.Cattribute--size-small .Cattribute--icon-silver .Cattribute-icon {
-    background-color: #f6f1fa;
-    box-shadow: inset 0 0 0 0.2rem #ddc4ff 
-        inset 0 0 0 0.4rem #fff;
-}
-.Cattribute--size-small .Cattribute--icon-bronze .Cattribute-icon {
-    background-color: #e9f4ff;
-    box-shadow: inset 0 0 0 0.2rem #a6bdf7  
-        inset 0 0 0 0.4rem #fff;
-}
-.Cattribute--size-small .Cattribute--icon-none .Cattribute-icon {
-    background-color: #fcfbfa;
-    box-shadow: inset 0 0 0 0.2rem #f3f1ee  
-        inset 0 0 0 0.4rem #fff;
-}
-
-.Cattribute--size-small .Cattribute-icon {
+.Cattribute-icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -314,17 +295,62 @@ img {
     border-radius: 2.5rem;
 }
 
-.Cattribute--size-small .Cattribute-icon-img--diamond {
+.Cattribute-icon-img {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.Cattribute--size-small.Cattribute--icon-diamond .Cattribute-icon {
+    background-color: #fdf0fa;
+    box-shadow: inset 0 0 0 0.2rem #f9a7ea,  
+        inset 0 0 0 0.4rem #fff;
+}
+.Cattribute--size-small.Cattribute--icon-gold .Cattribute-icon {
+    background-color: #fdfae6;
+    box-shadow: inset 0 0 0 0.2rem #fff095,  
+        inset 0 0 0 0.4rem #fff;
+}
+.Cattribute--size-small.Cattribute--icon-silver .Cattribute-icon {
+    background-color: #f6f1fa;
+    box-shadow: inset 0 0 0 0.2rem #ddc4ff, 
+        inset 0 0 0 0.4rem #fff;
+}
+.Cattribute--size-small.Cattribute--icon-bronze .Cattribute-icon {
+    background-color: #e9f4ff;
+    box-shadow: inset 0 0 0 0.2rem #a6bdf7,  
+        inset 0 0 0 0.4rem #fff;
+}
+.Cattribute--size-small.Cattribute--icon-none .Cattribute-icon {
+    background-color: #fcfbfa;
+    box-shadow: inset 0 0 0 0.2rem #f3f1ee,  
+        inset 0 0 0 0.4rem #fff;
+}
+
+
+.Cattribute-icon-diamond {
     background-image: url(../../images/images/cattributes/diamond.svg);
+    background-repeat: no-repeat;
+    background-size: 2.1rem;
+    background-position: center;
 }
-.Cattribute-icon-img .Cattribute-icon-img--gold {
+.Cattribute-icon-gold {
     background-image: url(../../images/images/cattributes/gold.svg);
+    background-repeat: no-repeat;
+    background-size: 2.1rem;
+    background-position: center;
 }
-.Cattribute-icon-img .Cattribute-icon-img--silver {
+.Cattribute-icon-silver {
     background-image: url(../../images/images/cattributes/silver.svg);
+    background-repeat: no-repeat;
+    background-size: 2.1rem;
+    background-position: center;
 }
-.Cattribute-icon-img .Cattribute-icon-img--bronze {
+.Cattribute-icon-bronze {
     background-image: url(../../images/images/cattributes/bronze.svg);
+    background-repeat: no-repeat;
+    background-size: 2.1rem;
+    background-position: center;
 }
 
 .Cattribute-icon {
