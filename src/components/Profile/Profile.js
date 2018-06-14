@@ -27,6 +27,7 @@ const backgroundColor = {
     dahlia: '#e6eafd'
 }
 
+
 class Profile extends Component {
     constructor(props){
         super(props)
@@ -87,7 +88,8 @@ class Profile extends Component {
                         {/* enables the entire div to be clickable which brings you to the kitty's profile page */}
                             <div className="kittyCard-wrapper" >
                                 <div className="kittyCard-background">
-                                <img class="KittyCard-image" style={{background: `${backgroundColor[myKitties.kitties[i].color]}`}} src={myKitties.kitties ? myKitties.kitties[i].image_url : null} alt="kitty"/>
+
+                                <img class="KittyCard-image" style={{background: `${backgroundColor[myKitties.kitties[i].color]}`, borderRadius: '10px'}}src={myKitties.kitties ? myKitties.kitties[i].image_url : null} alt="kitty"/>
                                                             {/* display's the kitty's image */}
                                 <div className="kittyCard-status"></div>
                                 </div>
@@ -155,7 +157,7 @@ class Profile extends Component {
         : null;
    return (
         <main className="main">
-            <button onClick={(e)=> this.handleClick(793148)}>someone else's kitty</button>
+            {/* <button onClick={(e)=> this.handleClick(793148)}>someone else's kitty</button> */}
             <div className="profilePage">
                 <div className="profileHeader">
                     <div className="container-lg">
@@ -253,7 +255,7 @@ class Profile extends Component {
                                             </div>
                                             <div className="kittiesFilter-group-content">
                                                 <div className="kittiesFilter-number">
-                                                    <input className="kittiesFilter-number-input" type="number" step="1" min="0" placeholder="All" onChange={(e) => {this.handleInput(e.target.value)}}/>
+                                                    <input className="kittiesFilter-number-input Number" type="number" step="1" min="0" placeholder="All" onChange={(e) => {this.handleInput(e.target.value)}}/>
                                                     <div className="kittiesFilter-number-reset">
                                                         {/* <span className="kittiesFilter-number-reset-button" role="button">Reset</span> */}
                                                         {/* do we want to implement the reset filters button? */}
@@ -287,7 +289,7 @@ class Profile extends Component {
                                 </div>
                             </div>
                             <div className="kittiesToolbar-includeAndSort">
-                                <div className="container-lg">
+                                <div className="sortContainer-lg">
                                     <div className="kittiesToolbar-includeAndSort-container">
                                         <div className="kittiesToolbar-include">
                                             <span className="kittiesToolbar-label">include</span>
@@ -376,7 +378,7 @@ class Profile extends Component {
                             </div>
                             <div className="kittiesToolbar-count">
                                 <div className="kittyContainer-lg">
-                                    <span>{myKitties.total ? myKitties.total : null} Kitties</span> 
+                                    <span>{myKitties.total ? myKitties.total : null} Kitties</span>
                                     {/* displays how many kitties a specific user has */}
                                 </div>
                             </div>
@@ -402,7 +404,8 @@ function mapStateToProps(state){
         user: state.user,
         myKitties: state.myKitties,
         kitty: state.kitty,
-        cattributes: state.cattributes
+        cattributes: state.cattributes,
+        filteredCats: state.filteredCats
     }
 }
 export default connect(mapStateToProps, {getUser, getKitty, getFilteredCats})(Profile);
