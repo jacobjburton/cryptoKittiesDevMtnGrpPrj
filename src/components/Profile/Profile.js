@@ -25,7 +25,8 @@ const backgroundColor = {
     eclipse: '#e5e7ef',
     babypuke: '#eff1e0',
     dahlia: '#e6eafd'
- }
+}
+
 
 class Profile extends Component {
     constructor(props){
@@ -65,6 +66,7 @@ class Profile extends Component {
     render(){
 
         let {myKitties, kitty, user} = this.props;
+
         let settings = this.state.account ?
         <div>
             <a className="profileLink" href="/settings">Settings</a>
@@ -86,6 +88,7 @@ class Profile extends Component {
                         {/* enables the entire div to be clickable which brings you to the kitty's profile page */}
                             <div className="kittyCard-wrapper" >
                                 <div className="kittyCard-background">
+
                                 <img class="KittyCard-image" style={{background: `${backgroundColor[myKitties.kitties[i].color]}`, borderRadius: '10px'}}src={myKitties.kitties ? myKitties.kitties[i].image_url : null} alt="kitty"/>
                                                             {/* display's the kitty's image */}
                                 <div className="kittyCard-status"></div>

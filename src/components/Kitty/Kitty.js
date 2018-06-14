@@ -10,6 +10,28 @@ import silver from '../../images/images/cattributes/silver.svg';
 import bronze from '../../images/images/cattributes/bronze.svg';
 // import loading from '../../images/images/loader.gif';
 
+const backgroundColor = {
+    strawberry: '#ffe0e5',
+    sizzurp: '#dfdffa',
+    mintgreen: '#cdf5d4',
+    topaz: '#d1eeeb',
+    gold: '#faf4cf',
+    chestnut: '#efe1da',
+    sapphire: '#d3e8ff',
+    thundergrey: '#eee9e8',
+    limegreen: '#d9f5cb',
+    coralsunrise: '#fde9e4',
+    cyan: '#c5eefa',
+    bubblegum: '#fadff4',
+    forgetmenot: '#dcebfc',
+    parakeet: '#e5f3e2',
+    pumpkin: '#fae1ca',
+    doridnudibranch: '#faeefa',
+    twilightsparkle: '#ede2f5',
+    eclipse: '#e5e7ef',
+    babypuke: '#eff1e0',
+    dahlia: '#e6eafd'
+}
 
 class Kitty extends Component {
 
