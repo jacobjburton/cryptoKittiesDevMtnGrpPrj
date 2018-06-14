@@ -8,7 +8,7 @@ import _ from 'lodash';
 import gold from '../../images/images/cattributes/gold.svg';
 import silver from '../../images/images/cattributes/silver.svg';
 import bronze from '../../images/images/cattributes/bronze.svg';
-// import loading from '../../images/images/loader.gif';
+
 
 const backgroundColor = {
     strawberry: '#ffe0e5',
@@ -31,6 +31,17 @@ const backgroundColor = {
     eclipse: '#e5e7ef',
     babypuke: '#eff1e0',
     dahlia: '#e6eafd'
+}
+
+const cattributeLabel = {
+    body: 'fur',
+    colortertiary: 'accent colour',
+    mouth: 'mouth',
+    coloreyes: 'eye colour',
+    pattern: 'pattern',
+    colorsecondary: 'highlight colour',
+    colorprimary: 'base colour',
+    eyes: 'eye shape'
 }
 
 class Kitty extends Component {
@@ -84,278 +95,16 @@ class Kitty extends Component {
         console.log(enhanced_cattributes);
         // kitty.id ? console.log(kitty.enhanced_cattributes[0].description) : console.log('no kitty');
         
-        var kittyBannerDisplay;
-        
-        switch (this.props.kitty.color) {
-            case 'strawberry':
-                kittyBannerDisplay =
-                    <div className="KittyBanner KittyBanner--bg-strawberry">
-                        <div className="Container Container--full">
-                            <div className="KittyBanner-container KittyBanner-container--shadow-strawberry">
-                                <a onClick={(e) => {this.handleClick(kitty.id)}} className="active" aria-current="true">
-                                    <img style={{background: '#ffe0e5'}} src={kitty.image_url} alt="kittybanner" className="KittyBanner-image"/>
-                                </a>
-                            </div>
-                        </div>
+        let kittyBannerDisplay =
+            <div className={`KittyBanner KittyBanner--bg-${kitty.color}`}>
+                <div className="Container Container--full">
+                    <div className={`KittyBanner-container KittyBanner-container--shadow-${kitty.color}`}>
+                        <a onClick={(e) => {this.handleClick(kitty.id)}} className="active" aria-current="true">
+                            <img style={{background: `${backgroundColor[kitty.color]}`}} src={kitty.image_url} alt="kittybanner" className="KittyBanner-image"/>
+                        </a>
                     </div>
-                break;
-            case 'sizzurp':
-                kittyBannerDisplay =
-                    <div className="KittyBanner KittyBanner--bg-sizzurp">
-                        <div className="Container Container--full">
-                            <div className="KittyBanner-container KittyBanner-container--shadow-sizzurp">
-                                <a onClick={(e) => {this.handleClick(kitty.id)}} className="active" aria-current="true">
-                                    <img style={{background: '#dfdffa'}} src={kitty.image_url} alt="kittybanner" className="KittyBanner-image"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                break;
-            case 'mintgreen':
-                kittyBannerDisplay =
-                    <div className="KittyBanner KittyBanner--bg-mintgreen">
-                        <div className="Container Container--full">
-                            <div className="KittyBanner-container KittyBanner-container--shadow-mintgreen">
-                                <a onClick={(e) => {this.handleClick(kitty.id)}} className="active" aria-current="true">
-                                    <img style={{background: '#cdf5d4'}} src={kitty.image_url} alt="kittybanner" className="KittyBanner-image"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                break;
-            case 'topaz':
-                kittyBannerDisplay =
-                    <div className="KittyBanner KittyBanner--bg-topaz">
-                        <div className="Container Container--full">
-                            <div className="KittyBanner-container KittyBanner-container--shadow-topaz">
-                                <a onClick={(e) => {this.handleClick(kitty.id)}} className="active" aria-current="true">
-                                    <img style={{background: '#d1eeeb'}} src={kitty.image_url} alt="kittybanner" className="KittyBanner-image"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                break;
-            case 'gold':
-                kittyBannerDisplay =
-                    <div className="KittyBanner KittyBanner--bg-gold">
-                        <div className="Container Container--full">
-                            <div className="KittyBanner-container KittyBanner-container--shadow-gold">
-                                <a onClick={(e) => {this.handleClick(kitty.id)}} className="active" aria-current="true">
-                                    <img style={{background: '#faf4cf'}} src={kitty.image_url} alt="kittybanner" className="KittyBanner-image"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                break;
-            case 'chestnut':
-                kittyBannerDisplay =
-                    <div className="KittyBanner KittyBanner--bg-chestnut">
-                        <div className="Container Container--full">
-                            <div className="KittyBanner-container KittyBanner-container--shadow-chestnut">
-                                <a onClick={(e) => {this.handleClick(kitty.id)}} className="active" aria-current="true">
-                                    <img style={{background: '#efe1da'}} src={kitty.image_url} alt="kittybanner" className="KittyBanner-image"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                break;
-            case 'sapphire':
-                kittyBannerDisplay =
-                    <div className="KittyBanner KittyBanner--bg-sapphire">
-                        <div className="Container Container--full">
-                            <div className="KittyBanner-container KittyBanner-container--shadow-sapphire">
-                                <a onClick={(e) => {this.handleClick(kitty.id)}} className="active" aria-current="true">
-                                    <img style={{background: '#d3e8ff'}} src={kitty.image_url} alt="kittybanner" className="KittyBanner-image"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                break;
-            case 'thundergrey':
-                kittyBannerDisplay =
-                    <div className="KittyBanner KittyBanner--bg-thundergrey">
-                        <div className="Container Container--full">
-                            <div className="KittyBanner-container KittyBanner-container--shadow-thundergrey">
-                                <a onClick={(e) => {this.handleClick(kitty.id)}} className="active" aria-current="true">
-                                    <img style={{background: '#eee9e8'}} src={kitty.image_url} alt="kittybanner" className="KittyBanner-image"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                break;
-            case 'limegreen':
-                kittyBannerDisplay =
-                    <div className="KittyBanner KittyBanner--bg-limegreen">
-                        <div className="Container Container--full">
-                            <div className="KittyBanner-container KittyBanner-container--shadow-limegreen">
-                                <a onClick={(e) => {this.handleClick(kitty.id)}} className="active" aria-current="true">
-                                    <img style={{background: '#d9f5cb'}} src={kitty.image_url} alt="kittybanner" className="KittyBanner-image"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                break;
-            case 'coralsunrise':
-                kittyBannerDisplay =
-                    <div className="KittyBanner KittyBanner--bg-coralsunrise">
-                        <div className="Container Container--full">
-                            <div className="KittyBanner-container KittyBanner-container--shadow-coralsunrise">
-                                <a onClick={(e) => {this.handleClick(kitty.id)}} className="active" aria-current="true">
-                                    <img style={{background: '#fde9e4'}} src={kitty.image_url} alt="kittybanner" className="KittyBanner-image"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                break;
-            case 'cyan':
-                kittyBannerDisplay =
-                    <div className="KittyBanner KittyBanner--bg-cyan">
-                        <div className="Container Container--full">
-                            <div className="KittyBanner-container KittyBanner-container--shadow-cyan">
-                                <a onClick={(e) => {this.handleClick(kitty.id)}} className="active" aria-current="true">
-                                    <img style={{background: '#c5eefa'}} src={kitty.image_url} alt="kittybanner" className="KittyBanner-image"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                break;
-            case 'bubblegum':
-                kittyBannerDisplay =
-                    <div className="KittyBanner KittyBanner--bg-bubblegum">
-                        <div className="Container Container--full">
-                            <div className="KittyBanner-container KittyBanner-container--shadow-bubblegum">
-                                <a onClick={(e) => {this.handleClick(kitty.id)}} className="active" aria-current="true">
-                                    <img style={{background: '#fadff4'}} src={kitty.image_url} alt="kittybanner" className="KittyBanner-image"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                break;
-            case 'forgetmenot':
-                kittyBannerDisplay =
-                    <div className="KittyBanner KittyBanner--bg-forgetmenot">
-                        <div className="Container Container--full">
-                            <div className="KittyBanner-container KittyBanner-container--shadow-forgetmenot">
-                                <a onClick={(e) => {this.handleClick(kitty.id)}} className="active" aria-current="true">
-                                    <img style={{background: '#dcebfc'}} src={kitty.image_url} alt="kittybanner" className="KittyBanner-image"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                break;
-            case 'parakeet':
-                kittyBannerDisplay =
-                    <div className="KittyBanner KittyBanner--bg-parakeet">
-                        <div className="Container Container--full">
-                            <div className="KittyBanner-container KittyBanner-container--shadow-parakeet">
-                                <a onClick={(e) => {this.handleClick(kitty.id)}} className="active" aria-current="true">
-                                    <img style={{background: '#e5f3e2'}} src={kitty.image_url} alt="kittybanner" className="KittyBanner-image"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                break;
-            case 'pumpkin':
-                kittyBannerDisplay =
-                    <div className="KittyBanner KittyBanner--bg-pumpkin">
-                        <div className="Container Container--full">
-                            <div className="KittyBanner-container KittyBanner-container--shadow-pumpkin">
-                                <a onClick={(e) => {this.handleClick(kitty.id)}} className="active" aria-current="true">
-                                    <img style={{background: '#fae1ca'}} src={kitty.image_url} alt="kittybanner" className="KittyBanner-image"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                break;
-            case 'doridnudibranch':
-                kittyBannerDisplay =
-                    <div className="KittyBanner KittyBanner--bg-doridnudibranch">
-                        <div className="Container Container--full">
-                            <div className="KittyBanner-container KittyBanner-container--shadow-doridnudibranch">
-                                <a onClick={(e) => {this.handleClick(kitty.id)}} className="active" aria-current="true">
-                                    <img style={{background: '#faeefa'}} src={kitty.image_url} alt="kittybanner" className="KittyBanner-image"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                break;
-            case 'twilightsparkle':
-                kittyBannerDisplay =
-                    <div className="KittyBanner KittyBanner--bg-twilightsparkle">
-                        <div className="Container Container--full">
-                            <div className="KittyBanner-container KittyBanner-container--shadow-twilightsparkle">
-                                <a onClick={(e) => {this.handleClick(kitty.id)}} className="active" aria-current="true">
-                                    <img style={{background: '#ede2f5'}} src={kitty.image_url} alt="kittybanner" className="KittyBanner-image"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                break;
-            case 'eclipse':
-                kittyBannerDisplay =
-                    <div className="KittyBanner KittyBanner--bg-eclipse">
-                        <div className="Container Container--full">
-                            <div className="KittyBanner-container KittyBanner-container--shadow-eclipse">
-                                <a onClick={(e) => {this.handleClick(kitty.id)}} className="active" aria-current="true">
-                                    <img style={{background: '#e5e7ef'}} src={kitty.image_url} alt="kittybanner" className="KittyBanner-image"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                break;
-            case 'babypuke':
-                kittyBannerDisplay =
-                    <div className="KittyBanner KittyBanner--bg-babypuke">
-                        <div className="Container Container--full">
-                            <div className="KittyBanner-container KittyBanner-container--shadow-babypuke">
-                                <a onClick={(e) => {this.handleClick(kitty.id)}} className="active" aria-current="true">
-                                    <img style={{background: '#eff1e0'}} src={kitty.image_url} alt="kittybanner" className="KittyBanner-image"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                break;
-            case 'dahlia':
-                kittyBannerDisplay =
-                    <div className="KittyBanner KittyBanner--bg-dahlia">
-                        <div className="Container Container--full">
-                            <div className="KittyBanner-container KittyBanner-container--shadow-dahlia">
-                                <a onClick={(e) => {this.handleClick(kitty.id)}} className="active" aria-current="true">
-                                    <img style={{background: '#e6eafd'}} src={kitty.image_url} alt="kittybanner" className="KittyBanner-image"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                break;
-            case 'palejade':
-                kittyBannerDisplay =
-                    <div className="KittyBanner KittyBanner--bg-palejade">
-                        <div className="Container Container--full">
-                            <div className="KittyBanner-container KittyBanner-container--shadow-palejade">
-                                <a onClick={(e) => {this.handleClick(kitty.id)}} className="active" aria-current="true">
-                                    <img style={{background: '#e7f1ed'}} src={kitty.image_url} alt="kittybanner" className="KittyBanner-image"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                break;
-            case 'autumnmoon':
-                kittyBannerDisplay =
-                    <div className="KittyBanner KittyBanner--bg-autumnmoon">
-                        <div className="Container Container--full">
-                            <div className="KittyBanner-container KittyBanner-container--shadow-autumnmoon">
-                                <a onClick={(e) => {this.handleClick(kitty.id)}} className="active" aria-current="true">
-                                    <img style={{background: '#fdf3e0'}} src={kitty.image_url} alt="kittybanner" className="KittyBanner-image"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                break;
-            default:
-                return null;
-        }
-            
-            
+                </div>
+            </div>       
             
         let nameDisplay = kitty.name ?
             <h1 className="KittyHeader-name-text KittyHeader-name-text--editable">{kitty.name}</h1>
@@ -382,7 +131,7 @@ class Kitty extends Component {
                             <a href={`/marketplace?include=sale,sire,other&search=${enhanced_cattributes[i].description}`} className="Cattribute-icon" ></a>
                             <a href={`/kitty/${enhanced_cattributes[i].description}`} className="Cattribute-content">
                                 <h3 className="Cattribute-title">{kitty.id && enhanced_cattributes[i].description}</h3>
-                                <span className="Cattribute-type">{kitty.id && enhanced_cattributes[i].type}</span>
+                                <span className="Cattribute-type">{cattributeLabel[enhanced_cattributes[i].type]}</span>
                             </a>
                         </div>;
                 }
@@ -395,46 +144,46 @@ class Kitty extends Component {
                             </a>
                             <a className="Cattribute-content" href={`/marketplace?include=sale,sire,other&search=${enhanced_cattributes[i].description}`}>
                                 <h3 className="Cattribute-title">{kitty.id && enhanced_cattributes[i].description}</h3>
-                                <span className="Cattribute-type">{kitty.id && enhanced_cattributes[i].type}</span>
+                                <span className="Cattribute-type">{cattributeLabel[enhanced_cattributes[i].type]}</span>
                             </a>
                         </div>;
                 }
-                if (enhanced_cattributes[i].position1 > 1 && enhanced_cattributes[i].position <= 10)
+                if (enhanced_cattributes[i].position > 1 && enhanced_cattributes[i].position <= 10)
                 {
                     gemDisplay = 
-                        <div className="Cattribute Cattribute--size-small Cattribute--icon-gold">
-                            <a className="Cattribute-icon" href={`/kitty/${enhanced_cattributes[i].kittyId}`}>
-                                <i className="Cattribute-icon-img" style={{backgroundImage: gold}}></i>
-                            </a>
-                            <a href={`/marketplace?include=sale,sire,other&search=${kitty.id && enhanced_cattributes[i]}`} className="Cattribute-content">
-                                <h3 className="Cattribute-title">{kitty.id && enhanced_cattributes[i].description}</h3>
-                                <span className="Cattribute-type">{kitty.id && enhanced_cattributes[i].type}</span>
-                            </a>
-                        </div>;
+                    <div className="Cattribute Cattribute--size-small Cattribute--icon-gold">
+                        <a className="Cattribute-icon" href={`/kitty/${enhanced_cattributes[i].kittyId}`}>
+                            <i className="Cattribute-icon-img Cattribute-icon-img--gold"></i>
+                        </a>
+                        <a className="Cattribute-content" href={`/marketplace?include=sale,sire,other&search=${enhanced_cattributes[i].description}`}>
+                            <h3 className="Cattribute-title">{kitty.id && enhanced_cattributes[i].description}</h3>
+                            <span className="Cattribute-type">{cattributeLabel[enhanced_cattributes[i].type]}</span>
+                        </a>
+                    </div>;
                 }
-                if (enhanced_cattributes[i].position1 > 10 && enhanced_cattributes[i].position <= 100)
+                if (enhanced_cattributes[i].position > 10 && enhanced_cattributes[i].position <= 100)
                 {
                     gemDisplay = 
                         <div className="Cattribute Cattribute--size-small Cattribute--icon-silver">
                             <a className="Cattribute-icon" href={`/kitty/${enhanced_cattributes[i].kittyId}`}>
-                                <i className="Cattribute-icon-img Cattribute-icon-img--silver" style={{backgroundImage: silver}}></i>
+                                <i className="Cattribute-icon-img Cattribute-icon-img--silver"></i>
                             </a>
                             <a className="Cattribute-content" href={`/marketplace?include=sale,sire,other&search=${enhanced_cattributes[i].description}`}>
                                 <h3 className="Cattribute-title">{enhanced_cattributes[i].description}</h3>
-                                <span className="Cattribute-type">{enhanced_cattributes[i].type}</span>
+                                <span className="Cattribute-type">{cattributeLabel[enhanced_cattributes[i].type]}</span>
                             </a>
                         </div>;
                 }
-                if (enhanced_cattributes[i].position1 > 100 && enhanced_cattributes[i].position <= 500)
+                if (enhanced_cattributes[i].position > 100 && enhanced_cattributes[i].position <= 500)
                 {
                     gemDisplay = 
                         <div className="Cattribute Cattribute--size-small Cattribute--icon-bronze">
                             <a className="Cattribute-icon" href={`/kitty/${enhanced_cattributes[i].kittyId}`}>
-                                <i className="Cattribute-icon-img Cattribute-icon-img--bronze" style={{backgroundImage: bronze}}></i>
+                                <i className="Cattribute-icon-img Cattribute-icon-img--bronze"></i>
                             </a>
                             <a className="Cattribute-content" href={`/marketplace?include=sale,sire,other&search=${enhanced_cattributes[i].description}`}>
                                 <h3 className="Cattribute-title">{enhanced_cattributes[i].description}</h3>
-                                <span className="Cattribute-type">{enhanced_cattributes[i].type}</span>
+                                <span className="Cattribute-type">{cattributeLabel[enhanced_cattributes[i].type]}</span>
                             </a>
                         </div>;
                 }
@@ -448,6 +197,10 @@ class Kitty extends Component {
             });
         }
         
+eachCattribute = kitty.id && eachCattribute.sort((a, b) => {
+    return a.position - b.position;
+})
+
 let cattributesDisplay = (kitty.id && !kitty.is_fancy && !kitty.is_exclusive) ?
     <div className="KittySection">
         <div className="KittySection-header">
@@ -474,7 +227,7 @@ let cattributesDisplay = (kitty.id && !kitty.is_fancy && !kitty.is_exclusive) ?
 
         var ownerActions = null;
         var auctionInfo = null;
-        console.log(kitty.auction.seller)
+        // console.log(kitty.auction.seller)
         if (kitty.owner && kitty.owner.address === user.address) {
             ownerActions =
                 <div className="KittyHeader-ownerActions">
@@ -503,7 +256,7 @@ let cattributesDisplay = (kitty.id && !kitty.is_fancy && !kitty.is_exclusive) ?
                 </div>
             // auctionInfo = null;                
         }
-        if (kitty.auction.seller && (kitty.owner.address === user.address || kitty.auction.seller.address === user.address)) {
+        if (kitty.id && kitty.auction.seller && (kitty.owner.address === user.address || kitty.auction.seller.address === user.address)) {
 
             if (!_.isEmpty(kitty.auction)) {
                 if (kitty.auction.type === 'sire') {
@@ -637,7 +390,7 @@ let cattributesDisplay = (kitty.id && !kitty.is_fancy && !kitty.is_exclusive) ?
             }
         }
 
-        if (kitty.auction.seller && (kitty.owner.address !== user.address && kitty.auction.seller.address !== user.address)) {
+        if (kitty.id && kitty.auction.seller && (kitty.owner.address !== user.address && kitty.auction.seller.address !== user.address)) {
             if (!_.isEmpty(kitty.auction)) {
                 if (kitty.auction.type === 'sire') {
                     auctionInfo =
