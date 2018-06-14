@@ -124,7 +124,7 @@ class Kitty extends Component {
             var eachCattribute = enhanced_cattributes.map((e, i) =>
             {
                 var gemDisplay;
-                if (enhanced_cattributes[i].position === -1)
+                if (enhanced_cattributes[i].position === -1 || enhanced_cattributes[i].position > 500)
                 {
                     gemDisplay = 
                         <div className="Cattribute Cattribute--size-small Cattribute--icon-none">
@@ -190,16 +190,16 @@ class Kitty extends Component {
                 
                 
                 return (
-                    <span className="KittyCattribute">
+                    <span key={i} className="KittyCattribute">
                         {gemDisplay}
                     </span>
                 );
             });
         }
         
-eachCattribute = kitty.id && eachCattribute.sort((a, b) => {
-    return a.position - b.position;
-})
+// eachCattribute = kitty.id && eachCattribute.sort((a, b) => {
+//     return a.position - b.position;
+// })
 
 let cattributesDisplay = (kitty.id && !kitty.is_fancy && !kitty.is_exclusive) ?
     <div className="KittySection">
