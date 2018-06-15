@@ -43,7 +43,7 @@ class Profile extends Component {
                 this.setState({ account: accounts[0] });
                 console.log(`received accounts[0]> `, accounts[0]);
                 console.log(`this.setState> this.state.account> `, this.state.account);
-                this.props.getUser(accounts[0])
+                // this.props.getUser(accounts[0])
         })} else {
         console.log(`MetaMask account not detected`);
         }
@@ -63,7 +63,7 @@ class Profile extends Component {
         this.props.getFilteredCats("","normal","","","sale","sire","other","id","desc");
     }
     handleInput(e){
-        this.props.getFilteredCats(`${this.props.user.address}`, "", `${e.toString()}`, "", "sale", "sire", "other", "id", "desc")
+        this.props.getFilteredCats("", "normal", `${e.toString()}`, "", "sale", "sire", "other", "id", "desc")
     }
     componentDidUpdate(oldprops, newprops){
 
@@ -154,7 +154,7 @@ class Profile extends Component {
    return (
         <main className="main">
             {/* <button onClick={(e)=> this.handleClick(793148)}>someone else's kitty</button> */}
-            <div className="profilePage">
+            <div className="profilePage1">
                 <div className="profilePage-tabs">
                     <div className="container-lg">
                         <div className="TabNav">
@@ -239,21 +239,21 @@ class Profile extends Component {
                                             <div className="kittiesFilter-group-title3">Cooldown</div>
                                             <div className="kittiesFilter-group-content3">
                                                 <div className="kittiesFilter-list">
-                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "fast", "sale", "sire", "other", "id", "desc")}}>Fast</button>
+                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats("", "normal", "", "fast", "sale", "sire", "other", "id", "desc")}}>Fast</button>
                                                     
-                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "swift", "sale", "sire", "other", "id", "desc")}}>Swift</button>
+                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats("", "normal", "", "swift", "sale", "sire", "other", "id", "desc")}}>Swift</button>
                                                    
-                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "snappy", "sale", "sire", "other", "id", "desc")}}>Snappy</button>
+                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats("", "normal", "", "snappy", "sale", "sire", "other", "id", "desc")}}>Snappy</button>
                                                     
-                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "brisk", "sale", "sire", "other", "id", "desc")}}>Brisk</button>
+                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats("", "normal", "", "brisk", "sale", "sire", "other", "id", "desc")}}>Brisk</button>
                                                    
-                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "plodding", "sale", "sire", "other", "id", "desc")}}>Plodding</button>
+                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats("", "normal", "", "plodding", "sale", "sire", "other", "id", "desc")}}>Plodding</button>
                                               
-                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "slow", "sale", "sire", "other", "id", "desc")}}>Slow</button>
+                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats("", "normal", "", "slow", "sale", "sire", "other", "id", "desc")}}>Slow</button>
                                                    
-                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "sluggish", "sale", "sire", "other", "id", "desc")}}>Sluggish</button>
+                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats("", "normal", "", "sluggish", "sale", "sire", "other", "id", "desc")}}>Sluggish</button>
                                                 
-                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "", "", "catatonic", "sale", "sire", "other", "id", "desc")}}>Catatonic</button>
+                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats("", "normal", "", "catatonic", "sale", "sire", "other", "id", "desc")}}>Catatonic</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -360,6 +360,26 @@ class Profile extends Component {
                                 <div className="profileContainer">
                                 {allTheKitties}
                                     {/* put kitty card here */}
+                                </div>
+                            </div>
+                            <div className="kittiesGalleryPagination">
+                                <div className="pagination">
+                                    <div className="pagination-pages">
+                                        <button className="pagination-page1">1</button>
+                                        <button className="pagination-page">2</button>
+                                        <button className="pagination-page">3</button>
+                                        <button className="pagination-page">4</button>
+                                        <button className="pagination-page">5</button>
+                                        <button className="pagination-page">6</button>
+                                        <button className="pagination-page">7</button>
+                                        <button className="pagination-page">8</button>
+                                        <button className="pagination-page">9</button>
+                                        <button className="pagination-page">10</button>
+                                    </div>
+                                    <div className="buttons">
+                                        <button className="pagination-button">Previous</button>
+                                        <button className="pagination-button">Next</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
