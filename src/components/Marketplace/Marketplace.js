@@ -32,7 +32,8 @@ class Profile extends Component {
         super(props)
         this.state = {
             account: null,
-            cooldown_index: ['fast', 'swift', 'snappy', 'brisk', 'plodding', 'slow', 'sluggish', 'catatonic']
+            cooldown_index: ['Fast', 'Swift', 'Swift', 'Snappy', 'Snappy', 'Brisk', 'Brisk', 'Plodding', 'Plodding', 'Slow', 'Slow', 'Sluggish', 'Sluggish', 'Catatonic'],
+            value: ''
         }
     }
     componentDidMount(){
@@ -61,6 +62,10 @@ class Profile extends Component {
     }
     handleClickAll = () => {
         this.props.getFilteredCats("","normal","","","sale","sire","other","id","desc");
+    }
+    onChange = (e) => {
+        this.setState({value: e.target.value}) 
+        this.props.getFilteredCats("","normal","","","sale","sire","other","id",`${this.state.value}`)
     }
     handleInput(e){
         this.props.getFilteredCats("", "normal", `${e.toString()}`, "", "sale", "sire", "other", "id", "desc")
@@ -214,9 +219,9 @@ class Profile extends Component {
                                             <div className="kittiesFilter-group-content">
                                                 <div className="kittiesFilter-list">
                                                     <div className="buttons">
-                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "normal", "", "", "sale", "sire", "other", "id", "desc")}}><span className="filterButton-span">Normal</span></button>
-                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "fancy", "", "", "sale", "sire", "other", "id", "desc")}}><span className="filterButton-span">Fancy</span></button>
-                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats(`${user.address}`, "exclusive", "", "", "sale", "sire", "other", "id", "desc")}}><span className="filterButton-span">Exclusive</span></button>
+                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats("", "normal", "", "", "sale", "sire", "other", "id", "desc")}}><span className="filterButton-span">Normal</span></button>
+                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats("", "normal", "", "", "sale", "sire", "other", "id", "desc")}}><span className="filterButton-span">Fancy</span></button>
+                                                        <button className="filterButton" onClick={() => {this.props.getFilteredCats("", "normal", "", "", "sale", "sire", "other", "id", "desc")}}><span className="filterButton-span">Exclusive</span></button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -332,7 +337,7 @@ class Profile extends Component {
                                                     </div>
                                                     <div className="selectionGroup-item">
                                                         <div className="select-container2" role="menu">
-                                                            <select className="select" placeholder>
+                                                            <select className="select" onChange={this.onChange} placeholder>
                                                                 <option value="asc">Low to high</option>
                                                                 <option value="desc">High to low</option>
                                                             </select>

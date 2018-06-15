@@ -33,7 +33,7 @@ class Profile extends Component {
         super(props)
         this.state = {
             account: null,
-            cooldown_index: ['fast', 'swift', 'snappy', 'brisk', 'plodding', 'slow', 'sluggish', 'catatonic']
+            cooldown_index: ['Fast', 'Swift', 'Swift', 'Snappy', 'Snappy', 'Brisk', 'Brisk', 'Plodding', 'Plodding', 'Slow', 'Slow', 'Sluggish', 'Sluggish', 'Catatonic']
         }
     }
     componentDidMount(){
