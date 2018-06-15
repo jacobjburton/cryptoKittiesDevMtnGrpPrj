@@ -275,14 +275,17 @@ img {
 .KittyCattribute {
     min-width: 0;
     margin: 1rem;
+    margin-left: 0;
 }
 
 .Cattribute {
     display: inline-flex;
     align-items: center;
     overflow: hidden;
+    float: left;
     max-width: 100%;
     padding: 1rem;
+    padding-left: 0;
 }
 
 .Cattribute-icon {
@@ -575,8 +578,137 @@ img {
     position: relative;
     padding: 0.8rem 0 0.4rem;
 }
-
-
+.kittiesGrid1 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    grid-row-gap: 120px;
+    position: relative;
+    padding-bottom: 50px;
+}
+.kittiesGrid-item .kittyCard {
+    opacity: 0;
+    transform: translateY(2.4rem);
+    animation: kittyCardIn .25s cubic-bezier(0.6, .67, .37, .99) forwards;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-gap: 10px;
+    grid-row-gap: 50px!important;
+}
+.kittyCard {
+    --size-card: 22.5rem;
+    --size-image: 16rem;
+    --width-shadow: 8rem;
+    --height-shadow: 1.1rem;
+    --translate-image: 2%;
+    --translate-shadow: 3.6rem;
+    --padding-status: 0.8rem;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: var(--size-card);
+    height: var(--size-card);
+    background-color: #f3f1ee;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    border-radius: .7rem;
+    transition: box-shadow .2s;
+}
+.kittyCard:active,
+.kittyCard:focus {
+    outline: none;
+}
+.kittyCard:before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    display: block;
+    width: 217.47px;
+    height: 217.47px;
+    margin: auto;
+    background-color: #a8d5d1;
+    border-radius: 50%;
+    transform: translate(var(--translate-image), var(--translate-shadow));
+    content: "";
+    z-index: 1
+}
+.kittyCard-background {
+    width: 250px;
+    height: 250px;
+}
+.kittyCard-wrapper {
+    /* --box-shadow: inset 0 0 0 0 #fff; */
+    width: 250px;
+    height: 250px;
+    /* padding: 10px; */
+   }
+.kittyCard-image {
+    min-width: 250px !important;
+    min-height: 250px !important;
+    z-index: 2;
+}
+.profile1 {
+    margin-right: 380px;
+}
+.kittiesGallery1 {
+    /* margin-left: 30px; */
+}
+.kittyCard-wrapper1 {
+    width: 120px;
+    height: 120px;
+}
+.kittyCard-background1 {
+    width: 120px;
+    height: 120px;
+}
+.KittyCard-image1 {
+    min-width: 120px !important;
+    min-height: 120px !important;
+    z-index: 2;
+}
+.Button-icon,
+a.Button-icon {
+  position: absolute;
+  top: 50%;
+  left: 1.2rem;
+  height: 1.6rem;
+  transform: translateY(-50%)
+}
+.Button--icon, a.Button--icon {
+    padding: 0 1.5rem 0 3.52rem;
+}
+.Button, a.Button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 1.8rem;
+    height: 4.8rem;
+    background: #fff;
+    color: #2a2825;
+    font-size: 1.6rem;
+    font-weight: 500;
+    text-decoration: none;
+    border: 2px solid #f3f1ee;
+    border-radius: .5rem;
+    cursor: pointer;
+    transition: all .2s cubic-bezier(.06, .67, .37,.99);
+    outline: none;
+    vertical-align: top;
+}
+.Icon Icon--eggplant {
+    background-image: url('../../images/icons/eggplant.svg')
+}
+.Icon Icon--tag {
+    background-image: url('../../images/icons/tag.svg')
+}
+.Icon Icon--gift {
+    background-image: url('../../images/icons/gift.svg')
+}
 @media (min-width: 960px) {
     .KittyBanner {
         --size-card: 45rem;
@@ -640,6 +772,7 @@ img {
     }
     .KittyCattributes {
         grid-template-columns: repeat(4, 1fr);
+        margin-left: 0;
     }
     .Cattribute--size-small .Cattribute-icon {
         margin-right: 1.2rem;

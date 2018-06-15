@@ -256,10 +256,12 @@ class Kitty extends Component {
                         </a>                    
                     </div>
                     <div className="KittyHeader-ownerActions-action">
+                    <a href="" className="Button Button--icon" aria-current="false">
                         <span className="Button-icon">
-                            <i className="Icon Icon--eggplant"></i>
+                            <i className="Icon Icon--gift"></i>
                         </span>
-                        Gift                  
+                        Gift  
+                        </a>                
                     </div>
                 </div>
             // auctionInfo = null;                
@@ -576,36 +578,24 @@ class Kitty extends Component {
             null;
 
         let parentDisplay = (!_.isEmpty(kitty.matron) && !_.isEmpty(kitty.sire)) ?
-            <div className="KittySection">
-                <div className="KittySection-header">
-                    <h2 className="KittySection-header-title">Parents</h2>
-                </div>
-                <div className="KittySection-content">
-                    <div className="Kitty-Parents">
-                        <div className="KittiesList">
-                            <div className="KittiesList-items">
-                                <div className="KittiesList-item">
-                                    <a onClick={(e) => {this.handleClick(kitty.sire.id)}} aria-current="false">
-                                        <div className="KittyCard-wrapper">
-                                            <div className="KittyCard KittyCard--bg-topaz KittyCard--thumbnail KittyCard--fancy KittyCard--shadow-topaz">
-                                                <img className="KittyCard-image" src={kitty.id && kitty.sire.image_url} alt="sireImg"/>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div className="KittiesList-item">
-                                    <a aria-current="false" onClick={(e) => {this.handleClick(kitty.matron.id)}}>
-                                        <div className="KittyCard-wrapper">
-                                            <div className="KittyCard KittyCard--bg-sapphire KittyCard--thumbnail KittyCard--shadow-sapphire">
-                                                <img className="KittyCard-image" src={kitty.id && kitty.matron.image_url} alt="matronImg"/>
-                                                <div className="KittyCard-status"></div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
+            <div className="kittiesGrid1">
+                <div className="kittiesGrid-item">
+                    <a onClick={(e) => {this.handleClick(kitty.matron.id)}}>                
+                        <div className="kittyCard-wrapper1" >
+                            <div className="kittyCard-background1">
+                                <img class="KittyCard-image1" style={{background: `${backgroundColor[kitty.matron.color]}`, borderRadius: '10px'}}src={kitty ? kitty.matron.image_url : null} alt="kitty"/>
                             </div>
                         </div>
-                    </div>
+                    </a>
+                </div>
+                <div className="kittiesGrid-item">
+                    <a onClick={(e) => {this.handleClick(kitty.sire.id)}}>                
+                        <div className="kittyCard-wrapper1" >
+                            <div className="kittyCard-background1">
+                                <img class="KittyCard-image1" style={{background: `${backgroundColor[kitty.sire.color]}`, borderRadius: '10px'}}src={kitty ? kitty.sire.image_url : null} alt="kitty"/>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
             : null;
@@ -613,24 +603,15 @@ class Kitty extends Component {
         if (!_.isEmpty(kitty.children)) {
             var allTheChildren = kitty.children.map((e, i) => {
                 return (
-                    <div className="KittySection-content">
-                        <div className="Kitty-children">
-                            <div className="KittiesList">
-                                <div className="KittiesList-items">
-                                    <div className="KittiesList-item">
-                                        <a onClick={(e) => {this.handleClick(kitty.children[i].id)}} aria-current="false">
-                                            <div className="KittyCard-wrapper">
-                                                <div className="KittyCard KittyCard--bg-topaz KittyCard--thumbnail KittyCard--shadow-topaz">
-                                                    <img  className="KittyCard-image" src={kitty.id && kitty.children[i].image_url} alt="childImg"/>
-                                                    <div className="KittyCard-status"></div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
+                    <div className="kittiesGrid-item">
+                    <a onClick={(e) => {this.handleClick(kitty.children[i].id)}}>                
+                        <div className="kittyCard-wrapper1" >
+                            <div className="kittyCard-background1">
+                                <img class="KittyCard-image1" style={{background: `${backgroundColor[kitty.children[i].color]}`, borderRadius: '10px'}}src={kitty ? kitty.children[i].image_url : null} alt="kitty"/>
                             </div>
                         </div>
-                    </div>
+                    </a>
+                </div>
                 )
             });
         }
@@ -639,7 +620,9 @@ class Kitty extends Component {
                 <div className="KittySection-header">
                     <h2 className="KittySection-header-title">Children</h2>
                 </div>
+                <div className="kittiesGrid1">
                 {allTheChildren}
+                </div>
             </div>
             : null;
 
@@ -755,8 +738,20 @@ class Kitty extends Component {
                                 </div>
                                 {showSpecial}
                                 {cattributesDisplay}
-                                {parentDisplay}
-                                {childrenDisplay}
+                                <div className="profile1">
+                                    <div className="kittiesGallery1">
+                                        <div className="profileContainer1">
+                                            <div className="KittySection-header">
+                                                <h2 className="KittySection-header-title">Parents</h2>
+                                            </div>
+                                            {parentDisplay}
+                                        </div>
+                                        <div className="profileContainer1">
+                                            {childrenDisplay}
+                                        </div>
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
