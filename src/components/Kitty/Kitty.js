@@ -620,7 +620,7 @@ class Kitty extends Component {
                                     <div className="KittiesList-item">
                                         <a onClick={(e) => {this.handleClick(kitty.children[i].id)}} aria-current="false">
                                             <div className="KittyCard-wrapper">
-                                                <div className="KittyCard KittCard--bg-topaz KittyCard--thumbnail KittyCard--shadow-topaz">
+                                                <div className="KittyCard KittyCard--bg-topaz KittyCard--thumbnail KittyCard--shadow-topaz">
                                                     <img  className="KittyCard-image" src={kitty.id && kitty.children[i].image_url} alt="childImg"/>
                                                     <div className="KittyCard-status"></div>
                                                 </div>

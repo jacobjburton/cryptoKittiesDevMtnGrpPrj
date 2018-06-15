@@ -43,7 +43,7 @@ class Profile extends Component {
                 this.setState({ account: accounts[0] });
                 console.log(`received accounts[0]> `, accounts[0]);
                 console.log(`this.setState> this.state.account> `, this.state.account);
-                this.props.getUser(accounts[0])
+                // this.props.getUser(accounts[0])
         })} else {
         console.log(`MetaMask account not detected`);
         }
