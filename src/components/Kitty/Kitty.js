@@ -244,7 +244,7 @@ class Kitty extends Component {
                             <span className="Button-icon">
                                 <i className="Icon Icon--eggplant"></i>
                             </span>
-                            <span className="words">Breed</span>
+                            <span className="words1">Breed</span>
                         </a>
                     </div>
                     <div className="KittyHeader-ownerActions-action">
@@ -252,7 +252,7 @@ class Kitty extends Component {
                             <span className="Button-icon">
                                 <i className="Icon Icon--tag"></i>
                             </span>
-                            <span className="words">Sell</span>
+                            <span className="words1">Sell</span>
                         </a>                    
                     </div>
                     <div className="KittyHeader-ownerActions-action">
@@ -260,7 +260,7 @@ class Kitty extends Component {
                         <span className="Button-icon">
                             <i className="Icon Icon--gift"></i>
                         </span>
-                        <span className="words">Gift</span>
+                        <span className="words1">Gift</span>
                         </a>                
                     </div>
                 </div>

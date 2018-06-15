@@ -701,7 +701,10 @@ a.Button-icon {
     transition: all .2s cubic-bezier(.06, .67, .37,.99);
     outline: none;
 }
-.words {
+.total {
+    margin-left: 35px;
+}
+.words1 {
     margin-top: 6px;
     font-size: 1.6rem;
     color: black;
